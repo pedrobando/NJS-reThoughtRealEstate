@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import TransparentNavBar from '@/app/_components/transparentNavBar'
 import '../globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -11,7 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex justify-center items-center">
+      <body className="flex flex-col justify-center items-center">
+        <TransparentNavBar/>
         <h1> Home Layout</h1>
         {children}</body>
     </html>
