@@ -16,9 +16,12 @@ const NavBarBar = () => {
         </Link>
       </li>
       <li className="relative flex justify-between px-3 py-4  lg:px-3 hover:text-reGreen rounded-md list-none">
-        <a className="relative flex w-full h-full" href="#">
+      <Link
+          className={`link ${pathname === '/featured-listings' ? 'text-reGreen' : ''} relative flex w-full h-full active:text-reGreen`}
+          href="/featured-listings"
+        >
           Featured Listings
-        </a>
+        </Link>
       </li>
       <li className="relative flex justify-between px-3 py-4 0 lg:px-3 hover:text-reGreen rounded-md list-none">
         <a className="relative flex w-full h-full" href="#">

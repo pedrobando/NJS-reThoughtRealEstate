@@ -9,7 +9,7 @@ const NavBarSolid = () => {
         <Link href="/">
           <img
           src="/img/rethought-real-estate-light-logo.svg"
-          className="w-full md:w-[70%]"
+          className="w-full md:w-[70%] hover:scale-105 transition-transform"
           alt="reThought Real Estate Logo"
         />
         </Link>

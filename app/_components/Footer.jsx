@@ -11,7 +11,7 @@ const Footer = () => {
           Hablamos Español! Para ayuda puede llamar o enviar mensaje de texto al
           414.797.6128
         </h3>
-        <WaveDividerBottom />
+        <WaveDividerBottom fill="waveDivider" />
       </div>
       <div className="flex flex-col container mx-auto md:flex-row bg-reDark gap-x-10 gap-y-16 py-10 px-5 md:px-0  md:py-[50px]">
         <div className="w-full md:flex-auto md:w-[40%]">
