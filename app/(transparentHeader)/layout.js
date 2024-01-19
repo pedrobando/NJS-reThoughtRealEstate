@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import TransparentNavBar from '@/app/_components/transparentNavBar'
 import '../globals.css'
+import { poppins, roboto_mono } from '../_components/fonts'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="flex flex-col justify-center items-center">
+      <body className="flex flex-col justify-center items-center font-body">
         <TransparentNavBar/>
         <h1> Home Layout</h1>
         {children}</body>
