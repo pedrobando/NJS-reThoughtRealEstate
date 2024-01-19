@@ -4,7 +4,7 @@ import NavBarSlide from './NavBarSlide'
 
 const NavBarSolid = () => {
   return (
-    <header className="flex w-full items-center h-[130px] max-h-[130px] px-[5%] py-[50px] md:px-[10%] md:py-[90px] bg-reDark">
+    <header className="flex w-full items-center h-[90px] max-h-[90px] px-[5%] py-[20px] md:px-[10%] md:py-[30px] bg-reDark">
       <div className="flex flex-col justify-center w-6/12 xl:w-2/12">
         <Link href="/">
           <img

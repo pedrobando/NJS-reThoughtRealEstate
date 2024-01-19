@@ -1,9 +1,6 @@
-import { Inter } from 'next/font/google'
+
 import TransparentNavBar from '@/app/_components/transparentNavBar'
 import '../globals.css'
-import { poppins, roboto_mono } from '../_components/fonts'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
