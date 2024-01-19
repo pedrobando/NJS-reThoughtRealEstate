@@ -1,6 +1,6 @@
 import './globals.css'
 import NavBarSolid from './_components/NavBarSolid'
-
+import Footer from './_components/Footer'
 
 
 export const metadata = {
@@ -11,9 +11,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col justify-between">
         <NavBarSolid/>
-        {children}
+        <div className="bg-white flex-grow">
+        {children} 
+        </div>
+        <Footer/>
         </body>
     </html>
   )

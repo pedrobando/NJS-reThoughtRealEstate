@@ -5,7 +5,23 @@
 @tailwind utilities;
 
 
+.waveDivider{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  fill:#222625;
+  z-index: 0;
+  
+ 
+}
 
+.waveDivider svg{
+  width: calc(100% + 1.3px);
+    height: 20px
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;

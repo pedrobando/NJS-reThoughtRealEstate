@@ -15,7 +15,7 @@ module.exports = {
       fontFamily: {
         body: "Lato",
         heading: ["Poppins", "sans-serif"],
-        shadow: ['"Shadows Into Light Two"', 'sans-serif'],
+        accent: ['"Shadows Into Light Two"', 'sans-serif'],
       },
       colors:{
         reDark:"#222625",
@@ -45,7 +45,8 @@ module.exports = {
           900: '#000f1f',
         },
         reYellow: '#FFCC00',
-        reGrey: '#414142'
+        reGrey: '#414142',
+        reTextGrey:'#BABABA',
       },
     },
   },
