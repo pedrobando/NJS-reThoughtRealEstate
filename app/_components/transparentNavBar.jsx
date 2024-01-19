@@ -1,5 +1,5 @@
 "use client";
-import NavBarSlide from "./NavBarSlide"
+import NavBarSlide from "./NavBarSlide";
 
 const TransparentNavBar = () => {
   return (
@@ -7,7 +7,7 @@ const TransparentNavBar = () => {
       <div className="flex flex-col justify-center w-8/12 md:w-2/12">
         <img
           src="/img/rethought-real-estate-light-logo.svg"
-          className="w-full md:w-[90%]"
+          className="w-full md:w-[100%] hover:scale-105 transition-transform"
           alt="reThought Real Estate Logo"
         />
       </div>

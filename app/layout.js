@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="min-h-screen flex flex-col justify-between">
         <NavBarSolid/>
-        <div className="bg-white flex-grow">
+        <div className="bg-white flex-grow min-h-64">
         {children} 
         </div>
         <Footer/>
