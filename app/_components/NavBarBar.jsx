@@ -1,14 +1,19 @@
+"use client";
 import { PhoneIcon } from "@heroicons/react/20/solid";
-
-
+import Link from "next/link";
+import { usePathname } from 'next/navigation'
 
 const NavBarBar = () => {
+  const pathname = usePathname()
   return (
     <ul className="flex space-x-3 font-heading font-semibold text-md">
       <li className="relative flex justify-between px-3 py-4  lg:px-3 hover:text-reGreen rounded-md list-none">
-        <a className="relative flex w-full h-full" href="/homes-for-sale">
+        <Link
+          className={`link ${pathname === '/homes-for-sale' ? 'text-reGreen' : ''} relative flex w-full h-full active:text-reGreen`}
+          href="/homes-for-sale"
+        >
           Homes for Sale
-        </a>
+        </Link>
       </li>
       <li className="relative flex justify-between px-3 py-4  lg:px-3 hover:text-reGreen rounded-md list-none">
         <a className="relative flex w-full h-full" href="#">
