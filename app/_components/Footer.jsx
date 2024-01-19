@@ -5,20 +5,20 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="flex-col justify-end bg-reDark min-h-[130px] pb-6">
-      <div className="relative bg-reGreen py-8 px-6 text-center">
+    <footer className="flex-col  items-center justify-end bg-reDark min-h-[130px] pb-6">
+      <div className="relative bg-reGreen py-8 px-6 text-center w-full">
         <h3 className="font-heading text-xl font-semibold z-10 pb-2">
           Hablamos Español! Para ayuda puede llamar o enviar mensaje de texto al
           414.797.6128
         </h3>
         <WaveDividerBottom />
       </div>
-      <div className="flex flex-col md:flex-row bg-reDark gap-x-10 py-10 px-6 md:px-[10%] md:py-[50px]">
+      <div className="flex flex-col container mx-auto md:flex-row bg-reDark gap-x-10 gap-y-16 py-10 px-5 md:px-0  md:py-[50px]">
         <div className="w-full md:flex-auto md:w-[40%]">
           <Link href="/">
             <img
               src="/img/rethought-real-estate-light-logo.svg"
-              className="w-[70%] hover:scale-105 transition-transform"
+              className="w-[40%] md:w-[40%] hover:scale-105 transition-transform"
               alt="reThought Real Estate Logo"
             />
           </Link>
@@ -52,7 +52,7 @@ const Footer = () => {
             className="w-[60px] float-left pr-4"
             alt="Metro MLS Logo"
           />
-          <p className="text-xs text-reTextGrey pr-10 opacity-50">
+          <p className="text-xs text-reTextGrey opacity-50 md:pr-[20%]">
             Information is supplied by seller and other third parties and has
             not been verified. IDX information is provided exclusively for
             consumers personal, non-commercial use and may not be used for any
@@ -60,8 +60,8 @@ const Footer = () => {
             be interested in purchasing.
           </p>
         </div>
-        <div className="basis-12/12 md:basis-4/12">
-          <p className="text-xs text-reTextGrey pr-10 opacity-50 pt-4 md:pt-0">
+        <div className="basis-12/12 md:basis-4/12 text-right">
+          <p className="text-xs text-reTextGrey opacity-50 pt-4 md:pt-0 ">
             reThought Real Estate LLC © {year} All rights reserved.
           </p>
           <Link className="text-xs text-reTextGrey hover:text-white" href="/">
