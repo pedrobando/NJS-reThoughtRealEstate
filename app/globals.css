@@ -40,6 +40,7 @@
     height: 20px
 }
 
+.mapboxgl-popup-content{padding: 0 !important;border-radius: 10px !important;}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

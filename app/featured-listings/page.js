@@ -28,7 +28,7 @@ export default async function ListingsList() {
 
   return (
     <>
-    <MapBoxF/>
+    <MapBoxF listingsResults={listings}/>
     <div className="container mx-auto min-h-64 py-14 px-4">
       <h1 className="text-reGreen text-2xl font-heading font-semibold text-center text-lg">Real Simple. Real Skills. Real Results.</h1>
       <h1 className="text-reBlue text-5xl font-heading font-semibold text-center lh-10">#reElevated <br/>Exclusive Listings</h1>

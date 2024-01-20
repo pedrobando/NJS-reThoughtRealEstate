@@ -53,5 +53,5 @@ module.exports = {
   corePlugins: {
     aspectRatio: false,
   },
-  plugins: ["prettier-plugin-tailwindcss",  require('@tailwindcss/aspect-ratio')],
+  plugins: ["prettier-plugin-tailwindcss", ],
 }
