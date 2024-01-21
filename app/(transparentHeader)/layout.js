@@ -1,4 +1,4 @@
-import TransparentNavBar from "@/app/_components/transparentNavBar";
+import TransparentNavBar from "../_components/transparentNavBar";
 import "../globals.css";
 
 export const metadata = {
