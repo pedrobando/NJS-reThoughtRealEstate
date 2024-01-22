@@ -16,9 +16,6 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           precedence="default"
         />
-
-
-
       <body className="min-h-screen flex flex-col justify-between">
         <NavBarSolid/>
         <div className="bg-white flex-grow min-h-64">

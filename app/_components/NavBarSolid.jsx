@@ -4,7 +4,7 @@ import NavBarSlide from './NavBarSlide'
 
 const NavBarSolid = () => {
   return (
-    <header className="flex container mx-auto items-center px-5 sm:px-6 lg:px-0 h-[90px] max-h-[90px] py-[20px] md:py-[40px] bg-reDark">
+    <header className="flex container mx-auto items-center px-5 sm:px-6 lg:px-0 h-[90px] max-h-[90px] py-[20px] md:py-[40px] bg-reDark w-full">
       <div className="flex flex-col justify-center w-6/12 xl:w-2/12">
         <Link href="/">
           <img

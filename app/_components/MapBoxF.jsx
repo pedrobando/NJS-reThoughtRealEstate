@@ -24,8 +24,8 @@ export default function MapBoxF({ listingsResults }) {
     longitude: center.longitude,
   });
   return (
-    <Suspense fallback={<Loading />}>
-    <section className="relative flex hidden md:inline-flex md:w-screen h-[400px] max-h-[400px] overflow-hidden">
+   
+    <section className="hidden relative flex md:inline-flex md:w-screen h-[400px] max-h-[400px] overflow-hidden">
     
       <ReactMapGL
         mapStyle="mapbox://styles/pedrobandorivera/clrl6vf5m003201qsb5235rfx"
@@ -78,6 +78,6 @@ export default function MapBoxF({ listingsResults }) {
       </ReactMapGL>
 
       <WaveDividerBottom fill="waveDivider-white" />
-    </section> </Suspense>
+    </section> 
   );
 }

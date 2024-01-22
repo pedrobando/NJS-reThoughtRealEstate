@@ -47,6 +47,8 @@ module.exports = {
         reYellow: '#FFCC00',
         reGrey: '#414142',
         reTextGrey:'#BABABA',
+        reText:'#333333',
+        reRed:'#EB6753'
       },
     },
   },
