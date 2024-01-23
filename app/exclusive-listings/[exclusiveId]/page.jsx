@@ -25,11 +25,12 @@ const getExclusiveListing = async (mlsId) => {
   
   export default async function ExclusiveListing(exclusiveId) {
     const { result } = await getExclusiveListing(exclusiveId);
-    const listing = result || [];
+    const listing = result.listings[0] || [];
+    console.log(listing)
     
     return (
 
-        <div>Page</div>
+        <div className="text-xl text-reText font-heading">Page {listing.id}</div>
     )
 
   }
