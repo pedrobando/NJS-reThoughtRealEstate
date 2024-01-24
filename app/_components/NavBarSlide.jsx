@@ -79,7 +79,7 @@ export default function NavBarSlide() {
                         </button>
                         <ul role="list" className="mt-[30px] text-lg font-heading font-semibold">
                             <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="/homes-for-sale">Homes for Sale</a></li>
-                            <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="#">Featured Listings</a></li>
+                            <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="/exclusive-listings">Exclusive Listings</a></li>
                             <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="#">Buyers</a></li>
                             <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="#">Sellers</a></li>
                             <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="#">About Us</a></li>

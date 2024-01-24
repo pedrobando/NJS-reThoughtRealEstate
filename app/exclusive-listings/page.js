@@ -1,7 +1,4 @@
-import { NextResponse } from "next/server";
 import MapBoxF from "../_components/MapBoxF";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpand, faBath, faBed } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 const getFeaturedListings = async () => {

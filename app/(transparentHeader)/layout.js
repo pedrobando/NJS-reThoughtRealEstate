@@ -12,8 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="flex flex-col justify-center items-center font-body">
         <TransparentNavBar />
-        <h1> Home Layout</h1>
-        {children}
+        <div className="bg-black flex flex-col min-h-64 w-full mt-[-127px] bg-gradient-to-t from-neutral-950 to-neutral-800">
+        {children} 
+        </div>
         <Footer/>
       </body>
     </html>

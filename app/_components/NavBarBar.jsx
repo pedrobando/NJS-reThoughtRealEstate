@@ -17,10 +17,10 @@ const NavBarBar = () => {
       </li>
       <li className="relative flex justify-between px-3 py-4  lg:px-3 hover:text-reGreen rounded-md list-none">
       <Link
-          className={`link ${pathname === '/featured-listings' ? 'text-reGreen' : ''} relative flex w-full h-full active:text-reGreen`}
-          href="/featured-listings"
+          className={`link ${pathname === '/exclusive-listings' ? 'text-reGreen' : ''} relative flex w-full h-full active:text-reGreen`}
+          href="/exclusive-listings"
         >
-          Featured Listings
+          Exclusive Listings
         </Link>
       </li>
       <li className="relative flex justify-between px-3 py-4 0 lg:px-3 hover:text-reGreen rounded-md list-none">
