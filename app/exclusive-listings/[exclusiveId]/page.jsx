@@ -74,13 +74,13 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </div>
       </div>
-      <div className="flex container container mx-auto bg-white min-h-20 pt-16 pb-7">
+      <div className="flex container container mx-auto bg-white min-h-20 py-16">
         <div className="flex flex-col md:basis-8/12 px-4">
             <h2 className="text-reText font-heading font-semibold text-5xl pb-3">About {listing.xf_list_31}</h2>
             <p className="text-reText font-body text-md py-1">{listing.description}</p>
         </div>
         <div className="flex flex-col px-4 md:basis-4/12">
-        
+        <p className="text-black">Test</p>
         </div>
       </div>
     </div>
