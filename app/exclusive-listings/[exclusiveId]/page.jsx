@@ -1,4 +1,11 @@
-import { faBath, faBed, faCar, faExpand, faHouse } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDownLong,
+  faBath,
+  faBed,
+  faCar,
+  faExpand,
+  faHouse,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const getExclusiveListing = async (mlsId) => {
@@ -29,8 +36,6 @@ const getExclusiveListing = async (mlsId) => {
 export default async function ExclusiveListing(exclusiveId) {
   const { result } = await getExclusiveListing(exclusiveId);
   const listing = result.listings[0] || [];
-  console.log(listing);
-
   return (
     <div className=" bg-white w-full z-0">
       <div className="bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] ">
@@ -40,7 +45,7 @@ export default async function ExclusiveListing(exclusiveId) {
         ></div>
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center">
-        <span className="font-heading text-white mt-[-370px] z-10 text-sm mb-3">
+        <span className="font-heading text-white mt-[-520px] z-10 text-sm mb-3">
           {listing.propertyType}
         </span>
         <span className="font-heading text-reGreen z-10 text-4xl mb-1">
@@ -49,7 +54,7 @@ export default async function ExclusiveListing(exclusiveId) {
         <span className="font-heading font-semibold  text-white z-10 text-3xl">
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
-        <div className="flex gap-x-12 mt-7 opacity-60 place-items-center font-body">
+        <div className="flex gap-x-12 mt-9 opacity-60 place-items-center font-body">
           <div className="flex flex-col text-white z-10 text-xl mb-1  items-center justify-center text-[1em] font-body">
             <FontAwesomeIcon icon={faBed} height="20px" />
             <span className="mt-1">{listing.beds} Beds</span>
@@ -73,14 +78,30 @@ export default async function ExclusiveListing(exclusiveId) {
             </span>
           </div>
         </div>
+        <div className="flex mx-auto z-10 items-center justify-end pt-[60px] text-white gap-x-6">
+          <div className="flex">
+            <button className="border rounded-lg text-white font-heading px-5 py-2 text-md hover:scale-95 transition">
+              MORE EXCLUSIVE LISTINGS
+            </button>
+          </div>
+          <div className="flex">
+            <button className="rounded-lg text-white font-heading px-5 py-2 text-md bg-reGreen motion-safe:animate-pulse border-reGreen hover:scale-105 transition">
+              SCHEDULE A SHOWING
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="flex container container mx-auto bg-white min-h-20 py-16">
+      <div className="flex md:flex-row flex-col  container mx-auto bg-white min-h-20 py-16">
         <div className="flex flex-col md:basis-8/12 px-4">
-            <h2 className="text-reText font-heading font-semibold text-5xl pb-3">About {listing.xf_list_31}</h2>
-            <p className="text-reText font-body text-md py-1">{listing.description}</p>
+          <h2 className="text-reText font-heading font-semibold text-5xl pb-3">
+            About {listing.xf_list_31}
+          </h2>
+          <p className="text-reText font-body text-md py-1">
+            {listing.description}
+          </p>
         </div>
         <div className="flex flex-col px-4 md:basis-4/12">
-        <p className="text-black">Test</p>
+          <p className="text-black">Test</p>
         </div>
       </div>
     </div>
