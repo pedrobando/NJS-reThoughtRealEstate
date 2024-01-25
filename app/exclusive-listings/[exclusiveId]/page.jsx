@@ -78,14 +78,14 @@ export default async function ExclusiveListing(exclusiveId) {
             </span>
           </div>
         </div>
-        <div className="flex mx-auto z-10 items-center justify-end pt-[60px] text-white gap-x-6">
+        <div className="flex flex-col md:flex-row mx-auto z-10 items-center justify-end pt-[60px] text-white md:gap-x-6 gap-y-6">
           <div className="flex">
             <button className="border rounded-lg text-white font-heading px-5 py-2 text-md hover:scale-95 transition">
               MORE EXCLUSIVE LISTINGS
             </button>
           </div>
           <div className="flex">
-            <button className="rounded-lg text-white font-heading px-5 py-2 text-md bg-reGreen motion-safe:animate-pulse border-reGreen hover:scale-105 transition">
+            <button className="rounded-lg text-white font-heading px-8 py-2 text-md bg-reGreen motion-safe:animate-pulse border-reGreen hover:scale-105 transition">
               SCHEDULE A SHOWING
             </button>
           </div>
