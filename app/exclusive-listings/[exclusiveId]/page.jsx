@@ -3,12 +3,17 @@ import {
   faBath,
   faBed,
   faCar,
+  faCircleInfo,
   faExpand,
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LifebuoyIcon, NewspaperIcon, PhoneIcon } from '@heroicons/react/24/outline'
-import SwiperCarousel from '../../_components/exclusive-listings/SwiperCarousel'
+import {
+  LifebuoyIcon,
+  NewspaperIcon,
+  PhoneIcon,
+} from "@heroicons/react/24/outline";
+import SwiperCarousel from "../../_components/exclusive-listings/SwiperCarousel";
 
 const getExclusiveListing = async (mlsId) => {
   try {
@@ -38,28 +43,40 @@ const getExclusiveListing = async (mlsId) => {
 export default async function ExclusiveListing(exclusiveId) {
   const { result } = await getExclusiveListing(exclusiveId);
   const listing = result.listings[0] || [];
+  const calculateDaysFromUnix = (unixTimestamp) => {
+    const listingDate = new Date(unixTimestamp * 1000); // Convert UNIX timestamp to JavaScript Date object
+    const currentDate = new Date();
+    const differenceInTime = currentDate.getTime() - listingDate.getTime();
+    const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24)); // Convert time difference from milliseconds to days
+    return differenceInDays;
+  };
+  const USDollar = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
   const supportLinks = [
     {
-      name: 'Sales',
-      href: '#',
+      name: "Sales",
+      href: "#",
       description:
-        'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
+        "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
       icon: PhoneIcon,
     },
     {
-      name: 'Technical Support',
-      href: '#',
+      name: "Technical Support",
+      href: "#",
       description:
-        'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
+        "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
       icon: LifebuoyIcon,
     },
     {
-      name: 'Media Inquiries',
-      href: '#',
+      name: "Media Inquiries",
+      href: "#",
       description:
-        'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
+        "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
       icon: NewspaperIcon,
-    }]
+    },
+  ];
   return (
     <div className=" bg-white w-full z-0">
       <div className="bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] ">
@@ -69,7 +86,7 @@ export default async function ExclusiveListing(exclusiveId) {
         ></div>
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center">
-        <span className="font-heading text-white mt-[-480px] z-10 text-sm mb-3">
+        <span className="font-heading text-white mt-[-680px] z-10 text-sm mb-3">
           {listing.propertyType}
         </span>
         <span className="font-heading text-reGreen z-10 text-4xl mb-1">
@@ -78,7 +95,7 @@ export default async function ExclusiveListing(exclusiveId) {
         <span className="font-heading font-semibold  text-white z-10 text-3xl">
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
-        <div className="flex gap-x-12 mt-9 opacity-60 place-items-center font-body">
+        <div className="flex gap-x-8 md:gap-x-12 mt-9 opacity-60 place-items-center font-body">
           <div className="flex flex-col text-white z-10 text-xl mb-1  items-center justify-center text-[1em] font-body">
             <FontAwesomeIcon icon={faBed} height="20px" />
             <span className="mt-1">{listing.beds} Beds</span>
@@ -115,52 +132,99 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </div>
       </div>
-     
-<SwiperCarousel images={listing.images}/>
+      <SwiperCarousel images={listing.images} />
 
-
-
-      <div className="bg-white">
-      {/* Header */}
-      <div className="relative bg-white pb-32">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-white mix-blend-multiply" aria-hidden="true" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <h1 className="text-4xl font-heading font-semibold tracking-tight text-reText md:text-5xl lg:text-6xl">About {listing.xf_list_31}</h1>
-          <p className="mt-6 max-w-3xl text-xl font-body text-neutral-400">
-          {listing.description}
-          </p>
+      <div className="flex container flex-col md:flex-row mx-auto md:justify-between">
+        {listing.status === "Pending" && (
+          <div className="font-heading text-2xl  md:pt-2">
+            <span className="text-reText">Status:</span>{" "}
+            <span className="text-reText font-semibold">{listing.status}</span>
+          </div>
+        )}
+        {listing.status === "Active" && listing.xf_list_19 !== "With Offer" && (
+          <div className="font-heading text-2xl  md:pt-2">
+            <span className="text-reText">Status:</span>{" "}
+            <span className="text-reText font-semibold ">{listing.status}</span>
+          </div>
+        )}
+        {listing.xf_list_19 === "With Offer" && (
+          <div className="font-heading text-2xl  md:pt-2">
+            <span className="text-reText">Status:</span>{" "}
+            <span className="text-reText font-semibold">Contingent </span>
+          </div>
+        )}
+        <div className="font-heading text-2xl pt-2">
+          <span className="text-reText">Listed:</span>
+          <span className="font-semibold text-reText">
+            {" "}
+            {calculateDaysFromUnix(listing.listingDate)} days ago
+          </span>
         </div>
       </div>
 
-      {/* Overlapping cards */}
-      <section className="relative z-10 mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading">
-        <h2 className="sr-only" id="contact-heading">
-          Contact us
-        </h2>
-        <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
-          {supportLinks.map((link) => (
-            <div key={link.name} className="flex flex-col rounded-2xl bg-white shadow-xl">
-              <div className="relative flex-1 px-6 pb-8 pt-16 md:px-8">
-                <div className="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-reBlue p-5 shadow-lg">
-                  <link.icon className="h-6 w-6 text-white" aria-hidden="true" />
-                </div>
-                <h3 className="text-xl font-medium text-gray-900">{link.name}</h3>
-                <p className="mt-4 text-base text-gray-500">{link.description}</p>
-              </div>
-              <div className="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8">
-                <a href={link.href} className="text-base font-medium text-indigo-700 hover:text-indigo-600">
-                  Contact us<span aria-hidden="true"> &rarr;</span>
-                </a>
-              </div>
-            </div>
-          ))}
+      <div className="bg-white">
+        {/* Header */}
+        <div className="relative bg-white pb-32">
+          <div className="absolute inset-0">
+            <div
+              className="absolute inset-0 bg-white mix-blend-multiply"
+              aria-hidden="true"
+            />
+         
+          </div>
+          <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+            <h1 className="text-4xl font-heading font-semibold tracking-tight text-reText md:text-5xl lg:text-6xl">
+              About {listing.xf_list_31}
+            </h1>
+            <p className="mt-6 max-w-3xl text-xl font-body text-neutral-400">
+              {listing.description}
+            </p>
+            <div className="hidden md:absolute md:inline-flex top-14 -right-96 md:opacity-10">   <span className="text-reDark font-heading text-[150px]">{USDollar.format(listing.listPrice)}</span></div>
+          </div>
+         
         </div>
-      </section>
-    </div>
 
-      
+        {/* Overlapping cards */}
+        <section
+          className="relative z-10 mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8"
+          aria-labelledby="contact-heading"
+        >
+          <h2 className="sr-only" id="contact-heading">
+            Contact us
+          </h2>
+          <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
+            {supportLinks.map((link) => (
+              <div
+                key={link.name}
+                className="flex flex-col rounded-2xl bg-white shadow-xl"
+              >
+                <div className="relative flex-1 px-6 pb-8 pt-16 md:px-8">
+                  <div className="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-reBlue p-5 shadow-lg">
+                    <link.icon
+                      className="h-6 w-6 text-white"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h3 className="text-xl font-medium text-gray-900">
+                    {link.name}
+                  </h3>
+                  <p className="mt-4 text-base text-gray-500">
+                    {link.description}
+                  </p>
+                </div>
+                <div className="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8">
+                  <a
+                    href={link.href}
+                    className="text-base font-medium text-indigo-700 hover:text-indigo-600"
+                  >
+                    Contact us<span aria-hidden="true"> &rarr;</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

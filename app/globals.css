@@ -1,48 +1,48 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@400;500;600;700&family=Shadows+Into+Light+Two&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@400;500;600;700&family=Shadows+Into+Light+Two&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-.waveDivider{
+.waveDivider {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  fill:#222625;
+  fill: #222625;
   z-index: 0;
-  
- 
 }
 
-.waveDivider-white{
+.waveDivider-white {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 150%;
   overflow: hidden;
   line-height: 0;
-  fill:white;
+  fill: white;
   z-index: 0;
- 
 }
 
-.waveDivider svg{
+.waveDivider svg {
   width: calc(100% + 1.3px);
-    height: 20px
+  height: 20px;
 }
 
-.waveDivider-white svg{
+.waveDivider-white svg {
   width: calc(100% + 1.3px);
-    height: 20px
+  height: 20px;
 }
 
-.mapboxgl-popup-close-button{padding:10px 15px !important;font-size: 16px;}
+.mapboxgl-popup-close-button {
+  @apply py-[10px] px-[15px] text-[16px] hover:border-none;
+}
 
-.mapboxgl-popup-content{padding: 0 !important;border-radius: 10px !important;}
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  border-radius: 10px !important;
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

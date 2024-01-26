@@ -25,7 +25,7 @@ const getFeaturedListings = async () => {
 export default async function ListingsList() {
   const { result } = await getFeaturedListings();
   const listings = result.listings || [];
-  console.log(listings);
+  
   return (
     <>
       <MapBoxF listingsResults={listings} />

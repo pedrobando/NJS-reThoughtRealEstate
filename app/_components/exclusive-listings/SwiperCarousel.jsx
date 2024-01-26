@@ -10,37 +10,39 @@ import "lightgallery/css/lightgallery-bundle.min.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
 
-const SwiperCarousel = (images) => {
+const SwiperCarousel = ({images}) => {
+
+  const onInit = () => {
+    console.log('lightGallery has been initialized');
+};
   return (
-    <div className="container md:mx-auto mt-[-40px] overflow-hidden rounded-lg max-h-[700px] aspect-auto border-none origin-bottom -rotate-1 md:-rotate-0">
+    <div className="container w-11/12 mx-auto mt-[-80px] overflow-hidden rounded-lg md:max-h-[700px]  md:-rotate-none">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
         className="overflow-hidden"
       >
-        {" "}
-        <LightGallery plugins={[lgZoom, lgVideo]} mode="lg-fade">
-          {images.images.map((image, index) => (
+       
+        <LightGallery plugins={[lgZoom]} mode="lg-fade"  onInit={onInit} speed={500}>
+          {images.map((image, index) => (
             <SwiperSlide
               tag="a"
               href={image}
               data-lg-size="1600-1144"
               data-src={image}
               key={index}
-              className="overflow-hidden rounded-lg"
+              className="overflow-hidden rounded-lg gallery-item"
             >
               <img
-                className="img-responsive"
+                className=""
                 src={image}
                 alt={`Slide ${index}`}
               />
             </SwiperSlide>
           ))}
         </LightGallery>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+       
       </Swiper>
     </div>
   );
