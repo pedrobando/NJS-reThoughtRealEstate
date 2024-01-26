@@ -86,7 +86,7 @@ export default async function ExclusiveListing(exclusiveId) {
         ></div>
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center">
-        <span className="font-heading text-white mt-[-680px] z-10 text-sm mb-3">
+        <span className="font-heading text-white mt-[-560px] z-10 text-sm mb-3">
           {listing.propertyType}
         </span>
         <span className="font-heading text-reGreen z-10 text-4xl mb-1">
@@ -96,30 +96,30 @@ export default async function ExclusiveListing(exclusiveId) {
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
         <div className="flex gap-x-8 md:gap-x-12 mt-9 opacity-60 place-items-center font-body">
-          <div className="flex flex-col text-white z-10 text-xl mb-1  items-center justify-center text-[1em] font-body">
+          <div className="flex flex-col text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
             <FontAwesomeIcon icon={faBed} height="20px" />
             <span className="mt-1">{listing.beds} Beds</span>
           </div>
 
-          <div className="flex flex-col font-text text-white z-10 text-xl mb-1  items-center justify-center text-[1em] font-body">
+          <div className="flex flex-col font-text text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
             <FontAwesomeIcon icon={faBath} height="20px" />
             <span className="mt-1">
               {listing.baths.full} / {listing.baths.half} Baths
             </span>
           </div>
 
-          <div className="flex flex-col font-text text-white z-10 text-xl mb-1  items-center justify-center text-[1em] font-body">
+          <div className="flex flex-col font-text text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
             <FontAwesomeIcon icon={faCar} height="20px" />
             <span className="mt-1">{listing.xf_list_25} Parking(s)</span>
           </div>
-          <div className="flex flex-col font-text text-white z-10 text-xl mb-1  items-center justify-center text-[1em] font-body">
+          <div className="flex flex-col font-text text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
             <FontAwesomeIcon icon={faExpand} height="20px" />
             <span className="mt-1">
               {new Intl.NumberFormat().format(listing.size)} Sqft
             </span>
           </div>
         </div>
-        <div className="flex mx-auto z-10 items-center justify-end pt-[60px] text-white gap-x-6 gap-y-6">
+        <div className="flex mx-auto z-10 items-center justify-end pt-[40px] text-white gap-x-6 gap-y-6">
           <div className="flex">
             <button className="border rounded-lg text-white font-heading px-5 py-2 text-sm hover:scale-95 transition">
               MORE EXCLUSIVE LISTINGS
@@ -134,34 +134,6 @@ export default async function ExclusiveListing(exclusiveId) {
       </div>
       <SwiperCarousel images={listing.images} />
 
-      <div className="flex container flex-col md:flex-row mx-auto md:justify-between">
-        {listing.status === "Pending" && (
-          <div className="font-heading text-2xl  md:pt-2">
-            <span className="text-reText">Status:</span>{" "}
-            <span className="text-reText font-semibold">{listing.status}</span>
-          </div>
-        )}
-        {listing.status === "Active" && listing.xf_list_19 !== "With Offer" && (
-          <div className="font-heading text-2xl  md:pt-2">
-            <span className="text-reText">Status:</span>{" "}
-            <span className="text-reText font-semibold ">{listing.status}</span>
-          </div>
-        )}
-        {listing.xf_list_19 === "With Offer" && (
-          <div className="font-heading text-2xl  md:pt-2">
-            <span className="text-reText">Status:</span>{" "}
-            <span className="text-reText font-semibold">Contingent </span>
-          </div>
-        )}
-        <div className="font-heading text-2xl pt-2">
-          <span className="text-reText">Listed:</span>
-          <span className="font-semibold text-reText">
-            {" "}
-            {calculateDaysFromUnix(listing.listingDate)} days ago
-          </span>
-        </div>
-      </div>
-
       <div className="bg-white">
         {/* Header */}
         <div className="relative bg-white pb-32">
@@ -170,18 +142,78 @@ export default async function ExclusiveListing(exclusiveId) {
               className="absolute inset-0 bg-white mix-blend-multiply"
               aria-hidden="true"
             />
-         
           </div>
           <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
             <h1 className="text-4xl font-heading font-semibold tracking-tight text-reText md:text-5xl lg:text-6xl">
               About {listing.xf_list_31}
             </h1>
-            <p className="mt-6 max-w-3xl text-xl font-body text-neutral-400">
+
+            <div className="flex container max-w-lg justify-between items-center place-items-center">
+              {listing.status === "Pending" && (
+                <div className="font-heading text-lg  md:pt-2">
+                  <span className="text-reText">Status: </span>
+                  <span className="text-reText font-semibold">
+                    {listing.status}
+                  </span>
+                </div>
+              )}
+              {listing.status === "Active" &&
+                listing.xf_list_19 !== "With Offer" && (
+                  <div className="font-heading text-lg  md:pt-2">
+                    <span className="text-reText">Status: </span>
+                    <span className="text-reGreen font-semibold ">
+                      {listing.status}
+                    </span>
+                  </div>
+                )}
+              {listing.xf_list_19 === "With Offer" && (
+                <div className="font-heading text-lg  md:pt-2">
+                  <span className="text-reText">Status: </span>
+                  <span className="text-reText font-semibold">Contingent </span>
+                </div>
+              )}
+              <div className="font-heading text-lg pt-2">
+                <span className="text-reText">Listed:</span>
+                <span className="font-semibold text-reText">
+                  {" "}
+                  {calculateDaysFromUnix(listing.listingDate)} days ago
+                </span>
+              </div>
+            </div>
+
+            <p className="mt-6 max-w-3xl text-xl font-body text-neutral-500">
               {listing.description}
             </p>
-            <div className="hidden md:absolute md:inline-flex top-14 -right-96 md:opacity-10">   <span className="text-reDark font-heading text-[150px]">{USDollar.format(listing.listPrice)}</span></div>
+            <div className="flex xl:hidden flex-col">
+            <span className="pt-[40px] text-reDark font-heading text-5xl font-semibold">
+                {USDollar.format(listing.listPrice)}
+              </span>
+              <span className=" text-reDark text-xl mt-[5px]">
+                Asking Price
+              </span>
+              </div>
+
+            <div className="hidden xl:absolute xl:inline-flex top-[100px] -right-[440px] md:opacity-10 overflow-hidden">
+              {" "}
+              <span className="text-reDark font-heading text-[150px] font-bold">
+                {USDollar.format(listing.listPrice)}
+              </span>
+            </div>
+            <div className="hidden xl:absolute xl:inline-flex md:flex-col top-[250px] right-0">
+              {" "}
+              <span className=" text-reDark font-heading text-[60px] font-semibold">
+                {USDollar.format(listing.listPrice)}
+              </span>
+              <span className=" text-reDark text-xl mt-[-15px]">
+                Asking Price
+              </span>
+              <div className="flex mt-6 w-full">
+                <button className="w-full rounded-lg text-white font-heading px-7 md:px-8 py-3 text-xl bg-reGreen border-reGreen hover:scale-105 transition">
+                  SCHEDULE A SHOWING
+                </button>
+              </div>
+            </div>
           </div>
-         
         </div>
 
         {/* Overlapping cards */}
