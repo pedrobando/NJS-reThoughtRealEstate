@@ -4,7 +4,7 @@ module.exports = {
         MONGODB_URI: "mongodb+srv://dashbrew:fIkr5vvU61KekwFV@cluster0.b0ywm.mongodb.net/dashBrew",
         HOMEJUNCTION_TOKEN: "s9-8b764375-65fe-4ecf-9064-3295a06ea291",
         HOMEJUNCTION_RE_LITINGS_URI: "https://slipstream.homejunction.com/ws/listings/search?market=MLSWIS&listingOffice.Id=of27022&sortField=listingDate&sortOrder=desc&details=true&extended=true",
-        HOMEJUNCTION_RE_LITING_URI: "https://slipstream.homejunction.com/ws/listings/get?market=MLSWIS&details=true&extended=true&images=true&id=",
+        HOMEJUNCTION_RE_LITING_URI: "https://slipstream.homejunction.com/ws/listings/get?market=MLSWIS&details=true&extended=true&images=true&features=true&id=",
         awsAccess: "AKIA2RVZ2BQ5EOP46Z6I",
         awsSecret: "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",
         clientBucket: "dashbrew",

@@ -3,6 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.info-content{
+  @apply flex items-center border-b border-gray-800/10 py-[10px];
+}
+.data-label{
+  @apply grow max-w-[150px] mr-[15px]
+}
+.info-content-wrap{
+  @apply grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-0  text-reTextLight text-base font-heading lg:w-[60%]
+}
+
 .waveDivider {
   position: absolute;
   bottom: 0;
@@ -36,7 +46,7 @@
 }
 
 .mapboxgl-popup-close-button {
-  @apply py-[10px] px-[15px] text-[16px] hover:border-none;
+  @apply py-[10px] px-[15px] text-[16px] hover:border-none border-none filter-none;
 }
 
 .mapboxgl-popup-content {

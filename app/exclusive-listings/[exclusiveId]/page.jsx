@@ -136,7 +136,7 @@ export default async function ExclusiveListing(exclusiveId) {
 
       <div className="bg-white">
         {/* Header */}
-        <div className="relative bg-white pb-32">
+        <div className="relative bg-white pb-10">
           <div className="absolute inset-0">
             <div
               className="absolute inset-0 bg-white mix-blend-multiply"
@@ -185,13 +185,13 @@ export default async function ExclusiveListing(exclusiveId) {
               {listing.description}
             </p>
             <div className="flex xl:hidden flex-col">
-            <span className="pt-[40px] text-reDark font-heading text-5xl font-semibold">
+              <span className="pt-[40px] text-reDark font-heading text-5xl font-semibold">
                 {USDollar.format(listing.listPrice)}
               </span>
               <span className=" text-reDark text-xl mt-[5px]">
                 Asking Price
               </span>
-              </div>
+            </div>
 
             <div className="hidden xl:absolute xl:inline-flex top-[100px] -right-[440px] md:opacity-10 overflow-hidden">
               {" "}
@@ -218,43 +218,104 @@ export default async function ExclusiveListing(exclusiveId) {
 
         {/* Overlapping cards */}
         <section
-          className="relative z-10 mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8"
-          aria-labelledby="contact-heading"
+          className="relative z-10 mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-7"
+          aria-labelledby="listing-information"
         >
-          <h2 className="sr-only" id="contact-heading">
-            Contact us
-          </h2>
-          <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
-            {supportLinks.map((link) => (
-              <div
-                key={link.name}
-                className="flex flex-col rounded-2xl bg-white shadow-xl"
-              >
-                <div className="relative flex-1 px-6 pb-8 pt-16 md:px-8">
-                  <div className="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-reBlue p-5 shadow-lg">
-                    <link.icon
-                      className="h-6 w-6 text-white"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <h3 className="text-xl font-medium text-gray-900">
-                    {link.name}
-                  </h3>
-                  <p className="mt-4 text-base text-gray-500">
-                    {link.description}
-                  </p>
-                </div>
-                <div className="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8">
-                  <a
-                    href={link.href}
-                    className="text-base font-medium text-indigo-700 hover:text-indigo-600"
-                  >
-                    Contact us<span aria-hidden="true"> &rarr;</span>
-                  </a>
-                </div>
-              </div>
-            ))}
+          <h3
+            className="text-3xl font-heading text-reText py-5 font-semibold"
+            id="listing-information"
+          >
+            Listing Information
+          </h3>
+          <div className="info-content-wrap">
+          {listing.id &&(
+            <h6 className="info-content">
+              <span className="data-label ">MLS Number</span>
+              <span className="data-value ">{listing.id}</span>
+            </h6>
+            )}
+            {listing.status &&(
+            <h6 className="info-content">
+              <span className="data-label">Status</span>
+              <span className="data-value ">{listing.status} {listing.xf_list_19}</span>
+            </h6>
+            )}
+            {listing.listingType && (
+            <h6 className="info-content">
+              <span className="data-label ">Listing Type</span>
+              <span className="data-value">{listing.listingType}</span>
+            </h6>
+            )}
           </div>
+{(listing.propertyType || listing.style || listing.size) &&(
+         <> <h3
+                          className="text-2xl font-heading font-semibold text-reText py-6"
+                          id="listing-information"
+                      >
+                          Dwelling Info
+                      </h3><div className="info-content-wrap">
+                              {listing.propertyType && (
+                                  <h6 className="info-content">
+                                      <span className="data-label ">Property Type</span>
+                                      <span className="data-value ">{listing.propertyType}</span>
+                                  </h6>
+                              )}
+                              {listing.style && (
+                                  <h6 className="info-content ">
+                                      <span className="data-label ">Style</span>
+                                      <span className="data-value">{listing.style}</span>
+                                  </h6>
+                              )}
+                              {listing.size && (
+                                  <h6 className="info-content ">
+                                      <span className="data-label ">Square Feet</span>
+                                      <span className="data-value">{listing.size} SqFt</span>
+                                  </h6>
+                              )}
+                              {listing.lotSize.acres && (
+                                  <h6 className="info-content ">
+                                      <span className="data-label ">Lot Size</span>
+                                      <span className="data-value">{listing.lotSize.acres} acres</span>
+                                  </h6>
+                              )}
+                              {listing.yearBuilt && (
+                                  <h6 className="info-content ">
+                                      <span className="data-label ">Year Built</span>
+                                      <span className="data-value">{listing.yearBuilt}</span>
+                                  </h6>
+                              )}
+                          </div></>
+           )}
+           {(listing.xf_list_75 || listing.xf_list_74 || listing.xf_list_76) &&(
+         <>  <h3
+            className="text-2xl font-heading font-semibold text-reText py-6"
+            id="listing-information"
+          >
+            Taxes and Zoning
+          </h3>
+          <div className="info-content-wrap">
+          {listing.xf_list_75 && (
+            <h6 className="info-content ">
+              <span className="data-label ">Tax Amount</span>
+              <span className="data-value"> {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(listing.xf_list_75)}
+</span>
+            </h6>
+            )}
+             {listing.xf_list_76 && (
+            <h6 className="info-content ">
+              <span className="data-label ">Tax Year</span>
+              <span className="data-value">{listing.xf_list_76}</span>
+            </h6>
+            )}
+              {listing.xf_list_74 && (
+            <h6 className="info-content ">
+              <span className="data-label ">Zoning</span>
+              <span className="data-value">{listing.xf_list_74}</span>
+            </h6>
+            )}
+            </div></>
+           )}
+        
         </section>
       </div>
     </div>
