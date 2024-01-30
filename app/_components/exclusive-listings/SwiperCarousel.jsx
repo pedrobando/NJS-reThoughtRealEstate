@@ -35,7 +35,7 @@ const SwiperCarousel = ({images}) => {
               className="overflow-hidden rounded-lg gallery-item"
             >
               <img
-                className=""
+                className="object-cover"
                 src={image}
                 alt={`Slide ${index}`}
               />
