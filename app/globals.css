@@ -10,7 +10,7 @@
   @apply grow max-w-[150px] mr-[15px]
 }
 .info-content-wrap{
-  @apply grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-0  text-reTextLight text-base font-heading lg:w-[60%]
+  @apply grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-0  text-reTextLight text-base font-heading lg:w-[90%]
 }
 
 .waveDivider {
