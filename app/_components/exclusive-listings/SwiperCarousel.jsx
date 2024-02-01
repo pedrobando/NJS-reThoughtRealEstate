@@ -1,49 +1,53 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import LightGallery from "lightgallery/react";
-import lgZoom from "lightgallery/plugins/zoom";
-import lgVideo from "lightgallery/plugins/video";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // Basic Swiper styles
+import 'swiper/css/navigation'; // Navigation module
+import 'swiper/css/scrollbar'; // Scrollbar module
+import 'swiper/css/free-mode'; // FreeMode module
+import SwiperCore, { Navigation, Scrollbar, FreeMode } from 'swiper/modules';
 
-// import styles
-import "lightgallery/css/lightgallery-bundle.min.css";
-import "lightgallery/css/lg-zoom.css";
-import "lightgallery/css/lg-thumbnail.css";
 
-const SwiperCarousel = ({images}) => {
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-};
+const SwiperCarousel = ({ images }) => {
   return (
-    <div className="container w-11/12 mx-auto mt-[-80px] overflow-hidden rounded-lg md:max-h-[700px]  md:-rotate-none">
+    <div className="container mx-auto mt-[-80px] rounded-lg px-3 block ">
       <Swiper
-        spaceBetween={0}
-        slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        className="overflow-hidden"
-      >
-       
-        <LightGallery plugins={[lgZoom]} mode="lg-fade"  onInit={onInit} speed={500}>
-          {images.map((image, index) => (
-            <SwiperSlide
-              tag="a"
-              href={image}
-              data-lg-size="1600-1144"
-              data-src={image}
-              key={index}
-              className="overflow-hidden rounded-lg gallery-item"
-            >
-              <img
-                className="object-cover"
-                src={image}
-                alt={`Slide ${index}`}
-              />
-            </SwiperSlide>
-          ))}
-        </LightGallery>
-       
-      </Swiper>
+      slidesPerView={4}
+      className="w-full h-full rounded-lg"
+      navigation={true}
+      scrollbar={true}
+      freeMode={true}
+      modules={[Navigation, Scrollbar, FreeMode]} // Explicitly pass modules
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+     
+      breakpoints={{
+        300: {
+          slidesPerView: 1,
+         
+        },
+        768: {
+          slidesPerView: 3,
+        
+        },
+        1024: {
+          slidesPerView: 3,
+         
+          
+        },
+      }}
+    >
+      {images.map((image, index) => (
+        <SwiperSlide key={index} className="flex justify-center items-center rounded-lg">
+          <img
+            className="block w-full h-full object-cover"
+            src={image}
+            alt={`Slide ${index}`}
+            loading="lazy"
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
     </div>
   );
 };

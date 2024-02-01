@@ -74,14 +74,14 @@ let listing = []
           className="bg-cover bg-center w-full min-h-screen  opacity-10 object-cover"
         ></div>
       </div>
-      <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center">
+      <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center px-4">
         <span className="font-heading text-white mt-[-560px] z-10 text-sm mb-3">
           {listing.propertyType}
         </span>
-        <span className="font-heading text-reGreen z-10 text-4xl mb-1">
+        <span className="font-heading text-reGreen z-10 text-2xl lg:text-4xl mb-1">
           {listing.address.deliveryLine}
         </span>
-        <span className="font-heading font-semibold  text-white z-10 text-3xl">
+        <span className="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
         <div className="flex gap-x-8 md:gap-x-12 mt-9 opacity-60 place-items-center font-body">
