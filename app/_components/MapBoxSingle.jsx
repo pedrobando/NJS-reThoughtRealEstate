@@ -3,8 +3,7 @@ import { Suspense, useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import WaveDividerBottom from "./WaveDividerBottom";
 import getCenter from "geolib/es/getCenter";
-import Loading from '../loading';
-
+import Loading from "../loading";
 
 export default function MapBoxSingle({ listingCoordinates }) {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -23,30 +22,29 @@ export default function MapBoxSingle({ listingCoordinates }) {
     longitude: coordinates.longitude,
   });
   return (
-   
-    <div className="h-[600px] max-h-[600px] w-[600px] max-w-[600px] skew-y-3 rounded-lg overflow-hidden border-2 border-reGreen shadow-lg shadow-reGreen">
-    
+    <div className="w-screen px-5 lg:px-0 h-[500px] md:h-[600px] overflow-hidden rounded-lg">
       <ReactMapGL
-        mapStyle="mapbox://styles/pedrobandorivera/clrl6vf5m003201qsb5235rfx"
+        mapStyle="mapbox://styles/mapbox/standard"
         mapboxAccessToken={process.env.mapbox_token}
         initialViewState={{ ...viewport }}
-        width="600px"
-        height="600px"
+        width="100%"
+        height="100%"
         onViewportChange={(viewport) => setViewport(viewport)}
       >
-      
-          <div key={coordinates.longitude}>
-            <Marker
-              latitude={coordinates.latitude}
-              longitude={coordinates.longitude}
-              anchor="bottom"
-              aria-label="Map Marker"
-            >
-            <img src="http://staging6.rethought-realestate.com/wp-content/uploads/2020/05/icon.jpg" className="max-w-[30px]"/>
-            </Marker>
-          </div>
-     
+        <div key={coordinates.longitude}>
+          <Marker
+            latitude={coordinates.latitude}
+            longitude={coordinates.longitude}
+            anchor="bottom"
+            aria-label="Map Marker"
+          >
+            <img
+              src="http://staging6.rethought-realestate.com/wp-content/uploads/2020/05/icon.jpg"
+              className="max-w-[30px]"
+            />
+          </Marker>
+        </div>
       </ReactMapGL>
-    </div> 
+    </div>
   );
 }

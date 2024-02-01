@@ -20,7 +20,7 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 import SwiperCarousel from "../../_components/exclusive-listings/SwiperCarousel";
-import ButtonsExclusiveListings from "../../_components/exclusive-listings/ButtonsExclusiveListings"
+import ButtonsExclusiveListings from "../../_components/exclusive-listings/ButtonsExclusiveListings";
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -47,13 +47,12 @@ const getExclusiveListing = async (mlsId) => {
 };
 
 export default async function ExclusiveListing(exclusiveId) {
-let listing = []
+  let listing = [];
   if (listing.length === 0) {
     const { result } = await getExclusiveListing(exclusiveId);
-    listing = result.listings[0]
+    listing = result.listings[0];
   }
-  
- 
+
   const calculateDaysFromUnix = (unixTimestamp) => {
     const listingDate = new Date(unixTimestamp * 1000); // Convert UNIX timestamp to JavaScript Date object
     const currentDate = new Date();
@@ -85,7 +84,6 @@ let listing = []
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
         <div className="flex gap-x-8 md:gap-x-12 mt-9 opacity-60 place-items-center font-body">
-          
           {listing.beds && (
             <div className="exclusive-listings-hero">
               <FontAwesomeIcon icon={faBed} height="20px" />
@@ -115,8 +113,7 @@ let listing = []
                 {new Intl.NumberFormat().format(listing.size)} Sqft
               </span>
             </div>
-          ):(
-
+          ) : (
             <div className="exclusive-listings-hero">
               <FontAwesomeIcon icon={faExpand} height="20px" />
               <span className="mt-1">
@@ -124,9 +121,8 @@ let listing = []
               </span>
             </div>
           )}
-          
         </div>
-        
+
         <ButtonsExclusiveListings />
       </div>
       <SwiperCarousel images={listing.images} />
@@ -198,7 +194,7 @@ let listing = []
               </span>
               <div className="flex mt-6 w-full">
                 <button className="w-full rounded-lg text-white font-heading px-7 md:px-8 py-3 text-xl bg-reGreen border-reGreen hover:scale-105 transition">
-                  SCHEDULE A SHOWING
+                  I WANT TO SEE IT
                 </button>
               </div>
             </div>
@@ -341,11 +337,35 @@ let listing = []
             </Collapsible>
           </div>
         </section>
-        <section className="overflow-visible -skew-y-3 bg-reDark min-h-[550px] py-16">
-          <div className="flex container mx-auto items-center">
-            <div className="basis-8/12 min-h-[300px]">kkk</div>
-            <div className="basis-4/12">
-              <MapBoxSingle listingCoordinates={listing.coordinates} />
+        <section className="flex container max-h-[450px]">
+          <MapBoxSingle listingCoordinates={listing.coordinates} />
+        </section>
+        <section className="bg-reDark min-h-[450px]">
+          <div className="flex container mx-auto items-center pt-14">
+            <div className="block px-2 md:px-14 pt-[180px]">
+              <h5 className="text-white text-3xl font-heading">
+                {listing.address.deliveryLine} is a {listing.propertyType}{" "}
+                property located in the city of {listing.address.city} which is
+                located in {listing.county} county.
+              </h5>
+              <div className="flex container justify-center gap-x-9 pt-12">
+                <div className="mb-4">
+                  <a
+                    className="text-white border border-white rounded-lg p-3 hover:scale-105 transition-transform"
+                    href="/"
+                  >
+                    GET PRE APPROVED
+                  </a>
+                </div>
+                <div>
+                  <a
+                    className="text-white border border-reGreen bg-reGreen rounded-lg p-3 hover:scale-105 transition-transform animate-pulse"
+                    href="#"
+                  >
+                    I WANT TO SEE THIS PROPERTY
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

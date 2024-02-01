@@ -11,7 +11,7 @@ const ButtonsExclusiveListings = () => {
           </div>
           <div className="flex">
             <button className="rounded-lg text-white font-heading md:px-8 py-2 text-xs px-3 bg-reGreen motion-safe:animate-pulse border-reGreen hover:scale-105 transition">
-              SCHEDULE A SHOWING
+              I WANT TO SEE IT
             </button>
           </div>
         </div>
