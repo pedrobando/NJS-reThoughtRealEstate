@@ -23,9 +23,13 @@ const getFeaturedListings = async () => {
 };
 
 export default async function ListingsList() {
-  const { result } = await getFeaturedListings();
-  const listings = result.listings || [];
-  
+
+  let listings = []
+  if (listings.length === 0) {
+    const { result } = await getFeaturedListings();
+    listings = result.listings
+  }
+ 
   return (
     <>
       <MapBoxF listingsResults={listings} />
@@ -88,25 +92,25 @@ export default async function ListingsList() {
                 </div>
                 <div className="flex gap-2.5 text-reText px-2 text-sm pt-1 font-heading pb-3">
                   {file.beds && (
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                       <span>{file.beds}</span>
                       <span className="pl-1">Beds</span>
                     </div>
                   )}
                   {file.xf_list_66 && file.xf_list_57 && (
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                       <span>{file.xf_list_64 + file.xf_list_68}</span>
                       <span className="pl-1">Beds</span>
                     </div>
                   )}
                   {file.xf_list_64 && file.xf_list_68 && (
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                       <span>{file.xf_list_64 + file.xf_list_68}</span>
                       <span className="pl-1">Baths</span>
                     </div>
                   )}
                   {file.baths && file.baths.full && (
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                       <span>
                         {file.baths.full} / {file.baths.half}
                       </span>

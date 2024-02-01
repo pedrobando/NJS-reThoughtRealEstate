@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.exclusive-listings-hero{
+  @apply flex flex-col text-white z-10 md:text-xl transform mb-1 items-center justify-center text-base font-body;
+}
+
 .info-content{
   @apply flex items-center border-b border-gray-800/10 py-[10px];
 }

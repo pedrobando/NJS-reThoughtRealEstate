@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import WaveDividerBottom from "./WaveDividerBottom";
 import getCenter from "geolib/es/getCenter";

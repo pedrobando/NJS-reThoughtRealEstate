@@ -12,7 +12,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../../_components/ui/collapsible";
-import MapBoxSingle from "../../_components/MapBoxSingle"
+import MapBoxSingle from "../../_components/MapBoxSingle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   LifebuoyIcon,
@@ -20,7 +20,7 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 import SwiperCarousel from "../../_components/exclusive-listings/SwiperCarousel";
-
+import ButtonsExclusiveListings from "../../_components/exclusive-listings/ButtonsExclusiveListings"
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -38,7 +38,7 @@ const getExclusiveListing = async (mlsId) => {
       throw new Error("Failed to fetch topics", res);
     }
 
-    return await res.json();
+    return res.json();
   } catch (error) {
     console.log("Error loading topics: ", error);
 
@@ -47,8 +47,13 @@ const getExclusiveListing = async (mlsId) => {
 };
 
 export default async function ExclusiveListing(exclusiveId) {
-  const { result } = await getExclusiveListing(exclusiveId);
-  const listing = result.listings[0] || [];
+let listing = []
+  if (listing.length === 0) {
+    const { result } = await getExclusiveListing(exclusiveId);
+    listing = result.listings[0]
+  }
+  
+ 
   const calculateDaysFromUnix = (unixTimestamp) => {
     const listingDate = new Date(unixTimestamp * 1000); // Convert UNIX timestamp to JavaScript Date object
     const currentDate = new Date();
@@ -80,52 +85,54 @@ export default async function ExclusiveListing(exclusiveId) {
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
         <div className="flex gap-x-8 md:gap-x-12 mt-9 opacity-60 place-items-center font-body">
-          <div className="flex flex-col text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
-            <FontAwesomeIcon icon={faBed} height="20px" />
-            <span className="mt-1">{listing.beds} Beds</span>
-          </div>
+          
+          {listing.beds && (
+            <div className="exclusive-listings-hero">
+              <FontAwesomeIcon icon={faBed} height="20px" />
+              <span className="mt-1">{listing.beds} Beds</span>
+            </div>
+          )}
 
-          <div className="flex flex-col font-text text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
-            <FontAwesomeIcon icon={faBath} height="20px" />
-            <span className="mt-1">
-              {listing.baths.full} / {listing.baths.half} Baths
-            </span>
-          </div>
+          {listing.baths && (
+            <div className="exclusive-listings-hero">
+              <FontAwesomeIcon icon={faBath} height="20px" />
+              <span className="mt-1">
+                {listing.baths.full} / {listing.baths.half} Baths
+              </span>
+            </div>
+          )}
 
-          <div className="flex flex-col font-text text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
-            <FontAwesomeIcon icon={faCar} height="20px" />
-            <span className="mt-1">{listing.xf_list_25} Parking(s)</span>
-          </div>
-          <div className="flex flex-col font-text text-white z-10 text-md md:text-xl transform mb-1  items-center justify-center text-[1em] font-body">
-            <FontAwesomeIcon icon={faExpand} height="20px" />
-            <span className="mt-1">
-              {new Intl.NumberFormat().format(listing.size)} Sqft
-            </span>
-          </div>
+          {listing.xf_list_25 && (
+            <div className="exclusive-listings-hero">
+              <FontAwesomeIcon icon={faCar} height="20px" />
+              <span className="mt-1">{listing.xf_list_25} Parking(s)</span>
+            </div>
+          )}
+          {listing.size ? (
+            <div className="exclusive-listings-hero">
+              <FontAwesomeIcon icon={faExpand} height="20px" />
+              <span className="mt-1">
+                {new Intl.NumberFormat().format(listing.size)} Sqft
+              </span>
+            </div>
+          ):(
+
+            <div className="exclusive-listings-hero">
+              <FontAwesomeIcon icon={faExpand} height="20px" />
+              <span className="mt-1">
+                {new Intl.NumberFormat().format(listing.lotSize.sqft)} Sqft
+              </span>
+            </div>
+          )}
+          
         </div>
-        <div className="flex mx-auto z-10 items-center justify-end pt-[40px] text-white gap-x-6 gap-y-6">
-          <div className="flex">
-            <button className="border rounded-lg text-white font-heading px-5 py-2 text-sm hover:scale-95 transition">
-              MORE EXCLUSIVE LISTINGS
-            </button>
-          </div>
-          <div className="flex">
-            <button className="rounded-lg text-white font-heading px-7 md:px-8 py-2 text-sm bg-reGreen motion-safe:animate-pulse border-reGreen hover:scale-105 transition">
-              SCHEDULE A SHOWING
-            </button>
-          </div>
-        </div>
+        
+        <ButtonsExclusiveListings />
       </div>
       <SwiperCarousel images={listing.images} />
       <main className="bg-white">
         <div className="container w-11/12 mx-auto relative bg-white pb-10">
-          <div className="absolute inset-0">
-            <div
-              className="absolute inset-0 bg-white mix-blend-multiply"
-              aria-hidden="true"
-            />
-          </div>
-          <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+          <div className="relative mx-auto px-3 py-24 sm:py-32">
             <h1 className="text-4xl font-heading font-semibold tracking-tight text-reText md:text-5xl lg:text-6xl">
               About {listing.xf_list_31}
             </h1>
@@ -198,139 +205,148 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </div>
 
-        
         <section
           className="flex container w-11/12 mx-auto relative z-10 -mt-32 px-3 pb-32 xl:gap-x-6"
           aria-labelledby="listing-information"
         >
           <div className="grow xl:grow-0 xl:basis-8/12 py-5 mt-16">
-          <h3
-            className="text-3xl font-heading text-reText font-semibold pb-6"
-            id="listing-information"
-          >
-            Listing Information
-          </h3>
-          <div className="info-content-wrap">
-            {listing.id && (
-              <h6 className="info-content">
-                <span className="data-label ">MLS Number</span>
-                <span className="data-value ">{listing.id}</span>
-              </h6>
-            )}
-            {listing.status && (
-              <h6 className="info-content">
-                <span className="data-label">Status</span>
-                <span className="data-value ">
-                  {listing.status} {listing.xf_list_19}
-                </span>
-              </h6>
-            )}
-            {listing.listingType && (
-              <h6 className="info-content">
-                <span className="data-label ">Listing Type</span>
-                <span className="data-value">{listing.listingType}</span>
-              </h6>
-            )}
-          </div>
-          <Collapsible>
-          <CollapsibleContent className="transition ease-in-out delay-150">
-          {(listing.propertyType || listing.style || listing.size) && (
-            <>
-              {" "}
-              <h3
-                className="text-2xl font-heading font-semibold text-reText py-6"
-                id="listing-information"
-              >
-                Dwelling Info
-              </h3>
-              
-              <div className="info-content-wrap">
-                {listing.propertyType && (
-                  <h6 className="info-content">
-                    <span className="data-label ">Property Type</span>
-                    <span className="data-value ">{listing.propertyType}</span>
-                  </h6>
-                )}
-                {listing.style && (
-                  <h6 className="info-content ">
-                    <span className="data-label ">Style</span>
-                    <span className="data-value">{listing.style}</span>
-                  </h6>
-                )}
-                {listing.size && (
-                  <h6 className="info-content ">
-                    <span className="data-label ">Square Feet</span>
-                    <span className="data-value">{listing.size} SqFt</span>
-                  </h6>
-                )}
-                {listing.lotSize.acres && (
-                  <h6 className="info-content ">
-                    <span className="data-label ">Lot Size</span>
-                    <span className="data-value">
-                      {listing.lotSize.acres} acres
-                    </span>
-                  </h6>
-                )}
-                {listing.yearBuilt && (
-                  <h6 className="info-content ">
-                    <span className="data-label ">Year Built</span>
-                    <span className="data-value">{listing.yearBuilt}</span>
-                  </h6>
-                )}
-              </div>
-            </>
-          )}
-          {(listing.xf_list_75 || listing.xf_list_74 || listing.xf_list_76) && (
-            <>
-              {" "}
-              <h3
-                className="text-2xl font-heading font-semibold text-reText py-6"
-                id="listing-information"
-              >
-                Taxes and Zoning
-              </h3>
-              <div className="info-content-wrap">
-                {listing.xf_list_75 && (
-                  <h6 className="info-content ">
-                    <span className="data-label ">Tax Amount</span>
-                    <span className="data-value">
-                      {" "}
-                      {new Intl.NumberFormat("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      }).format(listing.xf_list_75)}
-                    </span>
-                  </h6>
-                )}
-                {listing.xf_list_76 && (
-                  <h6 className="info-content ">
-                    <span className="data-label ">Tax Year</span>
-                    <span className="data-value">{listing.xf_list_76}</span>
-                  </h6>
-                )}
-                {listing.xf_list_74 && (
-                  <h6 className="info-content ">
-                    <span className="data-label ">Zoning</span>
-                    <span className="data-value">{listing.xf_list_74}</span>
-                  </h6>
-                )}
-              </div>
-            </>
-          )}
-          </CollapsibleContent>
-        <CollapsibleTrigger className=" border-2 border-reDark px-3 py-3 font-semibold rounded-lg text-sm text-reDark font-heading w-full lg:max-w-[210px] mt-16 hover:bg-reDark hover:text-white hover:scale-105 transition-transform">SEE MORE/LESS DETAILS</CollapsibleTrigger>
-        </Collapsible>
-        </div>
-    
-        </section>
-        <section className="overflow-visible -skew-y-3 bg-reDark min-h-[550px]">
-          <div className="flex container mx-auto items-center">
-            <div className="basis-8/12 min-h-[300px]">
-kkk
+            <h3
+              className="text-3xl font-heading text-reText font-semibold pb-6"
+              id="listing-information"
+            >
+              Listing Information
+            </h3>
+            <div className="info-content-wrap">
+              {listing.id && (
+                <h6 className="info-content">
+                  <span className="data-label ">MLS Number</span>
+                  <span className="data-value ">{listing.id}</span>
+                </h6>
+              )}
+              {listing.status && (
+                <h6 className="info-content">
+                  <span className="data-label">Status</span>
+                  <span className="data-value ">
+                    {listing.status} {listing.xf_list_19}
+                  </span>
+                </h6>
+              )}
+              {listing.listingType && (
+                <h6 className="info-content">
+                  <span className="data-label ">Listing Type</span>
+                  <span className="data-value">{listing.listingType}</span>
+                </h6>
+              )}
             </div>
-            <div className="basis-4/12">
-                    <MapBoxSingle listingCoordinates={listing.coordinates}/>
+            <Collapsible>
+              <CollapsibleContent className="transition ease-in-out delay-150">
+                {(listing.propertyType || listing.style || listing.size) && (
+                  <>
+                    {" "}
+                    <h3
+                      className="text-2xl font-heading font-semibold text-reText py-6"
+                      id="listing-information"
+                    >
+                      Dwelling Info
+                    </h3>
+                    <div className="info-content-wrap">
+                      {listing.propertyType && (
+                        <h6 className="info-content">
+                          <span className="data-label ">Property Type</span>
+                          <span className="data-value ">
+                            {listing.propertyType}
+                          </span>
+                        </h6>
+                      )}
+                      {listing.style && (
+                        <h6 className="info-content ">
+                          <span className="data-label ">Style</span>
+                          <span className="data-value">{listing.style}</span>
+                        </h6>
+                      )}
+                      {listing.size && (
+                        <h6 className="info-content ">
+                          <span className="data-label ">Square Feet</span>
+                          <span className="data-value">
+                            {listing.size} SqFt
+                          </span>
+                        </h6>
+                      )}
+                      {listing.lotSize.acres && (
+                        <h6 className="info-content ">
+                          <span className="data-label ">Lot Size</span>
+                          <span className="data-value">
+                            {listing.lotSize.acres} acres
+                          </span>
+                        </h6>
+                      )}
+                      {listing.yearBuilt && (
+                        <h6 className="info-content ">
+                          <span className="data-label ">Year Built</span>
+                          <span className="data-value">
+                            {listing.yearBuilt}
+                          </span>
+                        </h6>
+                      )}
                     </div>
+                  </>
+                )}
+                {(listing.xf_list_75 ||
+                  listing.xf_list_74 ||
+                  listing.xf_list_76) && (
+                  <>
+                    {" "}
+                    <h3
+                      className="text-2xl font-heading font-semibold text-reText py-6"
+                      id="listing-information"
+                    >
+                      Taxes and Zoning
+                    </h3>
+                    <div className="info-content-wrap">
+                      {listing.xf_list_75 && (
+                        <h6 className="info-content ">
+                          <span className="data-label ">Tax Amount</span>
+                          <span className="data-value">
+                            {" "}
+                            {new Intl.NumberFormat("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            }).format(listing.xf_list_75)}
+                          </span>
+                        </h6>
+                      )}
+                      {listing.xf_list_76 && (
+                        <h6 className="info-content ">
+                          <span className="data-label ">Tax Year</span>
+                          <span className="data-value">
+                            {listing.xf_list_76}
+                          </span>
+                        </h6>
+                      )}
+                      {listing.xf_list_74 && (
+                        <h6 className="info-content ">
+                          <span className="data-label ">Zoning</span>
+                          <span className="data-value">
+                            {listing.xf_list_74}
+                          </span>
+                        </h6>
+                      )}
+                    </div>
+                  </>
+                )}
+              </CollapsibleContent>
+              <CollapsibleTrigger className=" border-2 border-reDark px-3 py-3 font-semibold rounded-lg text-sm text-reDark font-heading w-full lg:max-w-[210px] mt-16 hover:bg-reDark hover:text-white hover:scale-105 transition-transform">
+                SEE MORE/LESS DETAILS
+              </CollapsibleTrigger>
+            </Collapsible>
+          </div>
+        </section>
+        <section className="overflow-visible -skew-y-3 bg-reDark min-h-[550px] py-16">
+          <div className="flex container mx-auto items-center">
+            <div className="basis-8/12 min-h-[300px]">kkk</div>
+            <div className="basis-4/12">
+              <MapBoxSingle listingCoordinates={listing.coordinates} />
+            </div>
           </div>
         </section>
       </main>
