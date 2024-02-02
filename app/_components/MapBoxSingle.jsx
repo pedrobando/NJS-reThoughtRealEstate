@@ -1,12 +1,9 @@
 "use client";
 import { Suspense, useState } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import WaveDividerBottom from "./WaveDividerBottom";
-import getCenter from "geolib/es/getCenter";
-import Loading from "../loading";
+import ReactMapGL, { Marker } from "react-map-gl";
 
 export default function MapBoxSingle({ listingCoordinates }) {
-  const [selectedLocation, setSelectedLocation] = useState({});
+
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -29,7 +26,7 @@ export default function MapBoxSingle({ listingCoordinates }) {
         initialViewState={{ ...viewport }}
         width="100%"
         height="100%"
-        onViewportChange={(viewport) => setViewport(viewport)}
+       
       >
         <div key={coordinates.longitude}>
           <Marker

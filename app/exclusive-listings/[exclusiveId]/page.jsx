@@ -203,14 +203,14 @@ export default async function ExclusiveListing(exclusiveId) {
           <MapBoxSingle listingCoordinates={listing.coordinates} />
         </section>
         <section className="bg-reDark min-h-[450px] pb-[80px]">
-          <div className="flex container mx-auto items-center pt-14">
-            <div className="block px-2 md:px-14 pt-[180px]">
+          <div className="flex container mx-auto items-center pt-14 px-4">
+            <div className="block px-2 md:px-14 pt-[80px]  md:pt-[180px]">
               <h5 className="text-white text-3xl font-heading">
                 {listing.address.deliveryLine} is a {listing.propertyType}{" "}
                 property located in the city of {listing.address.city} which is
                 located in {listing.county} county.
               </h5>
-              <div className="flex container justify-center gap-x-9 pt-12">
+              <div className="flex container flex-col md:flex-row gap-y-9 items-center md:items-start justify-center md:gap-x-9 pt-12">
                 <div className="mb-4">
                   <a
                     className="text-white border border-white rounded-lg p-3 hover:scale-105 transition-transform"
@@ -231,14 +231,7 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
-        <section className="flex container py-6 px-3 bg-exterior-house bg-no-repeat bg-right">
-          <div className="grow py-6 pt-12">
-            <h3 className="text-3xl font-heading text-reText font-semibold pb-6">
-              Exterior Features
-            </h3>
-          </div>
-          <div></div>
-        </section>
+       
       </main>
     </div>
   );
