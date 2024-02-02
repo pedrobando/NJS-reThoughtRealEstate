@@ -234,6 +234,9 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
+        <section className="bg-reDark grid">
+<ListingImageGallery images={images}/>
+        </section>
        
       </main>
     </div>
