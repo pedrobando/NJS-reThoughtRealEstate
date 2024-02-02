@@ -127,15 +127,15 @@ export default async function ExclusiveListing(exclusiveId) {
       </div>
       <SwiperCarousel images={listing.images} />
       <main className="bg-white">
-        <div className="container w-11/12 mx-auto relative bg-white pb-10">
-          <div className="relative mx-auto px-3 py-24 sm:py-32">
-            <h1 className="text-4xl font-heading font-semibold tracking-tight text-reText md:text-5xl lg:text-6xl">
+        <section className="flex container mx-auto relative bg-white gap-x-3">
+          <div className="relative basis-12/12 mx-auto px-4 lg:pt-32 pt-14">
+            <h1 className="text-4xl font-heading font-semibold tracking-tight text-white md:text-5xl lg:text-6xl w-fit bg-gradient-to-r from-reGreen to-lime-600 p-3 rounded-lg">
               About {listing.xf_list_31}
             </h1>
 
-            <div className="flex max-w-lg justify-between items-center place-items-center">
+            <div className="flex container flex-col justify lg:flex-row lg:items-center lg:place-items-center pr-4 gap-x-9">
               {listing.status === "Pending" && (
-                <div className="font-heading text-lg  md:pt-2">
+                <div className="font-heading text-lg  my-3">
                   <span className="text-reText">Status: </span>
                   <span className="text-reText font-semibold">
                     {listing.status}
@@ -144,7 +144,7 @@ export default async function ExclusiveListing(exclusiveId) {
               )}
               {listing.status === "Active" &&
                 listing.xf_list_19 !== "With Offer" && (
-                  <div className="font-heading text-lg  md:pt-2">
+                  <div className="font-heading text-lg  my-3">
                     <span className="text-reText">Status: </span>
                     <span className="text-reGreen font-semibold ">
                       {listing.status}
@@ -152,60 +152,48 @@ export default async function ExclusiveListing(exclusiveId) {
                   </div>
                 )}
               {listing.xf_list_19 === "With Offer" && (
-                <div className="font-heading text-lg  md:pt-2">
+                <div className="font-heading text-lg  my-3">
                   <span className="text-reText">Status: </span>
                   <span className="text-reText font-semibold">Contingent </span>
                 </div>
               )}
-              <div className="font-heading text-lg pt-2">
-                <span className="text-reText">Listed:</span>
+              {listing.subdivision && (
+                <div className="font-heading text-lg  my-3">
+                  <span className="text-reText">Subdivision: </span>
+                  <span className="text-reText font-semibold">
+                    {listing.subdivision}
+                  </span>
+                </div>
+              )}
+              <div className="font-heading text-lg my-3">
+                <span className="text-reText">Listed: </span>
                 <span className="font-semibold text-reText">
-                  {" "}
                   {calculateDaysFromUnix(listing.listingDate)} days ago
                 </span>
               </div>
-            </div>
-
-            <p className="mt-6 max-w-3xl text-xl font-body text-neutral-500">
-              {listing.description}
-            </p>
-            <div className="flex xl:hidden flex-col mt-16">
-              <span className="pt-[40px] text-reDark font-heading text-5xl font-semibold">
-                {USDollar.format(listing.listPrice)}
-              </span>
-              <span className=" text-reDark text-xl mt-[5px]">
-                Asking Price
-              </span>
-            </div>
-
-            <div className="hidden xl:absolute xl:inline-flex top-[100px] -right-[440px] md:opacity-10 overflow-hidden">
-              {" "}
-              <span className="text-reDark font-heading text-[150px] font-bold">
-                {USDollar.format(listing.listPrice)}
-              </span>
-            </div>
-            <div className="hidden xl:absolute xl:inline-flex md:flex-col top-[250px] right-0">
-              {" "}
-              <span className=" text-reDark font-heading text-[60px] font-semibold ">
-                {USDollar.format(listing.listPrice)}
-              </span>
-              <span className=" text-reDark text-xl mt-[-15px]">
-                Asking Price
-              </span>
-              <div className="flex mt-6 w-full">
-                <button className="w-full rounded-lg text-white font-heading px-7 md:px-8 py-3 text-xl bg-reGreen border-reGreen hover:scale-105 transition">
-                  I WANT TO SEE IT
-                </button>
+              <div className="font-heading text-4xl my-3  ml-auto mr-6">
+                <span className="font-semibold text-reText">
+                  {USDollar.format(listing.listPrice)}
+                </span>
               </div>
             </div>
+            <p className="mt-6 text-xl font-body text-neutral-500">
+              {listing.description}
+            </p>
           </div>
-        </div>
+
+          <div className="hidden xl:absolute xl:inline-flex top-[80px] -right-[440px] md:opacity-10 overflow-hidden">
+            <span className="text-reDark font-heading text-[150px] font-bold">
+              {USDollar.format(listing.listPrice)}
+            </span>
+          </div>
+        </section>
 
         <section
-          className="flex container w-11/12 mx-auto relative z-10 -mt-32 px-3 pb-32 xl:gap-x-6"
+          className="flex container mx-auto  px-3 pb-32 lg:gap-x-3 items-center place-items-center"
           aria-labelledby="listing-information"
         >
-          <div className="grow xl:grow-0 xl:basis-8/12 py-5 mt-16">
+          <div className="lg:basis-10/12 mt-16 mx-auto">
             <h3
               className="text-3xl font-heading text-reText font-semibold pb-6"
               id="listing-information"
@@ -340,7 +328,7 @@ export default async function ExclusiveListing(exclusiveId) {
         <section className="flex container max-h-[450px]">
           <MapBoxSingle listingCoordinates={listing.coordinates} />
         </section>
-        <section className="bg-reDark min-h-[450px]">
+        <section className="bg-reDark min-h-[450px] pb-[80px]">
           <div className="flex container mx-auto items-center pt-14">
             <div className="block px-2 md:px-14 pt-[180px]">
               <h5 className="text-white text-3xl font-heading">
@@ -368,6 +356,14 @@ export default async function ExclusiveListing(exclusiveId) {
               </div>
             </div>
           </div>
+        </section>
+        <section className="flex container py-6 px-3 bg-exterior-house bg-no-repeat bg-right">
+          <div className="grow py-6 pt-12">
+            <h3 className="text-3xl font-heading text-reText font-semibold pb-6">
+              Exterior Features
+            </h3>
+          </div>
+          <div></div>
         </section>
       </main>
     </div>

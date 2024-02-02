@@ -17,7 +17,7 @@ export default function MapBoxSingle({ listingCoordinates }) {
   };
 
   const [viewport, setViewport] = useState({
-    zoom: 16,
+    zoom: 12,
     latitude: coordinates.latitude,
     longitude: coordinates.longitude,
   });
