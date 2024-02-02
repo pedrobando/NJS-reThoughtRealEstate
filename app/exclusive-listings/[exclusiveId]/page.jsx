@@ -138,7 +138,7 @@ export default async function ExclusiveListing(exclusiveId) {
               {listing.status === "Pending" && (
                 <div className="font-heading text-lg  my-3">
                   <span className="text-reText">Status: </span>
-                  <span className="text-reText font-semibold">
+                  <span className="text-reRed font-semibold">
                     {listing.status}
                   </span>
                 </div>
@@ -155,7 +155,7 @@ export default async function ExclusiveListing(exclusiveId) {
               {listing.xf_list_19 === "With Offer" && (
                 <div className="font-heading text-lg  my-3">
                   <span className="text-reText">Status: </span>
-                  <span className="text-reText font-semibold">Contingent </span>
+                  <span className="text-reBlue font-semibold">Contingent </span>
                 </div>
               )}
               {listing.subdivision && (
@@ -179,7 +179,7 @@ export default async function ExclusiveListing(exclusiveId) {
                 </span>
               </div>
             </div>
-            <p className="mt-6 text-xl font-body text-neutral-500">
+            <p className="mt-6 text-xl font-body text-reBody leading-9">
               {listing.description}
             </p>
           </div>
@@ -195,6 +195,9 @@ export default async function ExclusiveListing(exclusiveId) {
           className="flex container mx-auto  px-3 pb-32 lg:gap-x-3 items-center place-items-center"
           aria-labelledby="listing-information"
         >
+          <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
+            <ListingInformationAccordion listing={listing}/>
+          </div>
           <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
             <ListingInformationAccordion listing={listing}/>
           </div>
