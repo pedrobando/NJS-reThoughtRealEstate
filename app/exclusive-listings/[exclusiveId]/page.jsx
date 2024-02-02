@@ -21,6 +21,7 @@ import {
 } from "@heroicons/react/24/outline";
 import SwiperCarousel from "../../_components/exclusive-listings/SwiperCarousel";
 import ButtonsExclusiveListings from "../../_components/exclusive-listings/ButtonsExclusiveListings";
+import ListingInformationAccordion from "../../_components/listings/ListingInformationAccordion"
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -171,8 +172,9 @@ export default async function ExclusiveListing(exclusiveId) {
                   {calculateDaysFromUnix(listing.listingDate)} days ago
                 </span>
               </div>
-              <div className="font-heading text-4xl my-3  ml-auto mr-6">
-                <span className="font-semibold text-reText">
+              <div className="font-heading text-lg lg:text-4xl my-3  lg:ml-auto lg:mr-6">
+              <span className="md:hidden text-reText">Offered At: </span>
+                <span className=" font-semibold text-reText">
                   {USDollar.format(listing.listPrice)}
                 </span>
               </div>
@@ -193,136 +195,8 @@ export default async function ExclusiveListing(exclusiveId) {
           className="flex container mx-auto  px-3 pb-32 lg:gap-x-3 items-center place-items-center"
           aria-labelledby="listing-information"
         >
-          <div className="lg:basis-10/12 mt-16 mx-auto">
-            <h3
-              className="text-3xl font-heading text-reText font-semibold pb-6"
-              id="listing-information"
-            >
-              Listing Information
-            </h3>
-            <div className="info-content-wrap">
-              {listing.id && (
-                <h6 className="info-content">
-                  <span className="data-label ">MLS Number</span>
-                  <span className="data-value ">{listing.id}</span>
-                </h6>
-              )}
-              {listing.status && (
-                <h6 className="info-content">
-                  <span className="data-label">Status</span>
-                  <span className="data-value ">
-                    {listing.status} {listing.xf_list_19}
-                  </span>
-                </h6>
-              )}
-              {listing.listingType && (
-                <h6 className="info-content">
-                  <span className="data-label ">Listing Type</span>
-                  <span className="data-value">{listing.listingType}</span>
-                </h6>
-              )}
-            </div>
-            <Collapsible>
-              <CollapsibleContent className="transition ease-in-out delay-150">
-                {(listing.propertyType || listing.style || listing.size) && (
-                  <>
-                    {" "}
-                    <h3
-                      className="text-2xl font-heading font-semibold text-reText py-6"
-                      id="listing-information"
-                    >
-                      Dwelling Info
-                    </h3>
-                    <div className="info-content-wrap">
-                      {listing.propertyType && (
-                        <h6 className="info-content">
-                          <span className="data-label ">Property Type</span>
-                          <span className="data-value ">
-                            {listing.propertyType}
-                          </span>
-                        </h6>
-                      )}
-                      {listing.style && (
-                        <h6 className="info-content ">
-                          <span className="data-label ">Style</span>
-                          <span className="data-value">{listing.style}</span>
-                        </h6>
-                      )}
-                      {listing.size && (
-                        <h6 className="info-content ">
-                          <span className="data-label ">Square Feet</span>
-                          <span className="data-value">
-                            {listing.size} SqFt
-                          </span>
-                        </h6>
-                      )}
-                      {listing.lotSize.acres && (
-                        <h6 className="info-content ">
-                          <span className="data-label ">Lot Size</span>
-                          <span className="data-value">
-                            {listing.lotSize.acres} acres
-                          </span>
-                        </h6>
-                      )}
-                      {listing.yearBuilt && (
-                        <h6 className="info-content ">
-                          <span className="data-label ">Year Built</span>
-                          <span className="data-value">
-                            {listing.yearBuilt}
-                          </span>
-                        </h6>
-                      )}
-                    </div>
-                  </>
-                )}
-                {(listing.xf_list_75 ||
-                  listing.xf_list_74 ||
-                  listing.xf_list_76) && (
-                  <>
-                    {" "}
-                    <h3
-                      className="text-2xl font-heading font-semibold text-reText py-6"
-                      id="listing-information"
-                    >
-                      Taxes and Zoning
-                    </h3>
-                    <div className="info-content-wrap">
-                      {listing.xf_list_75 && (
-                        <h6 className="info-content ">
-                          <span className="data-label ">Tax Amount</span>
-                          <span className="data-value">
-                            {" "}
-                            {new Intl.NumberFormat("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                            }).format(listing.xf_list_75)}
-                          </span>
-                        </h6>
-                      )}
-                      {listing.xf_list_76 && (
-                        <h6 className="info-content ">
-                          <span className="data-label ">Tax Year</span>
-                          <span className="data-value">
-                            {listing.xf_list_76}
-                          </span>
-                        </h6>
-                      )}
-                      {listing.xf_list_74 && (
-                        <h6 className="info-content ">
-                          <span className="data-label ">Zoning</span>
-                          <span className="data-value">
-                            {listing.xf_list_74}
-                          </span>
-                        </h6>
-                      )}
-                    </div>
-                  </>
-                )}
-              </CollapsibleContent>
-              <CollapsibleTrigger className=" border-2 border-reDark px-3 py-3 font-semibold rounded-lg text-sm text-reDark font-heading w-full lg:max-w-[210px] mt-16 hover:bg-reDark hover:text-white hover:scale-105 transition-transform">
-                SEE MORE/LESS DETAILS
-              </CollapsibleTrigger>
-            </Collapsible>
+          <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
+            <ListingInformationAccordion listing={listing}/>
           </div>
         </section>
         <section className="flex container max-h-[450px]">

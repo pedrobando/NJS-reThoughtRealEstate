@@ -57,6 +57,7 @@ module.exports = {
         reTextGrey:'#BABABA',
         reText:'#333333',
         reTextLight: '#727272',
+        reBody: '#727272',
         reRed:'#EB6753'
       },
       keyframes: {
