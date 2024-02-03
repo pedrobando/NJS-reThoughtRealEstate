@@ -23,6 +23,7 @@ import SwiperCarousel from "../../_components/exclusive-listings/SwiperCarousel"
 import ButtonsExclusiveListings from "../../_components/exclusive-listings/ButtonsExclusiveListings";
 import ListingInformationAccordion from "../../_components/listings/ListingInformationAccordion";
 import ListingImageGallery from "../../_components/exclusive-listings/ListingImageGallery";
+import AgentTestimonials from "../../_components/agents/AgentTestimonials";
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -237,6 +238,9 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section className="bg-reDark h-[300px] overflow-auto">
   <ListingImageGallery images={listing.images} />
+</section>
+<section>
+  <AgentTestimonials listing={listing} />
 </section>
 
       </main>

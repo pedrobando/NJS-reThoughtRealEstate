@@ -14,7 +14,8 @@ const agentSchema = new mongoose.Schema({
     brokermintUserId: String,
     dotloopUserId: String,
     active: Boolean,
-    fubUserId: String
+    fubUserId: String,
+    placesId:String
   });
   
   const Agent = mongoose.model('Agent', agentSchema);
