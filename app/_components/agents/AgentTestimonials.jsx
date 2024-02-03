@@ -1,9 +1,36 @@
-import React from 'react'
-import ListingImageGallery from '../exclusive-listings/ListingImageGallery'
 
 
+const AgentTestimonials = async ({listing}) => {
+    async function fetchTestimonials() {
+        const url = 'https://places.googleapis.com/v1/places/ChIJDQoQqZYXBYgRiMh6o_HPx18?key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&fields=id,displayName,rating,userRatingCount,reviews'; // Replace with your actual URL
+        try {
+          const response = await fetch(url);
+          console.log(response)
+          if (!response.ok) {
+           
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          
+          return data;
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+          return null;
+        }
+      }
 
-const AgentTestimonials = ({listing}) => {
+     // const testimonialss = await fetchTestimonials();
+   //const featuredTestimoniall = [];
+
+   //console.log(testimonialss)
+
+   fetchTestimonials().then(data => {
+    console.log(data); // Process your data here
+  }).catch(error => {
+    console.error(error);
+  });
+
+      
 
     const featuredTestimonial = {
         body: 'Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.',
@@ -100,7 +127,7 @@ const AgentTestimonials = ({listing}) => {
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-lg font-semibold leading-8 tracking-tight text-reGreen">{listing.listingAgent.name}'s Reviews</h2>
+          <h2 className="text-lg font-semibold leading-8 tracking-tight text-reGreen">{listing.listingAgent.name}'s Latest Reviews</h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Join the army of happy home buyers and sellers!
           </p>
