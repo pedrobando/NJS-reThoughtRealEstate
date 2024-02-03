@@ -4,12 +4,12 @@ import NavBarSlide from './NavBarSlide'
 
 const NavBarSolid = () => {
   return (
-    <header className="flex container mx-auto items-center px-5 sm:px-6 lg:px-0 h-[90px] max-h-[90px] py-[20px] md:py-[40px] bg-reDark w-full">
+    <header className="flex container mx-auto items-center px-5 sm:px-6 lg:px-0 h-[90px] max-h-[90px] bg-reDark w-screen">
       <div className="flex flex-col justify-center w-6/12 xl:w-2/12">
         <Link href="/">
           <img
           src="/img/rethought-real-estate-light-logo.svg"
-          className="w-full md:w-[70%] hover:scale-105 transition-transform"
+          className="max-h-[45px] hover:scale-105 transition-transform"
           alt="reThought Real Estate Logo"
         />
         </Link>

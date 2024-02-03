@@ -3,7 +3,6 @@ import { useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import WaveDividerBottom from "./WaveDividerBottom";
 import getCenter from "geolib/es/getCenter";
-import Loading from '../loading';
 
 
 export default function MapBoxF({ listingsResults }) {

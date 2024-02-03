@@ -17,6 +17,7 @@ const ListingImageGallery = (images) => {
       className="h-full w-full object-cover"
       src={image}
       alt={`Slide ${index}`}
+      key={index}
     />
   ))}
 </LightGallery>

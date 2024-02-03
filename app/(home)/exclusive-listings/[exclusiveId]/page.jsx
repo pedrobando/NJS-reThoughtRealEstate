@@ -7,24 +7,15 @@ import {
   faExpand,
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../../_components/ui/collapsible";
-import MapBoxSingle from "../../_components/MapBoxSingle";
+import MapBoxSingle from "../../../_components/MapBoxSingle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  LifebuoyIcon,
-  NewspaperIcon,
-  PhoneIcon,
-} from "@heroicons/react/24/outline";
-import SwiperCarousel from "../../_components/exclusive-listings/SwiperCarousel";
-import ButtonsExclusiveListings from "../../_components/exclusive-listings/ButtonsExclusiveListings";
-import ListingInformationAccordion from "../../_components/listings/ListingInformationAccordion";
-import ListingImageGallery from "../../_components/exclusive-listings/ListingImageGallery";
-import AgentTestimonials from "../../_components/agents/AgentTestimonials";
-import { calculateDaysFromUnix } from '../../_utils/calculateDaysFromUnix';
+import SwiperCarousel from "../../../_components/exclusive-listings/SwiperCarousel";
+import ButtonsExclusiveListings from "../../../_components/exclusive-listings/ButtonsExclusiveListings";
+import ListingInformationAccordion from "../../../_components/listings/ListingInformationAccordion";
+import ListingImageGallery from "../../../_components/exclusive-listings/ListingImageGallery";
+import AgentTestimonials from "../../../_components/agents/AgentTestimonials";
+import { calculateDaysFromUnix } from '../../../_utils/calculateDaysFromUnix';
+import Layout from "./layout"
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -64,6 +55,7 @@ export default async function ExclusiveListing(exclusiveId) {
   });
 
   return (
+   
     <div className="bg-white w-full z-0 text-reText">
       <div className="bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] ">
         <div
@@ -72,10 +64,10 @@ export default async function ExclusiveListing(exclusiveId) {
         ></div>
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center px-4">
-        <span className="font-heading text-white mt-[-560px] z-10 text-sm mb-3">
+        <span className="font-heading text-white mt-[-560px] z-10 text-base mb-3">
           {listing.propertyType}
         </span>
-        <span className="font-heading text-reGreen z-10 text-2xl lg:text-4xl mb-1">
+        <span className="font-heading text-reGreen z-10 text-4xl lg:text-5xl mb-1">
           {listing.address.deliveryLine}
         </span>
         <span className="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
@@ -202,7 +194,7 @@ export default async function ExclusiveListing(exclusiveId) {
         <section className="flex container max-h-[450px]">
           <MapBoxSingle listingCoordinates={listing.coordinates} />
         </section>
-        <section className="bg-reDark min-h-[450px] pb-[80px]">
+        <section className="bg-reDark min-h-[450px] pb-[120px]">
           <div className="flex container mx-auto items-center pt-14 px-4">
             <div className="block px-2 md:px-14 pt-[80px]  md:pt-[180px]">
               <h5 className="text-white text-3xl font-heading">
@@ -210,7 +202,7 @@ export default async function ExclusiveListing(exclusiveId) {
                 property located in the city of {listing.address.city} which is
                 located in {listing.county} county.
               </h5>
-              <div className="flex container flex-col md:flex-row gap-y-9 items-center md:items-start justify-center md:gap-x-9 pt-12">
+              <div className="flex container flex-col md:flex-row gap-y-9 items-center md:items-start justify-center md:gap-x-9 pt-14">
                 <div className="mb-4">
                   <a
                     className="text-white border border-white rounded-lg p-3 hover:scale-105 transition-transform"
@@ -231,7 +223,7 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
-        <section className="bg-reDark h-[300px] overflow-auto">
+        <section className="bg-reDark h-[400px] overflow-auto">
   <ListingImageGallery images={listing.images} />
 </section>
 <section>
@@ -240,5 +232,6 @@ export default async function ExclusiveListing(exclusiveId) {
 
       </main>
     </div>
+   
   );
 }

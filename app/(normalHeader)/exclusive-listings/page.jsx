@@ -1,4 +1,4 @@
-import MapBoxF from "../_components/MapBoxF";
+import MapBoxF from "../../_components/MapBoxF";
 import Link from "next/link";
 
 const getFeaturedListings = async () => {

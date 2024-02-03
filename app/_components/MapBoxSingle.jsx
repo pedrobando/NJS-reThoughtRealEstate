@@ -14,9 +14,13 @@ export default function MapBoxSingle({ listingCoordinates }) {
   };
 
   const [viewport, setViewport] = useState({
-    zoom: 12,
+    zoom: 14,
     latitude: coordinates.latitude,
     longitude: coordinates.longitude,
+    scrollZoom:false,
+    pitch:true,
+    touchPitch:true,
+    boxZoom:true
   });
   return (
     <div className="w-screen px-5 lg:px-0 h-[500px] md:h-[600px] overflow-hidden rounded-lg">
@@ -26,6 +30,7 @@ export default function MapBoxSingle({ listingCoordinates }) {
         initialViewState={{ ...viewport }}
         width="100%"
         height="100%"
+        
        
       >
         <div key={coordinates.longitude}>

@@ -13,6 +13,7 @@ export default function RootLayout({ children }) {
       <body className="flex flex-col justify-center items-center font-body">
         <TransparentNavBar />
         <div className="bg-black flex flex-col min-h-64 w-full mt-[-127px] bg-gradient-to-t from-neutral-950 to-neutral-800">
+          <h1 className="text-white text-5xl">Transparent layout</h1>
         {children} 
         </div>
         <Footer/>

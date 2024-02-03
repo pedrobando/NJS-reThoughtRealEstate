@@ -46,10 +46,9 @@ export default function AgentTestimonials({ listing }) {
 
     fetchTestimonials();
   }, []);
-console.log(testimonial)
   return (
     <>
-      {(testimonials && testimonial) && (
+      {testimonials && testimonial && (
         <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
           <div
             className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl"
@@ -93,7 +92,10 @@ console.log(testimonial)
             >
               <CarouselContent className="rounded-lg">
                 {testimonials.map((testimonial, index) => (
-                  <CarouselItem className=" md:basis-1/1 lg:basis-1/3">
+                  <CarouselItem
+                    key={index}
+                    className=" md:basis-1/1 lg:basis-1/3"
+                  >
                     <div className="divide-y divide-white overflow-hidden rounded-lg bg-white shadow">
                       <div className="px-4 pt-6 sm:px-6">
                         <div className="flex gap-x-3 items-center">
@@ -132,7 +134,7 @@ console.log(testimonial)
               <CarouselNext />
             </Carousel>
             <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
-            {listing.listingAgent.name} has {testimonial.userRatingCount}{" "}
+              {listing.listingAgent.name} has {testimonial.userRatingCount}{" "}
               verified reviews on Google with an average of {testimonial.rating}{" "}
               stars.
             </h4>
