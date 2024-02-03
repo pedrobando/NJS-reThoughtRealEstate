@@ -24,6 +24,7 @@ import ButtonsExclusiveListings from "../../_components/exclusive-listings/Butto
 import ListingInformationAccordion from "../../_components/listings/ListingInformationAccordion";
 import ListingImageGallery from "../../_components/exclusive-listings/ListingImageGallery";
 import AgentTestimonials from "../../_components/agents/AgentTestimonials";
+import { calculateDaysFromUnix } from '../../_utils/calculateDaysFromUnix';
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -56,13 +57,7 @@ export default async function ExclusiveListing(exclusiveId) {
     listing = result.listings[0];
   }
 
-  const calculateDaysFromUnix = (unixTimestamp) => {
-    const listingDate = new Date(unixTimestamp * 1000); // Convert UNIX timestamp to JavaScript Date object
-    const currentDate = new Date();
-    const differenceInTime = currentDate.getTime() - listingDate.getTime();
-    const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24)); // Convert time difference from milliseconds to days
-    return differenceInDays;
-  };
+  
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
