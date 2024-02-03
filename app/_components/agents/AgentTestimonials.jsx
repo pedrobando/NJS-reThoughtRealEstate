@@ -8,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import { calculateMonthsAgoFromDate } from '../../_utils/calculateDaysFromUnix';
 
 async function getAgentTestimonials(placeid) {
   try {
@@ -30,8 +29,8 @@ async function getAgentTestimonials(placeid) {
 }
 
 export default function AgentTestimonials({ listing }) {
-  const [testimonials, setTestimonials] = useState({});
-  const [testimonial, setTestimonial] = useState({});
+  const [testimonials, setTestimonials] = useState([]);
+  const [testimonial, setTestimonial] = useState();
   // Add logic to get placeId from User database with listing agent matching ID
 
   useEffect(() => {
@@ -40,8 +39,6 @@ export default function AgentTestimonials({ listing }) {
         const data = await getAgentTestimonials();
         setTestimonials(data.reviews);
         setTestimonial(data);
-        
-       
       } catch (error) {
         console.error("Error loading testimonials: ", error);
       }
@@ -49,10 +46,10 @@ export default function AgentTestimonials({ listing }) {
 
     fetchTestimonials();
   }, []);
-
+console.log(testimonial)
   return (
     <>
-      {testimonials && (
+      {(testimonials && testimonial) && (
         <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
           <div
             className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl"
@@ -101,19 +98,31 @@ export default function AgentTestimonials({ listing }) {
                       <div className="px-4 pt-6 sm:px-6">
                         <div className="flex gap-x-3 items-center">
                           <div className="flex-shrink-0 sm:mb-0 sm:mr-4">
-                            <img src={testimonial.authorAttribution.photoUri} alt={testimonial.authorAttribution.displayName} className="max-h-12"/>
+                            <img
+                              src={testimonial.authorAttribution.photoUri}
+                              alt={testimonial.authorAttribution.displayName}
+                              className="max-h-12"
+                            />
                           </div>
                           <div>
-                            <h4 className="text-lg font-bold">{testimonial.authorAttribution.displayName}</h4>
+                            <h4 className="text-lg font-bold">
+                              {testimonial.authorAttribution.displayName}
+                            </h4>
                             <p> {testimonial.relativePublishTimeDescription}</p>
                           </div>
                         </div>
                       </div>
                       <div className="px-4 py-1 sm:p-6 h-[100px] overflow-auto">
-                       <p className="p-0 m-0">{testimonial.originalText.text}</p>
+                        <p className="p-0 m-0">
+                          {testimonial.originalText.text}
+                        </p>
                       </div>
                       <div className="px-4 py-2 sm:px-6">
-                       <img src="https://cdn.mos.cms.futurecdn.net/rjqJEKv6P9Yjy9d3KMGvp8-320-80.jpg" className="max-h-14 float-right" alt="Google Review" />
+                        <img
+                          src="https://cdn.mos.cms.futurecdn.net/rjqJEKv6P9Yjy9d3KMGvp8-320-80.jpg"
+                          className="max-h-14 float-right"
+                          alt="Google Review"
+                        />
                       </div>
                     </div>
                   </CarouselItem>
@@ -123,8 +132,10 @@ export default function AgentTestimonials({ listing }) {
               <CarouselNext />
             </Carousel>
             <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
-                {testimonial.displayName.text} has {testimonial.userRatingCount} verified reviews on Google with an average of {testimonial.rating} stars.
-              </h4>
+            {listing.listingAgent.name} has {testimonial.userRatingCount}{" "}
+              verified reviews on Google with an average of {testimonial.rating}{" "}
+              stars.
+            </h4>
           </div>
         </div>
       )}
