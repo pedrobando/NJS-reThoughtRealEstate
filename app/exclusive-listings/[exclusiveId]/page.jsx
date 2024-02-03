@@ -21,7 +21,8 @@ import {
 } from "@heroicons/react/24/outline";
 import SwiperCarousel from "../../_components/exclusive-listings/SwiperCarousel";
 import ButtonsExclusiveListings from "../../_components/exclusive-listings/ButtonsExclusiveListings";
-import ListingInformationAccordion from "../../_components/listings/ListingInformationAccordion"
+import ListingInformationAccordion from "../../_components/listings/ListingInformationAccordion";
+import ListingImageGallery from "../../_components/exclusive-listings/ListingImageGallery";
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -173,7 +174,7 @@ export default async function ExclusiveListing(exclusiveId) {
                 </span>
               </div>
               <div className="font-heading text-lg lg:text-4xl my-3  lg:ml-auto lg:mr-6">
-              <span className="md:hidden text-reText">Offered At: </span>
+                <span className="md:hidden text-reText">Offered At: </span>
                 <span className=" font-semibold text-reText">
                   {USDollar.format(listing.listPrice)}
                 </span>
@@ -196,10 +197,10 @@ export default async function ExclusiveListing(exclusiveId) {
           aria-labelledby="listing-information"
         >
           <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
-            <ListingInformationAccordion listing={listing}/>
+            <ListingInformationAccordion listing={listing} />
           </div>
           <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
-            <ListingInformationAccordion listing={listing}/>
+            <ListingInformationAccordion listing={listing} />
           </div>
         </section>
         <section className="flex container max-h-[450px]">
@@ -234,10 +235,10 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
-        <section className="bg-reDark grid">
-<ListingImageGallery images={images}/>
-        </section>
-       
+        <section className="bg-reDark h-[300px] overflow-auto">
+  <ListingImageGallery images={listing.images} />
+</section>
+
       </main>
     </div>
   );

@@ -11,15 +11,16 @@ import "lightgallery/css/lg-thumbnail.css";
 
 const ListingImageGallery = (images) => {
   return (
-    <LightGallery plugins={[lgZoom, lgVideo]} mode="lg-fade">
-          {images.images.map((image, index) => (
-              <img
-                className="img-responsive"
-                src={image}
-                alt={`Slide ${index}`}
-              />
-          ))}
-        </LightGallery>
+<LightGallery plugins={[lgZoom, lgVideo]} mode="lg-fade" elementClassNames="grid grid-cols-6 ">
+  {images.images.map((image, index) => (
+    <img
+      className="h-full w-full object-cover"
+      src={image}
+      alt={`Slide ${index}`}
+    />
+  ))}
+</LightGallery>
+
   )
 }
 
