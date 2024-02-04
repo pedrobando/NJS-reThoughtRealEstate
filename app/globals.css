@@ -4,17 +4,9 @@
 @tailwind utilities;
 
 
-swiper-container::part(button-next){
-@apply text-white place-items-center opacity-50
+.accordion-listings h3 {
+  @apply text-reDark;
 }
-
-swiper-container::part(button-prev){
-  @apply text-white place-items-center opacity-50
-  }
-
-  swiper-container::part(scrollbar){
-    @apply text-reGreen place-items-center
-    }
 
 .exclusive-listings-hero{
   @apply flex flex-col text-white z-10 md:text-xl transform mb-1 items-center justify-center text-base font-body;

@@ -7,7 +7,7 @@ import {
 
 const ListingInformationAccordion = ({ listing }) => {
   return (
-    <Accordion type="single" collapsible>
+    <Accordion type="single" collapsible className="accordion-listings">
       <AccordionItem value="item-1">
         <AccordionTrigger className="text-2xl font-heading text-reText">
           Listing Information

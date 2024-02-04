@@ -15,7 +15,7 @@ import ListingInformationAccordion from "../../../_components/listings/ListingIn
 import ListingImageGallery from "../../../_components/exclusive-listings/ListingImageGallery";
 import AgentTestimonials from "../../../_components/agents/AgentTestimonials";
 import { calculateDaysFromUnix } from '../../../_utils/calculateDaysFromUnix';
-import Layout from "./layout"
+import Image from "next/image";
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
@@ -57,19 +57,22 @@ export default async function ExclusiveListing(exclusiveId) {
   return (
    
     <div className="bg-white w-full z-0 text-reText">
-      <div className="bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] ">
-        <div
-          style={{ backgroundImage: `url(${listing.images[0]})` }}
-          className="bg-cover bg-center w-full min-h-screen  opacity-10 object-cover"
-        ></div>
+      <div className="bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] min-h-screen  ">
+        <Image
+        style={{objectFit: "cover", objectPosition:"center", opacity:0.1, minHeight:'100vh'}}
+        src={listing.images[0]}
+        alt="Cover"
+        fill={true}
+       
+        />
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center px-4">
         <span className="font-heading text-white mt-[-560px] z-10 text-base mb-3">
           {listing.propertyType}
         </span>
-        <span className="font-heading text-reGreen z-10 text-4xl lg:text-5xl mb-1">
+        <h1 className="font-heading text-reGreen z-10 text-4xl lg:text-5xl mb-1">
           {listing.address.deliveryLine}
-        </span>
+        </h1>
         <span className="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
@@ -119,9 +122,9 @@ export default async function ExclusiveListing(exclusiveId) {
       <main className="bg-white">
         <section className="flex container mx-auto relative bg-white gap-x-3">
           <div className="relative basis-12/12 mx-auto px-4 lg:pt-32 pt-14">
-            <h1 className="text-4xl font-heading font-semibold tracking-tight text-white md:text-5xl lg:text-6xl w-fit bg-gradient-to-r from-reGreen to-lime-600 p-3 rounded-lg">
+            <h3 className="text-4xl font-heading font-semibold tracking-tight text-white md:text-5xl lg:text-6xl w-fit bg-gradient-to-r from-reGreen to-lime-600 p-3 rounded-lg">
               About {listing.xf_list_31}
-            </h1>
+            </h3>
 
             <div className="flex container flex-col justify lg:flex-row lg:items-center lg:place-items-center pr-4 gap-x-9">
               {listing.status === "Pending" && (
@@ -181,7 +184,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
 
         <section
-          className="flex container mx-auto  px-3 pb-32 lg:gap-x-3 items-center place-items-center"
+          className="flex flex-col md:flex-row container mx-auto  px-3 pb-32 lg:gap-x-3 items-center place-items-center"
           aria-labelledby="listing-information"
         >
           <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
@@ -197,7 +200,7 @@ export default async function ExclusiveListing(exclusiveId) {
         <section className="bg-reDark min-h-[450px] pb-[120px]">
           <div className="flex container mx-auto items-center pt-14 px-4">
             <div className="block px-2 md:px-14 pt-[80px]  md:pt-[180px]">
-              <h5 className="text-white text-3xl font-heading">
+              <h5 className="text-white text-3xl font-heading text-center md:text-left">
                 {listing.address.deliveryLine} is a {listing.propertyType}{" "}
                 property located in the city of {listing.address.city} which is
                 located in {listing.county} county.
@@ -223,7 +226,7 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
-        <section className="bg-reDark h-[400px] overflow-auto">
+        <section className="bg-reDark h-auto md:h-[400px] overflow-auto">
   <ListingImageGallery images={listing.images} />
 </section>
 <section>
