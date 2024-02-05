@@ -16,17 +16,17 @@
 }
 
 .info-content{
-  @apply flex items-center border-b border-gray-800/10 py-[10px];
+  @apply flex items-start border-b border-gray-800/10 py-[10px];
 }
 .data-label{
-  @apply grow min-w-[200px] max-w-[240px] mr-[15px] text-reBody font-heading text-base
+  @apply grow w-[200px] max-w-[210px] mr-[15px] text-reBody font-heading text-base
 }
 
 .data-value{
-  @apply text-reBody font-heading text-base text-wrap mr-1 max-w-[200px]
+  @apply text-reBody text-left font-heading text-base text-wrap mr-1 max-w-[200px]
 }
 .info-content-wrap{
-  @apply grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-0  text-reTextLight text-base font-heading lg:w-[90%]
+  @apply grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-0  text-reTextLight text-base font-heading lg:w-full
 }
 
 .waveDivider {

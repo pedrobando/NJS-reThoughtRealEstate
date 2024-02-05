@@ -14,7 +14,7 @@ import ButtonsExclusiveListings from "../../../_components/exclusive-listings/Bu
 import ListingInformationAccordion from "../../../_components/listings/ListingInformationAccordion";
 import ListingImageGallery from "../../../_components/exclusive-listings/ListingImageGallery";
 import AgentTestimonials from "../../../_components/agents/AgentTestimonials";
-import { calculateDaysFromUnix } from '../../../_utils/calculateDaysFromUnix';
+import { calculateDaysFromUnix } from "../../../_utils/calculateDaysFromUnix";
 import Image from "next/image";
 const getExclusiveListing = async (mlsId) => {
   try {
@@ -48,22 +48,24 @@ export default async function ExclusiveListing(exclusiveId) {
     listing = result.listings[0];
   }
 
-  
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
 
   return (
-   
     <div className="bg-white w-full z-0 text-reText">
       <div className="bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] min-h-screen  ">
         <Image
-        style={{objectFit: "cover", objectPosition:"center", opacity:0.1, minHeight:'100vh'}}
-        src={listing.images[0]}
-        alt="Cover"
-        fill={true}
-       
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: 0.1,
+            minHeight: "100vh",
+          }}
+          src={listing.images[0]}
+          alt="Cover"
+          fill={true}
         />
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center px-4">
@@ -184,7 +186,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
 
         <section
-          className="flex flex-col md:flex-row container mx-auto  px-3 pb-32 lg:gap-x-3 items-center place-items-center"
+          className="flex flex-col md:flex-row container mx-auto  px-3 pb-32 lg:gap-x-3 items-start place-items-center"
           aria-labelledby="listing-information"
         >
           <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
@@ -227,14 +229,12 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </section>
         <section className="bg-reDark h-auto md:h-[400px] overflow-auto">
-  <ListingImageGallery images={listing.images} />
-</section>
-<section>
-  <AgentTestimonials listing={listing} />
-</section>
-
+          <ListingImageGallery images={listing.images} />
+        </section>
+        <section>
+          <AgentTestimonials listing={listing} /> 
+        </section>
       </main>
     </div>
-   
   );
 }
