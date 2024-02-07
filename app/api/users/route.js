@@ -1,3 +1,3 @@
-export default function handler(req, res) {
-    res.status(200).json({ message: 'Hello from Next.js!' })
-  }
+import { NextResponse } from "next/server";
+
+export async function GET(request) { return NextResponse.json({ message: "Hello from Next.js" }, { status: 200 }); };
