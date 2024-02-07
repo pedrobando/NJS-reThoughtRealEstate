@@ -9,3 +9,4 @@ module.exports = {
   images:{
     domains:['listing-images.homejunction.com', 'rethought-realestate.com']
   }
+};
