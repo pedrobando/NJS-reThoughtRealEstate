@@ -8,4 +8,4 @@ module.exports = {
   swcMinify:true,
   images:{
     domains:['listing-images.homejunction.com', 'rethought-realestate.com']
-  };
+  }
