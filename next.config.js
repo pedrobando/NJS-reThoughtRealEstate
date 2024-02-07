@@ -8,5 +8,15 @@ module.exports = {
   swcMinify:true,
   images:{
     domains:['listing-images.homejunction.com', 'rethought-realestate.com']
-  }
+  },
+  env: {
+    HOMEJUNCTION_TOKEN:{process.env.HOMEJUNCTION_TOKEN},
+    HOMEJUNCTION_RE_LITINGS_URI:{process.env.HOMEJUNCTION_RE_LITINGS_URI},
+    HOMEJUNCTION_RE_LITING_URI:{process.env.HOMEJUNCTION_RE_LITING_URI},
+    fubapikey: {process.env.fubapikey},
+    NEXT_PUBLIC_mapbox_token:
+      {process.env.NEXT_PUBLIC_mapbox_token},
+    apininja: {process.env.apininja},
+    google: {process.env.google},
+  },
 };

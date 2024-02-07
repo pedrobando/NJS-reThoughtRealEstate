@@ -28,7 +28,7 @@ export default function MapBoxF({ listingsResults }) {
     
       <ReactMapGL
         mapStyle="mapbox://styles/pedrobandorivera/clrl6vf5m003201qsb5235rfx"
-        mapboxAccessToken={process.env.mapbox_token}
+        mapboxAccessToken={process.env.NEXT_PUBLIC_mapbox_token}
         initialViewState={{ ...viewport }}
         width="100%"
         height="100%"

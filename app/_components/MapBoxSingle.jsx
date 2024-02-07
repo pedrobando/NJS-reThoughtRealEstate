@@ -28,7 +28,7 @@ export default function MapBoxSingle({ listingCoordinates }) {
     <div className="w-screen px-5 lg:px-0 h-[500px] md:h-[600px] overflow-hidden rounded-lg">
       <ReactMapGL
         mapStyle="mapbox://styles/pedrobandorivera/clrl6vf5m003201qsb5235rfx"
-        mapboxAccessToken={process.env.mapbox_token}
+        mapboxAccessToken={process.env.NEXT_PUBLIC_mapbox_token}
         initialViewState={{ ...viewport }}
         width="100%"
         height="100%"
