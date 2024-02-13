@@ -7,7 +7,7 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['listing-images.homejunction.com', 'rethought-realestate.com']
+    domains: ['listing-images.homejunction.com', 'rethought-realestate.com', 'cdn.mos.cms.futurecdn.net','lh3.googleusercontent.com']
   },
   env: {
     HOMEJUNCTION_TOKEN: process.env.HOMEJUNCTION_TOKEN,

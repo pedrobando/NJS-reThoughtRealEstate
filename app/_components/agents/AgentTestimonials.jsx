@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import Image from 'next/image';
 
 async function getAgentTestimonials(placeid) {
   try {
@@ -100,10 +101,11 @@ export default function AgentTestimonials({ listing }) {
                       <div className="px-4 pt-6 sm:px-6">
                         <div className="flex gap-x-3 items-center">
                           <div className="flex-shrink-0 sm:mb-0 sm:mr-4">
-                            <img
-                              src={testimonial.authorAttribution.photoUri}
-                              alt={testimonial.authorAttribution.displayName}
-                              className="max-h-12"
+                            <Image
+                            src={testimonial.authorAttribution.photoUri}
+                            alt={testimonial.authorAttribution.displayName}
+                            width={48}
+                            height={48}
                             />
                           </div>
                           <div>
@@ -119,11 +121,13 @@ export default function AgentTestimonials({ listing }) {
                           {testimonial.originalText.text}
                         </p>
                       </div>
-                      <div className="px-4 py-2 sm:px-6">
-                        <img
+                      <div className="px-4 my-3 sm:px-6 max-h-14 float-right">
+                        <Image
                           src="https://cdn.mos.cms.futurecdn.net/rjqJEKv6P9Yjy9d3KMGvp8-320-80.jpg"
-                          className="max-h-14 float-right"
                           alt="Google Review"
+                          width={100}
+                          height={56}
+                        
                         />
                       </div>
                     </div>

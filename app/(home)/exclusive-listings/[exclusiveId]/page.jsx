@@ -56,7 +56,7 @@ export default async function ExclusiveListing(exclusiveId) {
 
   return (
     <div className="bg-white w-full z-0 text-reText">
-      <div className="bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] min-h-screen  ">
+      <div className="relative bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] min-h-screen  ">
         <Image
           style={{
             objectFit: "cover",
@@ -67,6 +67,7 @@ export default async function ExclusiveListing(exclusiveId) {
           src={listing.images[0]}
           alt="Cover"
           fill={true}
+          priority={true} 
         />
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center px-4">
@@ -79,16 +80,16 @@ export default async function ExclusiveListing(exclusiveId) {
         <span className="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
-        
-<ListingHeaderInfo listing={listing}/>
+
+        <ListingHeaderInfo listing={listing} />
         <ButtonsExclusiveListings />
       </div>
       <SwiperCarousel images={listing.images} />
       <main className="bg-white">
         <section className="flex container mx-auto relative bg-white gap-x-3">
-          <div className="relative basis-12/12 mx-auto px-4 lg:pt-32 pt-14">
+          <div className="relative w-full mx-auto px-4 lg:pt-32 pt-14">
             <h3 className="text-4xl font-heading font-semibold tracking-tight text-white md:text-5xl lg:text-6xl w-fit bg-gradient-to-r from-reGreen to-lime-600 p-3 rounded-lg">
-              About {listing.xf_list_31}
+              About {listing.xf_list_31} {listing.xf_list_33} {listing.xf_list_34}
             </h3>
 
             <div className="flex container flex-col justify lg:flex-row lg:items-center lg:place-items-center pr-4 gap-x-9">
@@ -195,7 +196,7 @@ export default async function ExclusiveListing(exclusiveId) {
           <ListingImageGallery images={listing.images} />
         </section>
         <section>
-          <AgentTestimonials listing={listing} /> 
+          <AgentTestimonials listing={listing} />
         </section>
       </main>
     </div>

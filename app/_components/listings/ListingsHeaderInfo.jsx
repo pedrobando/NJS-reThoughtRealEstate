@@ -12,7 +12,7 @@ import {
 const ListingsHeaderInfo = ({ listing }) => {
   return (
     <div className="flex gap-x-8 md:gap-x-12 mt-9 opacity-60 place-items-center font-body">
-      {listing.listingType !== "Multifamily" && (
+      {listing.propertyType !== "Multi-family" && (
         <>
           {listing.beds && (
             <div className="exclusive-listings-hero">
@@ -39,7 +39,7 @@ const ListingsHeaderInfo = ({ listing }) => {
         </>
       )}
       
-      {listing.listingType === "Multifamily" && (
+      {listing.propertyType === "Multi-family" && (
         <>
           {listing.xf_list_70 && (
             <div className="exclusive-listings-hero">
