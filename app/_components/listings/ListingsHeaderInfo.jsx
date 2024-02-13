@@ -38,7 +38,7 @@ const ListingsHeaderInfo = ({ listing }) => {
           )}
         </>
       )}
-      ;
+      
       {listing.listingType === "Multifamily" && (
         <>
           {listing.xf_list_70 && (
@@ -49,7 +49,7 @@ const ListingsHeaderInfo = ({ listing }) => {
           )}
         </>
       )}
-      ;
+      
       {listing.size ? (
         <div className="exclusive-listings-hero">
           <FontAwesomeIcon icon={faExpand} height="20px" />
