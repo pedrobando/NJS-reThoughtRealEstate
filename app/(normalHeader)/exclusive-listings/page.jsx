@@ -1,35 +1,17 @@
 import MapBoxF from "../../_components/MapBoxF";
 import Link from "next/link";
+import getFeaturedListings from "../../_utils/getFeaturedListings"
 
-const getFeaturedListings = async () => {
-  try {
-    const res = await fetch(`${process.env.HOMEJUNCTION_RE_LITINGS_URI}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`,
-      },
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch topics", res);
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.log("Error loading topics: ", error);
-    return { result: { listings: [] } }; // Return an empty array or handle the error gracefully
-  }
-};
 
 export default async function ListingsList() {
 
   let listings = []
-  if (listings.length === 0) {
+
     const { result } = await getFeaturedListings();
     listings = result.listings
-  }
- 
+
+
+  
   return (
     <>
       <MapBoxF listingsResults={listings} />
