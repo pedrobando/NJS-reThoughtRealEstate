@@ -1,5 +1,6 @@
 import WaveDividerBottom from "./WaveDividerBottom";
 import Link from "next/link";
+import Image from "next/image"
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -15,11 +16,13 @@ const Footer = () => {
       </div>
       <div className="flex flex-col container mx-auto md:flex-row bg-reDark gap-x-10 gap-y-16 py-10 px-5 md:px-0  md:py-[50px]">
         <div className="w-full md:flex-auto md:w-[40%]">
-          <Link href="/">
-            <img
+          <Link href="/" className="w-[40%] md:w-[40%] hover:scale-105 transition-transform">
+            <Image
               src="/img/rethought-real-estate-light-logo.svg"
-              className="w-[40%] md:w-[40%] hover:scale-105 transition-transform"
               alt="reThought Real Estate Logo"
+              width={221}
+              height={52}
+              style={{objectFit: "contain", }}
             />
           </Link>
           <p className="mt-8 text-reTextGrey">
@@ -47,11 +50,15 @@ const Footer = () => {
       </div>
       <div className="flex flex-col md:flex-row pt-6 px-6 md:px-[10%]">
         <div className="basis-12/12 md:basis-8/12">
-          <img
+          <div className="">
+          <Image
             src="/img/metro-mls.png"
-            className="w-[60px] float-left pr-4"
+            width={60}
+            height={33}
+            style={{float: "left", marginRight: "15px"}}
             alt="Metro MLS Logo"
           />
+          </div>
           <p className="text-xs text-reTextGrey opacity-50 md:pr-[20%]">
             Information is supplied by seller and other third parties and has
             not been verified. IDX information is provided exclusively for
