@@ -16,17 +16,20 @@ import ListingInformationAccordion from "../../../_components/listings/ListingIn
 import ListingImageGallery from "../../../_components/exclusive-listings/ListingImageGallery";
 import AgentTestimonials from "../../../_components/agents/AgentTestimonials";
 import { calculateDaysFromUnix } from "../../../_utils/calculateDaysFromUnix";
+import HeaderInfo from "../../../_components/exclusive-listings/HeaderInfo";
 import Image from "next/image";
+import { Suspense } from "react";
+
 const getExclusiveListing = async (mlsId) => {
   try {
     const res = await fetch(
       `${process.env.HOMEJUNCTION_RE_LITING_URI}${mlsId.params.exclusiveId}`,
       {
+        next: { revalidate: 60 * 60 * 24 },
         method: "GET",
         headers: {
           Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`,
-        },
-        cache: "no-store",
+        }
       }
     );
 
@@ -43,11 +46,10 @@ const getExclusiveListing = async (mlsId) => {
 };
 
 export default async function ExclusiveListing(exclusiveId) {
-  let listing = [];
-  if (listing.length === 0) {
+
     const { result } = await getExclusiveListing(exclusiveId);
-    listing = result.listings[0];
-  }
+    const listing = await result.listings[0];
+  
 
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -71,16 +73,7 @@ export default async function ExclusiveListing(exclusiveId) {
         />
       </div>
       <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center px-4">
-        <span className="font-heading text-white mt-[-560px] z-10 text-base mb-3">
-          {listing.propertyType}
-        </span>
-        <h1 className="font-heading text-reGreen z-10 text-4xl lg:text-5xl mb-1">
-          {listing.address.deliveryLine}
-        </h1>
-        <span className="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
-          {listing.address.city}, {listing.address.state} {listing.address.zip}
-        </span>
-
+       <HeaderInfo listing={listing}/>
         <ListingHeaderInfo listing={listing} />
         <ButtonsExclusiveListings />
       </div>
@@ -192,11 +185,13 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
-        <section className="bg-reDark h-auto md:h-[400px] overflow-auto">
+        <section className="bg-reDark h-auto md:min-h-[213px] md:max-h-[420px] overflow-auto">
           <ListingImageGallery images={listing.images} />
         </section>
         <section>
+          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
           <AgentTestimonials listing={listing} />
+          </Suspense>
         </section>
       </main>
     </div>
