@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.nextImg img {
+  transition: transform 150ms ease-in-out; /* This mimics the default transition timing in Tailwind */
+}
+
+.nextImg img:hover {
+  transform: scale(1.05);
+}
 
 .accordion-listings h3 {
   @apply text-reDark;

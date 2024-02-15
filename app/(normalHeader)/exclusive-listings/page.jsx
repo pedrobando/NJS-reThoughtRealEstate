@@ -3,14 +3,10 @@ import Link from "next/link";
 import getFeaturedListings from "../../_utils/getFeaturedListings"
 
 
+
 export default async function ListingsList() {
-
-  let listings = []
-
-    const { result } = await getFeaturedListings();
-    listings = result.listings
-
-
+  const data = await getFeaturedListings();
+  const listings = data.result.listings
   
   return (
     <>

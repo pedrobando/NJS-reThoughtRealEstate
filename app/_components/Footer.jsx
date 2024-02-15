@@ -1,6 +1,6 @@
 import WaveDividerBottom from "./WaveDividerBottom";
 import Link from "next/link";
-import Image from "next/image"
+import Image from "next/image";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -9,20 +9,20 @@ const Footer = () => {
     <footer className="flex-col items-center justify-end bg-reDark min-h-[130px] pb-6 w-full">
       <div className="relative bg-reGreen py-8 px-6 text-center w-full">
         <h3 className="font-heading text-xl font-semibold z-10 pb-2">
-          Hablamos Español! Para ayuda puede llamar o enviar mensaje de texto al
-          414.797.6128
+          ¡Hablamos Español! Para ayuda puede llamar o enviar mensaje de texto
+          al 414.797.6128
         </h3>
         <WaveDividerBottom fill="waveDivider" />
       </div>
       <div className="flex flex-col container mx-auto md:flex-row bg-reDark gap-x-10 gap-y-16 py-10 px-5 md:px-0  md:py-[50px]">
         <div className="w-full md:flex-auto md:w-[40%]">
-          <Link href="/" className="w-[40%] md:w-[40%] hover:scale-105 transition-transform">
+          <Link href="/" className="w-[40%] md:w-[40%] nextImg">
             <Image
               src="/img/rethought-real-estate-light-logo.svg"
               alt="reThought Real Estate Logo"
               width={221}
               height={52}
-              style={{objectFit: "contain", }}
+              style={{ objectFit: "contain" }}
             />
           </Link>
           <p className="mt-8 text-reTextGrey">
@@ -50,15 +50,14 @@ const Footer = () => {
       </div>
       <div className="flex flex-col md:flex-row pt-6 px-6 md:px-[10%]">
         <div className="basis-12/12 md:basis-8/12">
-          <div className="">
           <Image
             src="/img/metro-mls.png"
-            width={60}
+            width={45}
             height={33}
-            style={{float: "left", marginRight: "15px"}}
+            style={{ float: "left", marginRight: "15px" }}
             alt="Metro MLS Logo"
           />
-          </div>
+
           <p className="text-xs text-reTextGrey opacity-50 md:pr-[20%]">
             Information is supplied by seller and other third parties and has
             not been verified. IDX information is provided exclusively for
@@ -71,18 +70,18 @@ const Footer = () => {
           <p className="text-xs text-reTextGrey opacity-50 pt-4 md:pt-0 ">
             reThought Real Estate LLC © {year} All rights reserved.
           </p>
-          <Link className="text-xs text-reTextGrey hover:text-white" href="/">
+          <Link className="text-xs text-reTextGrey hover:text-white" href="/privacy-policy">
             Privacy Policy
           </Link>
           <Link
             className="text-xs text-reTextGrey pl-3 hover:text-white"
-            href="/"
+            href="/terms-and-conditions"
           >
             Terms and Conditions
           </Link>
           <Link
             className="text-xs text-reTextGrey pl-3 hover:text-white"
-            href="/"
+            href="/dmca-notice"
           >
             DMCA Notice
           </Link>
