@@ -5,7 +5,8 @@ import WaveDividerBottom from "./WaveDividerBottom";
 import getCenter from "geolib/es/getCenter";
 import Image from "next/image";
 
-export default function MapBoxF({ listingsResults }) {
+export default async function MapBoxF({ listingsResults }) {
+  
   const [selectedLocation, setSelectedLocation] = useState({});
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -22,6 +23,8 @@ export default function MapBoxF({ listingsResults }) {
     latitude: center.latitude,
     longitude: center.longitude,
   });
+
+  
   return (
     <section className="hidden relative flex md:inline-flex md:w-screen h-[400px] max-h-[400px] overflow-hidden">
       <ReactMapGL
