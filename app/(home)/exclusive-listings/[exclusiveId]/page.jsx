@@ -9,10 +9,11 @@ import { calculateDaysFromUnix } from "../../../_utils/calculateDaysFromUnix";
 import HeaderInfo from "../../../_components/exclusive-listings/HeaderInfo";
 import Image from "next/image";
 import { Suspense } from "react";
-import getFeaturedListings from "../../../_utils/getFeaturedListings";
+import getFeaturedListing from "../../../_utils/getFeaturedListing";
 
 export default async function ExclusiveListing(exclusiveId) {
-  const { result } = await getFeaturedListings(exclusiveId);
+
+  const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
   const listing = await result.listings[0];
 
   const USDollar = new Intl.NumberFormat("en-US", {
@@ -119,7 +120,7 @@ export default async function ExclusiveListing(exclusiveId) {
             <ListingInformationAccordion listing={listing} />
           </div>
           <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
-            <ListingInformationAccordion listing={listing} />
+          <ListingInformationAccordion listing={listing} />
           </div>
         </section>
         <section className="flex container max-h-[450px]">
@@ -159,7 +160,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section>
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            {/* <AgentTestimonials listing={listing} /> */}
+            <AgentTestimonials listing={listing} /> 
           </Suspense>
         </section>
       </main>

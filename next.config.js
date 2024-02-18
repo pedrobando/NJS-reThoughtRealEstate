@@ -7,7 +7,24 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['listing-images.homejunction.com', 'rethought-realestate.com', 'cdn.mos.cms.futurecdn.net','lh3.googleusercontent.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.homejunction.com',
+        port: '',
+      },{
+        protocol: 'https',
+        hostname: '**.rethought-realestate.com',
+        port: '',
+      },{
+        protocol: 'https',
+        hostname: '**.futurecdn.net',
+        port: '',
+      },{
+        protocol: 'https',
+        hostname: '**.googleusercontent.com',
+        port: '',
+      },]
   },
   env: {
     HOMEJUNCTION_TOKEN: process.env.HOMEJUNCTION_TOKEN,
