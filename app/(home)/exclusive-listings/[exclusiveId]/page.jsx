@@ -22,7 +22,7 @@ export default async function ExclusiveListing(exclusiveId) {
 
   return (
     <div className="bg-white w-full z-0 text-reText">
-      <div className="relative flex flex-col items-center justify-center bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] min-h-screen -z-[120]  ">
+      <div className="relative flex flex-col items-center justify-end bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] mb-[-25px]  min-h-screen -z-[120]  ">
       <Image
           style={{
             objectFit: "cover",
@@ -36,7 +36,7 @@ export default async function ExclusiveListing(exclusiveId) {
           fill={true}
           priority={true}
         />
-        <div id="mainInfo" className="flex flex-col pt-[150px] pb-[50px] md:pb-[80px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent">
+        <div id="mainInfo" className="flex flex-col pb-[70px] md:pb-[80px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent">
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />
           <ButtonsExclusiveListings />
