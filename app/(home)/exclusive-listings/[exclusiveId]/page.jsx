@@ -36,14 +36,16 @@ export default async function ExclusiveListing(exclusiveId) {
           fill={true}
           priority={true}
         />
-        <div id="mainInfo" className="flex flex-col pt-[150px] pb-[50px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent">
+        <div id="mainInfo" className="flex flex-col pt-[150px] pb-[50px] md:pb-[80px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent">
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />
           <ButtonsExclusiveListings />
         </div>
+       
       </div>
-
       <SwiperCarousel images={listing.images} />
+
+      
       <main className="bg-white">
         <section className="flex container mx-auto relative bg-white gap-x-3">
           <div className="relative w-full mx-auto px-4 lg:pt-32 pt-14">

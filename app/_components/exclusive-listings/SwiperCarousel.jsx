@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const SwiperCarousel = ({ images }) => {
   return (
-    <div className="container mx-auto mt-[-80px] rounded-lg px-3 block max-h-[320px] overflow-hidden">
+    <div className="container mx-auto mt-[-70px] rounded-lg px-3 block max-h-[320px] overflow-hidden">
       <Swiper
         slidesPerView={4}
         className="w-full h-full max-h-[320px] rounded-lg overflow-hidden "
