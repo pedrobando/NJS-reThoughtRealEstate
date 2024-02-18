@@ -36,7 +36,7 @@ export default async function ExclusiveListing(exclusiveId) {
           fill={true}
           priority={true}
         />
-        <div id="mainInfo" className="flex flex-col pt-[150px] pb-[50px] place-content-center place-items-center  container mx-auto bg-white w-full z-20 justify-center px-4 bg-transparent">
+        <div id="mainInfo" className="flex flex-col pt-[150px] pb-[50px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent">
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />
           <ButtonsExclusiveListings />
