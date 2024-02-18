@@ -3,19 +3,28 @@ export default async function getFeaturedListings() {
     try {
       const res = await fetch(`${process.env.HOMEJUNCTION_RE_LITINGS_URI}`, {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`, // Replace with secure handling of token
+        next:{
+          revalidate: 60 * 60 * 24
         },
-        cache: "no-store"
+        headers: {
+          Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`, 
+        },
       });
   
-      const data = await res.json(); // Parse JSON regardless of res.ok
+      const data = await res.json(); 
   
       if (!res.ok || !data.success) {
         throw new Error(data.error?.message || `HTTP error: ${res.status} ${res.statusText}`);
       }
-     // await delay(8000);
-      return data;
+
+      if (data.success) {
+        if (data.result.invalid !== undefined) {
+          throw new Error(data.error?.message || `HTTP error: ${res.status} ${res.statusText}`);
+        }
+        // await delay(8000); 
+        return data;
+      }
+     
 
     } catch (error) {
       console.error("Error fetching listings:", error.message);

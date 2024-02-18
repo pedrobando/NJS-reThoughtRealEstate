@@ -19,35 +19,11 @@ import { calculateDaysFromUnix } from "../../../_utils/calculateDaysFromUnix";
 import HeaderInfo from "../../../_components/exclusive-listings/HeaderInfo";
 import Image from "next/image";
 import { Suspense } from "react";
-
-const getExclusiveListing = async (mlsId) => {
-  try {
-    const res = await fetch(
-      `${process.env.HOMEJUNCTION_RE_LITING_URI}${mlsId.params.exclusiveId}`,
-      {
-        next: { revalidate: 60 * 60 * 24 },
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`,
-        }
-      }
-    );
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch topics", res);
-    }
-
-    return res.json();
-  } catch (error) {
-    console.log("Error loading topics: ", error);
-
-    return { result: { listings: [] } }; // Return an empty array or handle the error gracefully
-  }
-};
+import getFeaturedListings from "../../../_utils/getFeaturedListings";
 
 export default async function ExclusiveListing(exclusiveId) {
 
-    const { result } = await getExclusiveListing(exclusiveId);
+    const { result } = await getFeaturedListings(exclusiveId);
     const listing = await result.listings[0];
   
 
