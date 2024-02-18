@@ -22,7 +22,7 @@ export default async function ExclusiveListing(exclusiveId) {
 
   return (
     <div className="bg-white w-full z-0 text-reText">
-      <div className="relative flex flex-col items-center justify-end bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] mb-[-25px]  min-h-screen -z-[120]  ">
+      <div className="relative flex flex-col items-center justify-end bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] mb-[-25px] min-h-[680px] 2xl:min-h-screen  -z-[120]  ">
       <Image
           style={{
             objectFit: "cover",
