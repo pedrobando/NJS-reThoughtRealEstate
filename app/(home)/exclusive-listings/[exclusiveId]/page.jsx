@@ -159,7 +159,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section>
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <AgentTestimonials listing={listing} />
+            {/* <AgentTestimonials listing={listing} /> */}
           </Suspense>
         </section>
       </main>
