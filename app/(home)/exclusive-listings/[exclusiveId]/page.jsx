@@ -1,14 +1,4 @@
-import {
-  faArrowDownLong,
-  faBath,
-  faBed,
-  faCar,
-  faCircleInfo,
-  faExpand,
-  faHouse,
-} from "@fortawesome/free-solid-svg-icons";
 import MapBoxSingle from "../../../_components/MapBoxSingle";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SwiperCarousel from "../../../_components/exclusive-listings/SwiperCarousel";
 import ListingHeaderInfo from "../../../_components/listings/ListingsHeaderInfo";
 import ButtonsExclusiveListings from "../../../_components/exclusive-listings/ButtonsExclusiveListings";
@@ -22,10 +12,8 @@ import { Suspense } from "react";
 import getFeaturedListings from "../../../_utils/getFeaturedListings";
 
 export default async function ExclusiveListing(exclusiveId) {
-
-    const { result } = await getFeaturedListings(exclusiveId);
-    const listing = await result.listings[0];
-  
+  const { result } = await getFeaturedListings(exclusiveId);
+  const listing = await result.listings[0];
 
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -34,31 +22,34 @@ export default async function ExclusiveListing(exclusiveId) {
 
   return (
     <div className="bg-white w-full z-0 text-reText">
-      <div className="relative bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] min-h-screen  ">
-        <Image
+      <div className="relative flex flex-col items-center justify-center bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] min-h-screen -z-[120]  ">
+      <Image
           style={{
             objectFit: "cover",
             objectPosition: "center",
             opacity: 0.1,
             minHeight: "100vh",
+            zIndex: "-100",
           }}
           src={listing.images[0]}
           alt="Cover"
           fill={true}
-          priority={true} 
+          priority={true}
         />
+        <div id="mainInfo" className="flex flex-col pt-[150px] pb-[50px] place-content-center place-items-center  container mx-auto bg-white w-full z-20 justify-center px-4 bg-transparent">
+          <HeaderInfo listing={listing} />
+          <ListingHeaderInfo listing={listing} />
+          <ButtonsExclusiveListings />
+        </div>
       </div>
-      <div className="flex flex-col items-center container mx-auto bg-white w-full z-10 justify-center px-4">
-       <HeaderInfo listing={listing}/>
-        <ListingHeaderInfo listing={listing} />
-        <ButtonsExclusiveListings />
-      </div>
+
       <SwiperCarousel images={listing.images} />
       <main className="bg-white">
         <section className="flex container mx-auto relative bg-white gap-x-3">
           <div className="relative w-full mx-auto px-4 lg:pt-32 pt-14">
             <h3 className="text-4xl font-heading font-semibold tracking-tight text-white md:text-5xl lg:text-6xl w-fit bg-gradient-to-r from-reGreen to-lime-600 p-3 rounded-lg">
-              About {listing.xf_list_31} {listing.xf_list_33} {listing.xf_list_34}
+              About {listing.xf_list_31} {listing.xf_list_33}{" "}
+              {listing.xf_list_34}
             </h3>
 
             <div className="flex container flex-col justify lg:flex-row lg:items-center lg:place-items-center pr-4 gap-x-9">
@@ -166,7 +157,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section>
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-          <AgentTestimonials listing={listing} />
+            <AgentTestimonials listing={listing} />
           </Suspense>
         </section>
       </main>

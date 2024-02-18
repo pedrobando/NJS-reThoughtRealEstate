@@ -1,10 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowDownLong,
   faBath,
   faBed,
   faCar,
-  faCircleInfo,
   faExpand,
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";

@@ -16,7 +16,7 @@
 }
 
 .exclusive-listings-hero{
-  @apply flex flex-col text-white z-10 md:text-xl transform mb-1 items-center justify-center text-base font-body;
+  @apply flex flex-col text-white z-10 md:text-xl transform mb-1 items-center justify-center text-base font-body text-center;
 }
 .info-content-wrap .info-content:last-child {
   @apply border-none;
