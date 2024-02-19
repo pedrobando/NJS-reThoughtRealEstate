@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 export default async function getFeaturedListing(exclusiveid) {
 
     try {
@@ -12,18 +14,18 @@ export default async function getFeaturedListing(exclusiveid) {
       });
   
       const data = await res.json(); 
-  
+      
       if (!res.ok || !data.success) {
+        
         throw new Error(data.error?.message || `HTTP error: ${res.status} ${res.statusText}`);
       }
 
       if (data.success) {
-        if (data.result.invalid !== undefined) {
-          throw new Error(data.error?.message || `HTTP error: ${res.status} ${res.statusText}`);
+           return data;
         }
         // await delay(8000); 
-        return data;
-      }
+       // return data;
+      
      
 
     } catch (error) {

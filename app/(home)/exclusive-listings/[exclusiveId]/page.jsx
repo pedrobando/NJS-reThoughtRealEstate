@@ -10,10 +10,15 @@ import HeaderInfo from "../../../_components/exclusive-listings/HeaderInfo";
 import Image from "next/image";
 import { Suspense } from "react";
 import getFeaturedListing from "../../../_utils/getFeaturedListing";
+import { notFound } from "next/navigation";
 
 export default async function ExclusiveListing(exclusiveId) {
 
   const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
+  console.log(result, "kjnskdjnfskdjfnsdkjfnskdjfnkdjfnkjfnskdjfnsdkjfnsdkfnkdjn")
+  if (result.invalid) {
+    notFound();
+ }
   const listing = await result.listings[0];
 
   const USDollar = new Intl.NumberFormat("en-US", {
