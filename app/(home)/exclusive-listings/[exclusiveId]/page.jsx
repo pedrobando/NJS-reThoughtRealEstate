@@ -15,7 +15,6 @@ import { notFound } from "next/navigation";
 export default async function ExclusiveListing(exclusiveId) {
 
   const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
-  console.log(result, "kjnskdjnfskdjfnsdkjfnskdjfnkdjfnkjfnskdjfnsdkjfnsdkfnkdjn")
   if (result.invalid) {
     notFound();
  }
@@ -139,24 +138,7 @@ export default async function ExclusiveListing(exclusiveId) {
                 property located in the city of {listing.address.city} which is
                 located in {listing.county} county.
               </h5>
-              <div className="flex container flex-col md:flex-row gap-y-9 items-center md:items-start justify-center md:gap-x-9 pt-14">
-                <div className="mb-4">
-                  <a
-                    className="text-white border border-white rounded-lg p-3 hover:scale-105 transition-transform"
-                    href="/"
-                  >
-                    GET PRE APPROVED
-                  </a>
-                </div>
-                <div>
-                  <a
-                    className="text-white border border-reGreen bg-reGreen rounded-lg p-3 hover:scale-105 transition-transform animate-pulse"
-                    href="#"
-                  >
-                    I WANT TO SEE THIS PROPERTY
-                  </a>
-                </div>
-              </div>
+              <ButtonsExclusiveListings />
             </div>
           </div>
         </section>
