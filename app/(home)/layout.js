@@ -15,6 +15,11 @@ export const metadata = {
 export default function HomeLayout({ children }) {
   return (
     <html lang="en">
+      <link
+        href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css"
+        rel="stylesheet"
+        precedence="default"
+      />
       <body className="min-h-screen flex flex-col justify-between">
         <TransparentNavBar />
         {children}

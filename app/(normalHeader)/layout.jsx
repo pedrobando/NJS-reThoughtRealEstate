@@ -1,6 +1,7 @@
 import "../globals.css";
 import NavBarSolid from "../_components/NavBarSolid";
 import Footer from "../_components/Footer";
+import MapBoxImport from "../_utils/mapBoxImport"
 
 export const metadata = {
   title: "Create Next App",
@@ -10,11 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    <link
-      href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css"
-      rel="stylesheet"
-      precedence="default"
-    />
+    <MapBoxImport/>
     <body className="min-h-screen flex flex-col justify-between">
       <NavBarSolid />
       <div className="bg-white flex-grow min-h-64">{children}</div>

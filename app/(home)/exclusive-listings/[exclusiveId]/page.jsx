@@ -23,7 +23,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   //console.log(property, "wlkdsnkfndfvndfndfvikndfskvjndfkvjndfkvndfak;vjndfvk;jdnfv;kdjfnk;")
   const description = await DescriptionMetadata(property, "Single Family");
   console.log(
-    description,
+    "usePathname()",
     "Descfdlk;jngk;dfngkdfnk;ndknmlk;dfgklfdjnblk;dfnjg;lkndfkgnjdflg;kjdflkhbjdlfkhjdflkhjdlf;kjl;kj"
   );
   return {
@@ -148,9 +148,9 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </section>
         <section className="flex container max-h-[450px]">
-          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
+         
             <MapBoxSingle listingCoordinates={listing.coordinates} />
-          </Suspense>
+      
         </section>
         <section className="bg-reDark min-h-[450px] pb-[120px]">
           <div className="flex container mx-auto items-center pt-14 px-4">
