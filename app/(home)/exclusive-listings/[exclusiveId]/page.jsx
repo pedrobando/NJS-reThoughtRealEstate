@@ -11,33 +11,32 @@ import Image from "next/image";
 import { Suspense } from "react";
 import getFeaturedListing from "../../../_utils/getFeaturedListing";
 import { notFound } from "next/navigation";
-import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata"
-
+import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata";
 
 export async function generateMetadata({ params, searchParams }, parent) {
- 
   // read route params
-  const id = params.exclusiveId
- 
+  const id = params.exclusiveId;
+
   // fetch data
-  const propertyData =  await getFeaturedListing(id);
-  const property =  propertyData.result.listings[0]
+  const propertyData = await getFeaturedListing(id);
+  const property = propertyData.result.listings[0];
   //console.log(property, "wlkdsnkfndfvndfndfvikndfskvjndfkvjndfkvndfak;vjndfvk;jdnfv;kdjfnk;")
-  const description = await DescriptionMetadata(property, "Single Family")
-  console.log(description, "Descfdlk;jngk;dfngkdfnk;ndknmlk;dfgklfdjnblk;dfnjg;lkndfkgnjdflg;kjdflkhbjdlfkhjdflkhjdlf;kjl;kj")
+  const description = await DescriptionMetadata(property, "Single Family");
+  console.log(
+    description,
+    "Descfdlk;jngk;dfngkdfnk;ndknmlk;dfgklfdjnblk;dfnjg;lkndfkgnjdflg;kjdflkhbjdlfkhjdflkhjdlf;kjl;kj"
+  );
   return {
     title: property.address.deliveryLine,
     description: description,
-  }
+  };
 }
- 
 
 export default async function ExclusiveListing(exclusiveId) {
-
   const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
   if (result.invalid) {
     notFound();
- }
+  }
   const listing = await result.listings[0];
 
   const USDollar = new Intl.NumberFormat("en-US", {
@@ -48,7 +47,7 @@ export default async function ExclusiveListing(exclusiveId) {
   return (
     <div className="bg-white w-full z-0 text-reText">
       <div className="relative flex flex-col items-center justify-end bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] mb-[-25px] min-h-[680px] 2xl:min-h-screen  -z-[120]  ">
-      <Image
+        <Image
           style={{
             objectFit: "cover",
             objectPosition: "center",
@@ -61,16 +60,17 @@ export default async function ExclusiveListing(exclusiveId) {
           fill={true}
           priority={true}
         />
-        <div id="mainInfo" className="flex flex-col pb-[70px] md:pb-[80px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent">
+        <div
+          id="mainInfo"
+          className="flex flex-col pb-[70px] md:pb-[80px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent"
+        >
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />
           <ButtonsExclusiveListings />
         </div>
-       
       </div>
       <SwiperCarousel images={listing.images} />
 
-      
       <main className="bg-white">
         <section className="flex container mx-auto relative bg-white gap-x-3">
           <div className="relative w-full mx-auto px-4 lg:pt-32 pt-14">
@@ -144,11 +144,13 @@ export default async function ExclusiveListing(exclusiveId) {
             <ListingInformationAccordion listing={listing} />
           </div>
           <div className="w-full px-3 lg:basis-10/12 mt-16 mx-auto">
-          <ListingInformationAccordion listing={listing} />
+            <ListingInformationAccordion listing={listing} />
           </div>
         </section>
         <section className="flex container max-h-[450px]">
-          <MapBoxSingle listingCoordinates={listing.coordinates} />
+          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
+            <MapBoxSingle listingCoordinates={listing.coordinates} />
+          </Suspense>
         </section>
         <section className="bg-reDark min-h-[450px] pb-[120px]">
           <div className="flex container mx-auto items-center pt-14 px-4">
@@ -167,7 +169,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section>
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <AgentTestimonials listing={listing} /> 
+            <AgentTestimonials listing={listing} />
           </Suspense>
         </section>
       </main>
