@@ -11,6 +11,26 @@ import Image from "next/image";
 import { Suspense } from "react";
 import getFeaturedListing from "../../../_utils/getFeaturedListing";
 import { notFound } from "next/navigation";
+import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata"
+
+
+export async function generateMetadata({ params, searchParams }, parent) {
+ 
+  // read route params
+  const id = params.exclusiveId
+ 
+  // fetch data
+  const propertyData =  await getFeaturedListing(id);
+  const property =  propertyData.result.listings[0]
+  //console.log(property, "wlkdsnkfndfvndfndfvikndfskvjndfkvjndfkvndfak;vjndfvk;jdnfv;kdjfnk;")
+  const description = await DescriptionMetadata(property, "Single Family")
+  console.log(description, "Descfdlk;jngk;dfngkdfnk;ndknmlk;dfgklfdjnblk;dfnjg;lkndfkgnjdflg;kjdflkhbjdlfkhjdflkhjdlf;kjl;kj")
+  return {
+    title: property.address.deliveryLine,
+    description: description,
+  }
+}
+ 
 
 export default async function ExclusiveListing(exclusiveId) {
 
