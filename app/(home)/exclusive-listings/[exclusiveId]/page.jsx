@@ -29,7 +29,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
     title: `For Sale | ${property.address.deliveryLine} ${property.address.city}, ${property.address.state} ${property.address.zip}`,
     description: description,
     openGraph:{
-      images: `/api/og?propertytype=${property.propertyType}&deliveryLine=${property.address.deliveryLine}`
+      images: `/api/og?propertytype=${property.propertyType}&deliveryLine=${property.address.deliveryLine}&city=${property.address.city}&state=${property.address.state}&zip=${property.address.zip}&imgUrl=${property.images[0]}`
     }
   };
 }

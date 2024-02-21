@@ -47,30 +47,27 @@ export async function GET(request) {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "#2a2a2a",
-          position:"relative"
         
         }}
       >
-    
-
-           <span  style={{color: "white", zIndex: "100",}} class="font-heading text-white z-10 text-base mb-3">
-          {listing.propertyType}
-        </span>
-        <h1 className="text-center font-heading text-reGreen z-10 text-3xl sm:text-4xl lg:text-5xl mb-1">
-          {listing.address.deliveryLine}
-        </h1>
-        <span className="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
-          {listing.address.city}, {listing.address.state} {listing.address.zip}
-        </span>
-        
-        <img  style={{
+     <img  style={{
             objectFit: "cover",
             objectPosition: "center",
             opacity: 0.1,
-            poition:"absolute",
             minHeight: "100vh",
             zIndex: "-100",
-          }} src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/download-23.jpg"/>
+          }} tw="absolute" src={listing.images[0]}/>
+           <span tw="font-heading text-white z-10 text-lg mb-3">
+          {listing.propertyType}
+        </span>
+        <h1 tw="text-center font-heading text-[#8bc94e] z-10 text-5xl mb-1">
+          {listing.address.deliveryLine}
+        </h1>
+        <span tw="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
+          {listing.address.city}, {listing.address.state} {listing.address.zip}
+        </span>
+        
+
         
       </div>
     ),
