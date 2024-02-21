@@ -4,7 +4,7 @@ import TransparentNavBar from "../_components/transparentNavBar";
 
 
 export const metadata = {
-  metadataBase: new URL("http://localhost:300"),
+  //metadataBase: new URL("http://localhost:300"),
   title: {
     default: "Milwaukee Bilingual REALTORS® | reThought Real Estate",
     template:`%s | reThought Real Estate`
