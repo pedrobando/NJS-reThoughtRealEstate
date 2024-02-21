@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { CalendarIcon, PhoneIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 export default function NavBarSlide() {
   const [open, setOpen] = useState(false);

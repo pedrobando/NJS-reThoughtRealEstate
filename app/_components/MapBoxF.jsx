@@ -27,7 +27,7 @@ export default async function MapBoxF({ listingsResults }) {
 
   
   return (
-    <section className="hidden relative flex md:inline-flex md:w-screen h-[400px] max-h-[400px] overflow-hidden bg-gray-800 z-[1000]">
+    <section className="hidden relative flex md:inline-flex md:w-screen h-[400px] max-h-[400px] overflow-hidden bg-gray-800 ">
       <ReactMapGL
         mapStyle="mapbox://styles/pedrobandorivera/clrl6vf5m003201qsb5235rfx"
         mapboxAccessToken={process.env.NEXT_PUBLIC_mapbox_token}

@@ -23,14 +23,14 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const propertyData = await getFeaturedListing(id);
   const property = propertyData.result.listings[0];
   //console.log(property, "wlkdsnkfndfvndfndfvikndfskvjndfkvjndfkvndfak;vjndfvk;jdnfv;kdjfnk;")
-  const description = await DescriptionMetadata(property, "Single Family");
+  const description = await DescriptionMetadata(property, property.propertyType);
  
   return {
     title: `For Sale | ${property.address.deliveryLine} ${property.address.city}, ${property.address.state} ${property.address.zip}`,
-    description: description,
-    openGraph:{
-      images: `/api/og?propertytype=${property.propertyType}&deliveryLine=${property.address.deliveryLine}&city=${property.address.city}&state=${property.address.state}&zip=${property.address.zip}&imgUrl=${property.images[0]}`
-    }
+    description: property.description,
+    //openGraph:{
+     // images: `/api/og?propertytype=${property.propertyType}&deliveryLine=${property.address.deliveryLine}&city=${property.address.city}&state=${property.address.state}&zip=${property.address.zip}&imgUrl=${property.images[0]}`
+    //}
   };
 }
 
