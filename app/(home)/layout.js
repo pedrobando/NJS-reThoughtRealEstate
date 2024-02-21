@@ -1,7 +1,7 @@
 import "../globals.css";
-import NavBarSolid from "../_components/NavBarSolid";
 import Footer from "../_components/Footer";
 import TransparentNavBar from "../_components/transparentNavBar";
+
 
 export const metadata = {
   metadataBase: new URL("http://localhost:300"),

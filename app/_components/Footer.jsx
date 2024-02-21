@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="flex-col items-center justify-end bg-reDark min-h-[130px] pb-6 w-full">
       <div className="relative bg-reGreen py-8 px-6 text-center w-full">
-        <h3 className="font-heading text-xl font-semibold z-10 pb-2">
+        <h3 className="font-heading text-xl font-semibold z-10 pb-2 text-white">
           ¡Hablamos Español! Para ayuda puede llamar o enviar mensaje de texto
           al 414.797.6128
         </h3>
@@ -37,15 +37,15 @@ const Footer = () => {
         </div>
 
         <div className="flex-auto w-80">
-          <h3 className="font-accent text-2xl">Neighboorhoods</h3>
+          <h3 className="font-accent text-2xl text-white">Neighboorhoods</h3>
+        </div>
+
+        <div className="flex-auto w-80 ">
+          <h3 className="font-accent text-2xl text-white">Real Estate</h3>
         </div>
 
         <div className="flex-auto w-80">
-          <h3 className="font-accent text-2xl">Real Estate</h3>
-        </div>
-
-        <div className="flex-auto w-80">
-          <h3 className="font-accent text-2xl">Find Us</h3>
+          <h3 className="font-accent text-2xl text-white">Find Us</h3>
         </div>
       </div>
       <div className="flex flex-col md:flex-row pt-6 px-6 md:px-[10%]">

@@ -6,6 +6,13 @@ import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCar
 import { Suspense } from "react";
 import LoadingListingsMapBox from "../../_components/ui/LoadingUI/LoadingListingsMapBox"
 
+export async function generateMetadata({ params, searchParams }, parent) { 
+  return {
+    title: "Exclusive Listings",
+    description: "Our exclusive MLS listings are meticulously curated to showcase some of the finest properties in the Racine, Milwaukee, and Waukeha Counties. ",
+  };
+}
+
 export default async function ListingsList() {
   const data = await getFeaturedListings();
   const listings = data.result.listings;

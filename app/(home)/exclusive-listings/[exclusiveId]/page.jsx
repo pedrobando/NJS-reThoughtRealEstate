@@ -13,6 +13,8 @@ import getFeaturedListing from "../../../_utils/getFeaturedListing";
 import { notFound } from "next/navigation";
 import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata";
 
+export const dynamic = 'force-static';
+
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
   const id = params.exclusiveId;
@@ -22,13 +24,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const property = propertyData.result.listings[0];
   //console.log(property, "wlkdsnkfndfvndfndfvikndfskvjndfkvjndfkvndfak;vjndfvk;jdnfv;kdjfnk;")
   const description = await DescriptionMetadata(property, "Single Family");
-  console.log(
-    "usePathname()",
-    "Descfdlk;jngk;dfngkdfnk;ndknmlk;dfgklfdjnblk;dfnjg;lkndfkgnjdflg;kjdflkhbjdlfkhjdflkhjdlf;kjl;kj"
-  );
+ 
   return {
-    title: property.address.deliveryLine,
+    title: `For Sale | ${property.address.deliveryLine} ${property.address.city}, ${property.address.state} ${property.address.zip}`,
     description: description,
+    openGraph:{
+      images: `/api/og?propertytype=${property.propertyType}&deliveryLine=${property.address.deliveryLine}`
+    }
   };
 }
 
@@ -74,10 +76,10 @@ export default async function ExclusiveListing(exclusiveId) {
       <main className="bg-white">
         <section className="flex container mx-auto relative bg-white gap-x-3">
           <div className="relative w-full mx-auto px-4 lg:pt-32 pt-14">
-            <h3 className="text-4xl font-heading font-semibold tracking-tight text-white md:text-5xl lg:text-6xl w-fit bg-gradient-to-r from-reGreen to-lime-600 p-3 rounded-lg">
+            <h2 className="text-4xl font-heading font-semibold tracking-tight text-white md:text-5xl lg:text-6xl w-fit bg-gradient-to-r from-reGreen to-lime-600 p-3 rounded-lg">
               About {listing.xf_list_31} {listing.xf_list_33}{" "}
               {listing.xf_list_34}
-            </h3>
+            </h2>
 
             <div className="flex container flex-col justify lg:flex-row lg:items-center lg:place-items-center pr-4 gap-x-9">
               {listing.status === "Pending" && (
@@ -148,18 +150,18 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </section>
         <section className="flex container max-h-[450px]">
-         
+        <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
             <MapBoxSingle listingCoordinates={listing.coordinates} />
-      
+      </Suspense>
         </section>
         <section className="bg-reDark min-h-[450px] pb-[120px]">
           <div className="flex container mx-auto items-center pt-14 px-4">
             <div className="block px-2 md:px-14 pt-[80px]  md:pt-[180px]">
-              <h5 className="text-white text-3xl font-heading text-center md:text-left">
+              <h3 className="text-white text-3xl font-heading text-center md:text-left">
                 {listing.address.deliveryLine} is a {listing.propertyType}{" "}
                 property located in the city of {listing.address.city} which is
                 located in {listing.county} county.
-              </h5>
+              </h3>
               <ButtonsExclusiveListings />
             </div>
           </div>
