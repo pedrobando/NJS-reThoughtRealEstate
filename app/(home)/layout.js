@@ -1,6 +1,7 @@
 import "../globals.css";
 import Footer from "../_components/Footer";
 import TransparentNavBar from "../_components/transparentNavBar";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata = {
@@ -24,6 +25,7 @@ export default function HomeLayout({ children }) {
         <TransparentNavBar />
         {children}
         <Footer />
+        <SpeedInsights/>
       </body>
     </html>
   );

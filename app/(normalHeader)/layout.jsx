@@ -2,7 +2,7 @@ import "../globals.css";
 import NavBarSolid from "../_components/NavBarSolid";
 import Footer from "../_components/Footer";
 import MapBoxImport from "../_utils/mapBoxImport"
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
  // metadataBase: new URL("http://localhost:3000"),
@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
       <NavBarSolid />
       <div className="bg-white flex-grow min-h-64">{children}</div>
       <Footer />
+      <SpeedInsights/>
     </body></html>
   );
 }
