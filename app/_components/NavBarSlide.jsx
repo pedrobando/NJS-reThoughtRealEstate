@@ -34,7 +34,7 @@ export default function NavBarSlide() {
             <div className="fixed inset-0 bg-gray-950 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-hidden">
+          <div className="fixed inset-0 overflow-hidden z-[1000000]">
             <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                 <Transition.Child
@@ -77,7 +77,7 @@ export default function NavBarSlide() {
                           />
                           Schedule Consultation
                         </button>
-                        <ul role="list" className="mt-[30px] text-lg font-heading font-semibold">
+                        <ul role="list" className="mt-[30px] text-lg font-heading font-semibold text-white">
                             <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="/homes-for-sale">Homes for Sale</a></li>
                             <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="/exclusive-listings">Exclusive Listings</a></li>
                             <li className="relative flex justify-between px-3 py-4 hover:bg-reBlue-50 lg:px-3 hover:text-reBlue rounded-md"><a className="relative flex w-full h-full" href="#">Buyers</a></li>
@@ -89,7 +89,7 @@ export default function NavBarSlide() {
                       <div className="flex justify-between mt-6 px-[10%] md:px-[10%]">
                           Facebook,Instagram
 
-                          <button
+                          <Link href="tel:4147976128"
                           type="button"
                           className="inline-flex items-center place-content-center gap-x-2 rounded-md px-3.5 py-3.5 text-white transition-transform text-lg font-heading hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-reBlue-600 outline outline-2 outline-offset-2"
                         >
@@ -98,7 +98,7 @@ export default function NavBarSlide() {
                             aria-hidden="true"
                           />
                           Call Now
-                        </button>
+                          </Link>
                         </div>
                     </div>
                   </Dialog.Panel>
