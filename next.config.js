@@ -34,6 +34,7 @@ module.exports = {
     NEXT_PUBLIC_mapbox_token: process.env.NEXT_PUBLIC_mapbox_token,
     apininja: process.env.apininja,
     google: process.env.google,
-    NEXT_PUBLIC_lightGallery: process.env.NEXT_PUBLIC_lightGallery
+    NEXT_PUBLIC_lightGallery: process.env.NEXT_PUBLIC_lightGallery,
+    VERCEL_URL: process.env.VERCEL_URL
   },
 };

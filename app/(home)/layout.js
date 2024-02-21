@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
     default: "Milwaukee Bilingual REALTORS® | reThought Real Estate",
     template:`%s | reThought Real Estate`
