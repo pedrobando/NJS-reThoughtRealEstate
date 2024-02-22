@@ -7,23 +7,29 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.homejunction.com/**',
+        hostname: '**.homejunction.com',
+        pathname: '/mlswis/**',
         port: '',
       },{
         protocol: 'https',
-        hostname: '**.rethought-realestate.com/**',
+        hostname: '**.rethought-realestate.com',
         port: '',
+        pathname: '/wp-uploads/**',
       },{
         protocol: 'https',
-        hostname: '**.futurecdn.net/**',
+        hostname: '**.futurecdn.net',
         port: '',
+        pathname: '/**',
       },{
         protocol: 'https',
-        hostname: '**.googleusercontent.com/**',
+        hostname: '**.googleusercontent.com',
         port: '',
+        pathname: '/**',
       },]
   },
   env: {
