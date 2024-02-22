@@ -48,13 +48,13 @@ export default async function Image({params}) {
             minHeight: "100vh",
             zIndex: "-100",
           }} tw="absolute" src={listing.images[0]}/>
-           <span tw="font-heading text-white z-10 text-lg mb-3">
+           <span tw="font-heading text-white z-10 text-3xl">
           {listing.propertyType}
         </span>
-        <h1 tw="text-center font-heading text-[#8bc94e] z-10 text-5xl mb-1">
+        <h1 tw="text-center font-heading text-[#8bc94e] z-10 text-8xl mb-1">
           {listing.address.deliveryLine}
         </h1>
-        <span tw="font-heading font-semibold  text-white z-10 text-xl lg:text-3xl">
+        <span tw="font-heading font-semibold  text-white z-10 text-4xl">
           {listing.address.city}, {listing.address.state} {listing.address.zip}
         </span>
          

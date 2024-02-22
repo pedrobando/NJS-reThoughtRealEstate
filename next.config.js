@@ -10,19 +10,19 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.homejunction.com',
+        hostname: '**.homejunction.com/**',
         port: '',
       },{
         protocol: 'https',
-        hostname: '**.rethought-realestate.com',
+        hostname: '**.rethought-realestate.com/**',
         port: '',
       },{
         protocol: 'https',
-        hostname: '**.futurecdn.net',
+        hostname: '**.futurecdn.net/**',
         port: '',
       },{
         protocol: 'https',
-        hostname: '**.googleusercontent.com',
+        hostname: '**.googleusercontent.com/**',
         port: '',
       },]
   },

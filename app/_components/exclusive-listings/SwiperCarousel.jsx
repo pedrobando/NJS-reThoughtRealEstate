@@ -8,6 +8,7 @@ import SwiperCore, { Navigation, Scrollbar, FreeMode } from "swiper/modules";
 import Image from "next/image";
 
 const SwiperCarousel = ({ images }) => {
+  console.log(images)
   return (
     <div className="container mx-auto  rounded-lg px-3 block max-h-[320px] overflow-hidden">
       <Swiper
@@ -40,7 +41,7 @@ const SwiperCarousel = ({ images }) => {
               alt={`Slide ${index}`}
               fill={true}
               style={{ objectPosition: "center", objectFit:"cover" , height:"100%", width:"100%"}}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+             
              
             />
           </SwiperSlide>
