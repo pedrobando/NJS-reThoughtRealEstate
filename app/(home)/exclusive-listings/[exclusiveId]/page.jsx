@@ -71,7 +71,7 @@ export default async function ExclusiveListing(exclusiveId) {
           <ButtonsExclusiveListings />
         </div>
       </div>
-      <SwiperCarousel images={listing.images} />
+      <SwiperCarousel listing={listing} />
 
       <main className="bg-white">
         <section className="flex container mx-auto relative bg-white gap-x-3">

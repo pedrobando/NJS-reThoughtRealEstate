@@ -7,7 +7,8 @@ import "swiper/css/free-mode"; // FreeMode module
 import SwiperCore, { Navigation, Scrollbar, FreeMode } from "swiper/modules";
 import Image from "next/image";
 
-const SwiperCarousel = ({ images }) => {
+const SwiperCarousel = ({ listing }) => {
+  const images = listing.images
   console.log(images)
   return (
     <div className="container mx-auto  rounded-lg px-3 block max-h-[320px] overflow-hidden">
@@ -38,7 +39,7 @@ const SwiperCarousel = ({ images }) => {
           <SwiperSlide key={index} className="overflow-hidden aspect-video">
             <Image
               src={image}
-              alt={`Slide ${index}`}
+              alt={`${listing.address.deliveryLine} Photo`}
               fill={true}
               style={{ objectPosition: "center", objectFit:"cover" , height:"100%", width:"100%"}}
             />
