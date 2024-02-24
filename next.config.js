@@ -30,6 +30,11 @@ module.exports = {
         hostname: '**.googleusercontent.com',
         port: '',
         pathname: '/**',
+      },{
+        protocol: 'https',
+        hostname: '**.rethought.studio',
+        port: '',
+        pathname: '/**',
       },]
   },
   env: {
