@@ -41,8 +41,6 @@ const SwiperCarousel = ({ images }) => {
               alt={`Slide ${index}`}
               fill={true}
               style={{ objectPosition: "center", objectFit:"cover" , height:"100%", width:"100%"}}
-              width={2400}
-              height={1600}
             />
           </SwiperSlide>
         ))}
