@@ -19,8 +19,8 @@ const ListingImageGallery = (images) => {
       alt={`Slide ${index}`}
       key={index}
       style={{ objectPosition: "center", objectFit:"cover", height:"100%", width:"100%", cursor: "pointer"  }}
-      width={600}
-      height={600}
+      width={2400}
+      height={1600}
     />
   ))}
 </LightGallery>
