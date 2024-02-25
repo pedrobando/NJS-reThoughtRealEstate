@@ -49,12 +49,11 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row pt-6 px-6 md:px-[10%]">
-        <div className="basis-12/12 md:basis-8/12">
+        <div className="basis-12/12 md:basis-8/12 metromls">
           <Image
             src="/img/metro-mls.png"
             width={45}
             height={33}
-            style={{ float: "left", marginRight: "15px" }}
             alt="Metro MLS Logo"
           />
 

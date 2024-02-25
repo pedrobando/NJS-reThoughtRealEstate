@@ -6,7 +6,7 @@ import getCenter from "geolib/es/getCenter";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function MapBoxF({ listingsResults }) {
+export default function MapBoxF({ listingsResults }) {
   
   const [selectedLocation, setSelectedLocation] = useState({});
   const USDollar = new Intl.NumberFormat("en-US", {

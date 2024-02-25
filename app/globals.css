@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.metromls img{float: left; margin-right: 15px}
 .nextImg img {
   transition: transform 150ms ease-in-out; /* This mimics the default transition timing in Tailwind */
 }

@@ -42,6 +42,7 @@ const SwiperCarousel = ({ listing }) => {
               alt={`${listing.address.deliveryLine} Photo`}
               fill={true}
               style={{ objectPosition: "center", objectFit:"cover" , height:"100%", width:"100%"}}
+              sizes="(max-width: 2000px) 100vw, (max-width: 1280px) 50vw, 33vw"
             />
           </SwiperSlide>
         ))}

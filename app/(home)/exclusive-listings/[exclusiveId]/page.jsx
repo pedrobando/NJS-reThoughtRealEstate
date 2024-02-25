@@ -166,12 +166,12 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </section>
        
-        <section className="flex container max-h-[450px]">
+        <section className="flex container max-h-[450px]" aria-labelledby="listing-map">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
             <MapBoxSingle listingCoordinates={listing.coordinates} />
           </Suspense>
         </section>
-        <section className="bg-reDark min-h-[450px] pb-[120px]">
+        <section className="bg-reDark min-h-[450px] pb-[120px]" aria-labelledby="listing-location-blurb">
           <div className="flex container mx-auto items-center pt-14 px-4">
             <div className="block px-2 md:px-14 pt-[80px]  md:pt-[180px]">
               <h3 className="text-white text-3xl font-heading text-center md:text-left">
@@ -183,10 +183,10 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
-        <section className="bg-reDark h-auto md:min-h-[213px] md:max-h-[420px] overflow-auto">
+        <section className="bg-reDark h-auto md:min-h-[213px] md:max-h-[420px] overflow-auto" aria-labelledby="listing-photos">
           <ListingImageGallery images={listing.images} />
         </section>
-        <section>
+        <section aria-labelledby="agent-testimonials">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
             <AgentTestimonials listing={listing} />
           </Suspense>
