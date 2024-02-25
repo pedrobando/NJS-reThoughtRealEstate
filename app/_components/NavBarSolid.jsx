@@ -13,6 +13,7 @@ const NavBarSolid = () => {
             width={180}
             height={42}
             alt="reThought Real Estate Logo"
+            priority={true}
           />
         </Link>
       </div>

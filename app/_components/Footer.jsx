@@ -55,6 +55,7 @@ const Footer = () => {
             width={45}
             height={33}
             alt="Metro MLS Logo"
+            priority={true}
           />
 
           <p className="text-xs text-reTextGrey opacity-50 md:pr-[20%]">

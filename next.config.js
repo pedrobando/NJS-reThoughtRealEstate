@@ -7,8 +7,8 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    //loader: 'custom',
-    //loaderFile: './app/_libs/CloudFlareLoader.js',
+    loader: 'custom',
+    loaderFile: './app/_libs/CloudFlareLoader.js',
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [

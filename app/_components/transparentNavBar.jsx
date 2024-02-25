@@ -12,6 +12,7 @@ function TransparentNavBar() {
             width={252}
             height={59}
             alt="reThought Real Estate Logo"
+            priority={true}
           />
         </Link>
       </div>
