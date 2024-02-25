@@ -64,13 +64,13 @@ export default async function MapBoxF({ listingsResults }) {
               >
                
                 <div className="w-full rounded-t-lg overflow-hidden z-[100]">
-                  <Image
+                <Link href={`/exclusive-listings/${result.id}`} > <Image
                     src={result.images[0]}
                     alt={result.address.deliveryLine}
                     width={250}
                     height={350}
                     style={{ objectPosition: "center", objectFit: "cover" }}
-                  />
+                  /></Link>
                 </div>
 
                 <p className="text-reDark font-heading font-semibold text-[14px] pt-2 pl-2 z-[100]">

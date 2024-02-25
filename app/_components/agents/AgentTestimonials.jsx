@@ -82,7 +82,7 @@ export default function AgentTestimonials({ listing }) {
                 {listing.listingAgent.name}'s Latest Reviews
               </h4>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Join the army of happy home buyers and sellers!
+                Join the neighborhood of happy home buyers and sellers!
               </p>
             </div>
 

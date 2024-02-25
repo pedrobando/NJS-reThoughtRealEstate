@@ -36,9 +36,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 export default async function ExclusiveListing(exclusiveId) {
   const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
-  if (result.invalid) {
-    notFound();
-  }
+  if (result.invalid || result.listings[0].listingOffice.id !== "of27022") {
+    notFound("test");
+}
+
   const listing = await result.listings[0];
 
   const USDollar = new Intl.NumberFormat("en-US", {
