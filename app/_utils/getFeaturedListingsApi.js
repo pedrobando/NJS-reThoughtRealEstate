@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 export default async function getFeaturedListingApi(exclusiveid) {
 
     try {
-      const res = await fetch(`${process.env.HOMEJUNCTION_RE_API_URI}[{"uri":"/ws/listings/get", "parameters":{"market":"MLSWIS", "id":${exclusiveid}, "extended":"true","images":"true","details":"true","features":"true"}}]`, {
+      const res = await fetch(`${process.env.HOMEJUNCTION_RE_API_URI}[{"uri":"/ws/listings/get", "parameters":{"market":"MLSWIS", "id":${exclusiveid}, "extended":"true","images":"true","details":"true","features":"true"}},{"uri": "/ws/schools/search","parameters": {"sortField":"level", "sortOrder":"asc","details":"true","limit":"15", "circle": "{$.listings[0].coordinates.latitude},{$.listings[0].coordinates.longitude},2"}}]`, {
         method: "GET",
         next:{
           revalidate: 60 * 60 * 24
