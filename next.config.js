@@ -32,7 +32,7 @@ module.exports = {
         pathname: '/**',
       },{
         protocol: 'https',
-        hostname: '**.rethought.studio',
+        hostname: 'rethought.studio',
         port: '',
         pathname: '/**',
       },]
@@ -46,6 +46,7 @@ module.exports = {
     apininja: process.env.apininja,
     google: process.env.google,
     NEXT_PUBLIC_lightGallery: process.env.NEXT_PUBLIC_lightGallery,
-    VERCEL_URL: process.env.VERCEL_URL
+    VERCEL_URL: process.env.NEXTVERCEL_URL,
+    HOMEJUNCTION_RE_API_URI:process.env.HOMEJUNCTION_RE_API_URI
   },
 };

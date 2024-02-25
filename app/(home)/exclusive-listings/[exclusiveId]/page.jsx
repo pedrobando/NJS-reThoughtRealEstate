@@ -12,8 +12,9 @@ import { Suspense } from "react";
 import getFeaturedListing from "../../../_utils/getFeaturedListing";
 import { notFound } from "next/navigation";
 import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata";
+import getFeaturedListingApi from "../../../_utils/getFeaturedListingsApi";
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -21,26 +22,32 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
   // fetch data
   const propertyData = await getFeaturedListing(id);
+  if(propertyData.success === "true"){
   const property = propertyData.result.listings[0];
-  //console.log(property, "wlkdsnkfndfvndfndfvikndfskvjndfkvjndfkvndfak;vjndfvk;jdnfv;kdjfnk;")
-  const description = await DescriptionMetadata(property, property.propertyType);
- 
+  const description = await DescriptionMetadata(
+    property,
+    property.propertyType
+  );
+
   return {
     title: `For Sale | ${property.address.deliveryLine} ${property.address.city}, ${property.address.state} ${property.address.zip}`,
     description: property.description,
     //openGraph:{
-     // images: `/api/og?propertytype=${property.propertyType}&deliveryLine=${property.address.deliveryLine}&city=${property.address.city}&state=${property.address.state}&zip=${property.address.zip}&imgUrl=${property.images[0]}`
+    // images: `/api/og?propertytype=${property.propertyType}&deliveryLine=${property.address.deliveryLine}&city=${property.address.city}&state=${property.address.state}&zip=${property.address.zip}&imgUrl=${property.images[0]}`
     //}
   };
 }
-
-export default async function ExclusiveListing(exclusiveId) {
-  const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
-  if (result.invalid || result.listings[0].listingOffice.id !== "of27022") {
-    notFound("test");
 }
 
-  const listing = await result.listings[0];
+export default async function ExclusiveListing(exclusiveId) {
+  //const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
+  const { result } = await getFeaturedListingApi(exclusiveId.params.exclusiveId);
+  
+  if (result.responses[0].result.invalid || result.responses[0].result.listings[0].listingOffice.id !== "of27022") {
+    notFound();
+  }
+
+  const listing = await result.responses[0].result.listings[0];
 
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -151,9 +158,9 @@ export default async function ExclusiveListing(exclusiveId) {
           </div>
         </section>
         <section className="flex container max-h-[450px]">
-        <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
+          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
             <MapBoxSingle listingCoordinates={listing.coordinates} />
-      </Suspense>
+          </Suspense>
         </section>
         <section className="bg-reDark min-h-[450px] pb-[120px]">
           <div className="flex container mx-auto items-center pt-14 px-4">
