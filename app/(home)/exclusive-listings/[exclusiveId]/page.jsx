@@ -14,8 +14,9 @@ import getFeaturedListing from "../../../_utils/getFeaturedListing";
 import { notFound } from "next/navigation";
 import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata";
 import getFeaturedListingApi from "../../../_utils/getFeaturedListingsApi";
+import ExclusiveListingContact from "../../../_components/exclusive-listings/ExclusiveListingContact"
 
-export const dynamic = "force-static";
+//export const dynamic = "force-static";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -189,6 +190,11 @@ export default async function ExclusiveListing(exclusiveId) {
         <section aria-labelledby="agent-testimonials">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
             <AgentTestimonials listing={listing} />
+          </Suspense>
+        </section>
+        <section aria-labelledby="contact-form" className="flex flex-col md:flex-row container mx-auto lg:gap-x-3 content-end px-3">
+          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
+            <ExclusiveListingContact listing={listing}/>
           </Suspense>
         </section>
       </main>
