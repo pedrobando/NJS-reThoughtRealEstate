@@ -20,6 +20,11 @@
 .exclusive-listings-hero{
   @apply flex flex-col text-white z-10 md:text-xl transform mb-1 items-center justify-center text-base font-body text-center;
 }
+
+.schools{@apply border-b border-gray-800/10}
+
+.schools:last-child{@apply border-none}
+
 .info-content-wrap .info-content:last-child {
   @apply border-none;
 }

@@ -14,12 +14,12 @@ import {
           </AccordionTrigger>
           <AccordionContent className="max-h-[480px] md:max-h-[325px] overflow-auto">
 
-          <div className="grid grid-cols-1 gap-4 ">
+          <div className="grid grid-cols-1">
 
           {schools.map((school, i) => (
         <div
           key={i}
-          className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400"
+          className="schools flex items-center space-x-3  bg-white px-6 py-5"
         >{school.rating && (
           <div className="flex-shrink-0">
             <span className="rounded-full bg-gray-200 p-2 text-gray-500" > {school.rating} </span>
