@@ -10,6 +10,17 @@ import {
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardContent } from "../../_components/ui/card"
+import { Button } from "../../_components/ui/button"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../../_components/ui/drawer"
 import Link from "next/link";
 
 const ExclusiveListingContact = async ({listing}) => {
@@ -64,12 +75,12 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
     
     <h2 className='font-heading text-4xl md:text-6xl font-bold bg-gradient-to-r from-reGreen to-lime-600  text-transparent bg-clip-text inline-block py-3'>Ready to go see it?</h2>
     <p className='py-5 md:py-8 text-gray-500 text-lg '>Let's a closer look at {listing.address.deliveryLine} together. Let me know what works best for you. </p>
-
+<Drawer>
     <Carousel className="w-full max-w-sm mx-auto ">
       <CarouselContent className="-ml-1  place-items-end">
        
-      <CarouselItem className="pl-1 basis-1/3">
-          <Link href="/" >
+      <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
+      <DrawerTrigger asChild>
             <div className="p-1 text-center text-reGreen">
               <Card className="border border-reGreen">
                 <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
@@ -78,9 +89,9 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
                 </CardContent>
               </Card>
             </div>
-            </Link>
+            </DrawerTrigger>
           </CarouselItem>
-          <CarouselItem className="pl-1 basis-1/3">
+          <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
           <Link href="/" >
             <div className="p-1 text-center text-reGreen">
               <span className="uppercase">{dayOfWeek}</span>
@@ -93,7 +104,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
             </div>
             </Link>
           </CarouselItem>
-          <CarouselItem className="pl-1 basis-1/3">
+          <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
             <div className="p-1 text-center text-reGreen">
               <span className="uppercase">{dayOfWeek1}</span>
               <Card className="border border-reGreen">
@@ -104,7 +115,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="pl-1 basis-1/3">
+          <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
             <div className="p-1 text-center text-reGreen">
               <span className="uppercase">{dayOfWeek2}</span>
               <Card className="border border-reGreen">
@@ -115,7 +126,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="pl-1 basis-1/3">
+          <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
             <div className="p-1 text-center text-reGreen">
               <span className="uppercase">{dayOfWeek3}</span>
               <Card className="border border-reGreen">
@@ -126,7 +137,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="pl-1 basis-1/3">
+          <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
             <div className="p-1 text-center text-reGreen">
               <span className="uppercase">{dayOfWeek4}</span>
               <Card className="border border-reGreen">
@@ -137,7 +148,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="pl-1 basis-1/3">
+          <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
             <div className="p-1 text-center text-reGreen">
               <span className="uppercase">{dayOfWeek5}</span>
               <Card className="border border-reGreen">
@@ -148,7 +159,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="pl-1 basis-1/3">
+          <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
             <div className="p-1 text-center text-reGreen">
               <span className="uppercase">{dayOfWeek6}</span>
               <Card className="border border-reGreen">
@@ -164,7 +175,24 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-
+    <DrawerContent className="bg-reDark border-reDark min-h-[55%]">
+        <div className="mx-auto w-full max-w-3xl p-4">
+          <DrawerHeader>
+            <DrawerTitle>We will reach out asap for confirmation...</DrawerTitle>
+            <DrawerDescription className="text-gray-400">Make sure you use the best phone number and email to contact you..</DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4 pb-0">
+            
+          
+          </div>
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <Button variant="outline" className="text-reRed font-heading font-semibold">Cancel</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
+      </DrawerContent>
+    </Drawer>
     <p className="mx-auto py-3 text-center text-gray-500">Choose Your Date -- It's Free, Cancel Anytime</p>
     <div className="flex flex-col md:flex-row mx-auto justify-center max-w-xs gap-x-8  gap-y-8 my-3">
       <a className="font-semibold font-heading text-gray-400 border border-reGreen rounded-md py-3 px-4 hover:scale-95 transition text-center" href={`https://www.google.com/maps/dir/?api=1&destination=${listing.coordinates.latitude},${listing.coordinates.longitude}`} target="_blank" rel="noopener noreferrer">Get Directions</a>
