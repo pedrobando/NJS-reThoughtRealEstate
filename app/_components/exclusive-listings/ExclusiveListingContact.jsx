@@ -175,7 +175,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-    <DrawerContent className="bg-reDark border-reDark min-h-[55%]">
+    <DrawerContent className="bg-reDark border-reDark ring-0 outline-0 min-h-[55%]">
         <div className="mx-auto w-full max-w-3xl p-4">
           <DrawerHeader>
             <DrawerTitle>We will reach out asap for confirmation...</DrawerTitle>
