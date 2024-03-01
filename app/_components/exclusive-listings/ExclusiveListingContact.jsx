@@ -5,9 +5,57 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../_components/ui/carousel"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCalendarDays,
+} from "@fortawesome/free-solid-svg-icons";
 import { Card, CardContent } from "../../_components/ui/card"
+import Link from "next/link";
 
 const ExclusiveListingContact = async ({listing}) => {
+  const currentDate = new Date();
+  const dayOfWeek = currentDate.toLocaleString('en-US', { weekday:'short' });
+  const dayOfMonth = currentDate.getDate();
+  const month = currentDate.toLocaleString('en-US', { month: 'short' });
+
+  const tomorrow1 = new Date(currentDate);
+  tomorrow1.setDate(currentDate.getDate()+1);
+  const dayOfWeek1 = tomorrow1.toLocaleString('en-US', { weekday:'short' });
+  const dayOfMonth1 = tomorrow1.getDate();
+  const month1 = tomorrow1.toLocaleString('en-US', { month: 'short' });
+ 
+  const tomorrow2 = new Date(currentDate);
+  tomorrow2.setDate(currentDate.getDate()+2);
+  const dayOfWeek2 = tomorrow2.toLocaleString('en-US', { weekday:'short' });
+  const dayOfMonth2 = tomorrow2.getDate();
+  const month2 = tomorrow2.toLocaleString('en-US', { month: 'short' });
+
+  const tomorrow3 = new Date(currentDate);
+  tomorrow3.setDate(currentDate.getDate()+3);
+  const dayOfWeek3 = tomorrow3.toLocaleString('en-US', { weekday:'short' });
+  const dayOfMonth3 = tomorrow3.getDate();
+  const month3 = tomorrow3.toLocaleString('en-US', { month: 'short' });
+
+  const tomorrow4 = new Date(currentDate);
+  tomorrow4.setDate(currentDate.getDate()+4);
+  const dayOfWeek4 = tomorrow4.toLocaleString('en-US', { weekday:'short' });
+  const dayOfMonth4 = tomorrow4.getDate();
+  const month4 = tomorrow4.toLocaleString('en-US', { month: 'short' });
+
+  const tomorrow5 = new Date(currentDate);
+  tomorrow5.setDate(currentDate.getDate()+5);
+  const dayOfWeek5 = tomorrow5.toLocaleString('en-US', { weekday:'short' });
+  const dayOfMonth5 = tomorrow5.getDate();
+  const month5 = tomorrow5.toLocaleString('en-US', { month: 'short' });
+
+  const tomorrow6 = new Date(currentDate);
+  tomorrow6.setDate(currentDate.getDate()+6);
+  const dayOfWeek6 = tomorrow6.toLocaleString('en-US', { weekday:'short' });
+  const dayOfMonth6 = tomorrow6.getDate();
+  const month6 = tomorrow6.toLocaleString('en-US', { month: 'short' });
+
+console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
+
   return (
     <div className='flex px-6 justify-end'>
     <img src="https://rethought-realestate.com/wp-content/uploads/2021/05/Rudy-New-2-e1620845912437.png" className='hidden lg:inline-flex max-h-[550px]'/>
@@ -17,21 +65,101 @@ const ExclusiveListingContact = async ({listing}) => {
     <h2 className='font-heading text-4xl md:text-6xl font-bold bg-gradient-to-r from-reGreen to-lime-600  text-transparent bg-clip-text inline-block py-3'>Ready to go see it?</h2>
     <p className='py-5 md:py-8 text-gray-500 text-lg '>Let's a closer look at {listing.address.deliveryLine} together. Let me know what works best for you. </p>
 
-    <Carousel className="w-full max-w-sm mx-auto">
-      <CarouselContent className="-ml-1">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} className="pl-1 basis-1/3">
+    <Carousel className="w-full max-w-sm mx-auto ">
+      <CarouselContent className="-ml-1  place-items-end">
+       
+      <CarouselItem className="pl-1 basis-1/3">
+          <Link href="/" >
             <div className="p-1 text-center text-reGreen">
-              Mon
               <Card className="border border-reGreen">
                 <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
-                  <span className="text-4xl font-heading font-semibold text-gray-500">2{index + 1}</span><br/>
-                  <span className="text-xl font-semibold text-reGreen">FEB</span>
+                  <FontAwesomeIcon icon={faCalendarDays} className="text-gray-500 max-h-[40px] pb-1 mx-auto"/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">ASAP</span>
+                </CardContent>
+              </Card>
+            </div>
+            </Link>
+          </CarouselItem>
+          <CarouselItem className="pl-1 basis-1/3">
+          <Link href="/" >
+            <div className="p-1 text-center text-reGreen">
+              <span className="uppercase">{dayOfWeek}</span>
+              <Card className="border border-reGreen">
+                <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
+                  <span className="text-4xl font-heading font-semibold text-gray-500">{dayOfMonth}</span><br/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">{month}</span>
+                </CardContent>
+              </Card>
+            </div>
+            </Link>
+          </CarouselItem>
+          <CarouselItem className="pl-1 basis-1/3">
+            <div className="p-1 text-center text-reGreen">
+              <span className="uppercase">{dayOfWeek1}</span>
+              <Card className="border border-reGreen">
+                <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
+                  <span className="text-4xl font-heading font-semibold text-gray-500">{dayOfMonth1}</span><br/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">{month1}</span>
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
-        ))}
+          <CarouselItem className="pl-1 basis-1/3">
+            <div className="p-1 text-center text-reGreen">
+              <span className="uppercase">{dayOfWeek2}</span>
+              <Card className="border border-reGreen">
+                <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
+                  <span className="text-4xl font-heading font-semibold text-gray-500">{dayOfMonth2}</span><br/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">{month2}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+          <CarouselItem className="pl-1 basis-1/3">
+            <div className="p-1 text-center text-reGreen">
+              <span className="uppercase">{dayOfWeek3}</span>
+              <Card className="border border-reGreen">
+                <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
+                  <span className="text-4xl font-heading font-semibold text-gray-500">{dayOfMonth3}</span><br/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">{month3}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+          <CarouselItem className="pl-1 basis-1/3">
+            <div className="p-1 text-center text-reGreen">
+              <span className="uppercase">{dayOfWeek4}</span>
+              <Card className="border border-reGreen">
+                <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
+                  <span className="text-4xl font-heading font-semibold text-gray-500">{dayOfMonth4}</span><br/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">{month4}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+          <CarouselItem className="pl-1 basis-1/3">
+            <div className="p-1 text-center text-reGreen">
+              <span className="uppercase">{dayOfWeek5}</span>
+              <Card className="border border-reGreen">
+                <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
+                  <span className="text-4xl font-heading font-semibold text-gray-500">{dayOfMonth5}</span><br/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">{month5}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+          <CarouselItem className="pl-1 basis-1/3">
+            <div className="p-1 text-center text-reGreen">
+              <span className="uppercase">{dayOfWeek6}</span>
+              <Card className="border border-reGreen">
+                <CardContent className="flex-col aspect-square items-center justify-center p-6 ">
+                  <span className="text-4xl font-heading font-semibold text-gray-500">{dayOfMonth6}</span><br/>
+                  <span className="text-xl font-semibold text-reGreen uppercase">{month6}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+     
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />
@@ -39,8 +167,8 @@ const ExclusiveListingContact = async ({listing}) => {
 
     <p className="mx-auto py-3 text-center text-gray-500">Choose Your Date -- It's Free, Cancel Anytime</p>
     <div className="flex flex-col md:flex-row mx-auto justify-center max-w-xs gap-x-8  gap-y-8 my-3">
-      <a className="border border-reGreen rounded-md py-3 px-4 hover:scale-95 transition text-center" href="#">Get Directions</a>
-      <a className="border border-reGreen rounded-md py-3 px-4 hover:scale-95 transition text-center" href="tel:414-810-8450">Call Rudy</a>
+      <a className="font-semibold font-heading text-gray-400 border border-reGreen rounded-md py-3 px-4 hover:scale-95 transition text-center" href={`https://www.google.com/maps/dir/?api=1&destination=${listing.coordinates.latitude},${listing.coordinates.longitude}`} target="_blank" rel="noopener noreferrer">Get Directions</a>
+      <a className="font-semibold font-heading text-gray-400 border border-reGreen rounded-md py-3 px-4 hover:scale-95 transition text-center" href="tel:414-810-8450">Call Rudy</a>
     </div>
 
     {/* <div className=' lg:max-w-[60%] space-y-3'>
