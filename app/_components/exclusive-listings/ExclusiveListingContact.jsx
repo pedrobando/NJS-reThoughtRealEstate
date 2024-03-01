@@ -68,15 +68,15 @@ const ExclusiveListingContact = async ({listing}) => {
 console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
 
   return (
-    <div className='flex px-6 justify-end'>
+    <div className='flex md:px-6 justify-center'>
     <img src="https://rethought-realestate.com/wp-content/uploads/2021/05/Rudy-New-2-e1620845912437.png" className='hidden lg:inline-flex max-h-[550px]'/>
    
-    <div className='flex-col px-6 content-end'>
+    <div className='flex-col px-4 md:px-6 content-end'>
     
-    <h2 className='font-heading text-4xl md:text-6xl font-bold bg-gradient-to-r from-reGreen to-lime-600  text-transparent bg-clip-text inline-block py-3'>Ready to go see it?</h2>
-    <p className='py-5 md:py-8 text-gray-500 text-lg '>Let's a closer look at {listing.address.deliveryLine} together. Let me know what works best for you. </p>
-<Drawer>
-    <Carousel className="w-full max-w-sm mx-auto ">
+    <h2 className='font-heading text-4xl md:text-6xl font-bold bg-gradient-to-r from-reGreen to-lime-600  text-transparent bg-clip-text inline-block py-2'>Ready to go see it?</h2>
+    <p className='py-5 md:py-8 text-gray-500 text-basis '>Let's a closer look at {listing.address.deliveryLine} together. Let me know what works best for you. </p>
+<Drawer className=" m-0 p-0">
+    <Carousel className="w-full px-6 max-w-sm mx-auto ">
       <CarouselContent className="-ml-1  place-items-end">
        
       <CarouselItem className="pl-1 basis-1/3 hover:scale-95 transition text-center">
@@ -232,7 +232,7 @@ console.log(`Today is ${dayOfWeek}, ${month} ${dayOfMonth}`);
       />
     </div> */}
 
-    <img src="https://rethought-realestate.com/wp-content/uploads/2021/05/Rudy-New-2-e1620845912437.png" className='lg:hidden max-h-[400px] pt-3'/>
+    <img src="https://rethought-realestate.com/wp-content/uploads/2021/05/Rudy-New-2-e1620845912437.png" className='lg:hidden max-h-[400px] pt-3 mx-auto'/>
     </div>
    
     </div>
