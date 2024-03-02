@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const SwiperCarousel = ({ listing }) => {
   const images = listing.images
-  console.log(images)
+ 
   return (
     <div className="container mx-auto  rounded-lg px-3 block max-h-[320px] overflow-hidden">
       <Swiper

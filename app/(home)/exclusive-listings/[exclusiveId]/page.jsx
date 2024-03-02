@@ -24,13 +24,8 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
   // fetch data
   const propertyData = await getFeaturedListing(id);
-
   if (propertyData.success) {
     const property = propertyData.result.listings[0];
-    const description = await DescriptionMetadata(
-      property,
-      property.propertyType
-    );
 
     return {
       title: `For Sale | ${property.address.deliveryLine} ${property.address.city}, ${property.address.state} ${property.address.zip}`,
