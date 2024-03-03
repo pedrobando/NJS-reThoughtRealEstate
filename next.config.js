@@ -48,7 +48,7 @@ module.exports = {
     apininja: process.env.apininja,
     google: process.env.google,
     NEXT_PUBLIC_lightGallery: process.env.NEXT_PUBLIC_lightGallery,
-    VERCEL_URL: process.env.NEXTVERCEL_URL,
+    VERCEL_URL: process.env.VERCEL_URL,
     HOMEJUNCTION_RE_API_URI:process.env.HOMEJUNCTION_RE_API_URI,
     CLOUDFLARE_IMAGES:process.env.CLOUDFLARE_IMAGES,
     OPENAI_API:process.env.OPENAI_API

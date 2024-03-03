@@ -8,15 +8,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import Image from 'next/image';
+import Image from "next/image";
 
-async function getAgentTestimonials(placeid) {
+async function getAgentTestimonials(placeId) {
   try {
     const res = await fetch(
-      "https://places.googleapis.com/v1/places/ChIJDQoQqZYXBYgRiMh6o_HPx18?key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&fields=id,displayName,rating,userRatingCount,reviews",
+      `https://places.googleapis.com/v1/places/${placeId}?key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&fields=id,displayName,rating,userRatingCount,reviews`,
       {
         method: "GET",
-        next:{revalidate: 30 * 60 * 24}
+        next: { revalidate: 30 * 60 * 24 },
       }
     );
 
@@ -24,30 +24,31 @@ async function getAgentTestimonials(placeid) {
       throw new Error("Failed to fetch reviews");
     }
 
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.error("Error loading topics: ", error);
   }
 }
 
-export default function AgentTestimonials({ listing }) {
+export default function AgentTestimonials({ listing, placeId }) {
   const [testimonials, setTestimonials] = useState([]);
   const [testimonial, setTestimonial] = useState();
-  // Add logic to get placeId from User database with listing agent matching ID
+
+  async function fetchTestimonials(placeId) {
+    try {
+      const data = await getAgentTestimonials(placeId);
+      setTestimonials(data.reviews);
+      setTestimonial(data);
+      console.log("Data", testimonial);
+      console.log("testimonials", testimonials);
+    } catch (error) {
+      console.error("Error loading testimonials: ", error);
+    }
+  }
 
   useEffect(() => {
-    async function fetchTestimonials() {
-      try {
-        const data = await getAgentTestimonials();
-        setTestimonials(data.reviews);
-        setTestimonial(data);
-      } catch (error) {
-        console.error("Error loading testimonials: ", error);
-      }
-    }
-
-    fetchTestimonials();
-  }, []);
+    fetchTestimonials(placeId);
+  }, [placeId]);
   return (
     <>
       {testimonials && testimonial && (
@@ -79,7 +80,10 @@ export default function AgentTestimonials({ listing }) {
           <div className="container mx-auto max-w-8/12 px-6 lg:px-8">
             <div className="mx-auto max-w-xl text-center">
               <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen">
-                {listing.listingAgent.name}'s Latest Reviews
+                {placeId === "ChIJb7MfaNYXBYgRgx-s57Z2YfI"
+                  ? "reThought Real Estate"
+                  : listing.listingAgent.name}
+                's Latest Reviews
               </h4>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Join the neighborhood of happy home buyers and sellers!
@@ -103,10 +107,10 @@ export default function AgentTestimonials({ listing }) {
                         <div className="flex gap-x-3 items-center">
                           <div className="flex-shrink-0 sm:mb-0 sm:mr-4">
                             <Image
-                            src={testimonial.authorAttribution.photoUri}
-                            alt={testimonial.authorAttribution.displayName}
-                            width={48}
-                            height={48}
+                              src={testimonial.authorAttribution.photoUri}
+                              alt={testimonial.authorAttribution.displayName}
+                              width={48}
+                              height={48}
                             />
                           </div>
                           <div>
@@ -118,9 +122,12 @@ export default function AgentTestimonials({ listing }) {
                         </div>
                       </div>
                       <div className="px-4 py-1 sm:p-6 h-[100px] overflow-auto">
-                        <p className="p-0 m-0">
-                          {testimonial.originalText.text}
-                        </p>
+                        {testimonial.originalText &&
+                          testimonial.originalText.text && (
+                            <p className="p-0 m-0">
+                              {testimonial.originalText.text}
+                            </p>
+                          )}
                       </div>
                       <div className="px-4 my-3 sm:px-6 max-h-14 float-right">
                         <Image
@@ -128,7 +135,6 @@ export default function AgentTestimonials({ listing }) {
                           alt="Google Review"
                           width={100}
                           height={56}
-                        
                         />
                       </div>
                     </div>
@@ -139,7 +145,10 @@ export default function AgentTestimonials({ listing }) {
               <CarouselNext />
             </Carousel>
             <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
-              {listing.listingAgent.name} has {testimonial.userRatingCount}{" "}
+            {placeId === "ChIJb7MfaNYXBYgRgx-s57Z2YfI"
+                  ? "reThought Real Estate"
+                  : listing.listingAgent.name}
+                's Latest Reviews has {testimonial.userRatingCount}{" "}
               verified reviews on Google with an average of {testimonial.rating}{" "}
               stars.
             </h4>

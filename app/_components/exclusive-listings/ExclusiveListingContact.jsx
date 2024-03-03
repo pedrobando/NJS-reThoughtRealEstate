@@ -22,7 +22,7 @@ import {
 import Link from "next/link";
 import ExclusiveListingsDrawer from "./ExclusiveListingsDrawer";
 
-const ExclusiveListingContact = async ({ listing }) => {
+const ExclusiveListingContact = async ({ listing, photoUrl }) => {
   const currentDate = new Date();
   const dayOfWeek = currentDate.toLocaleString("en-US", { weekday: "short" });
   const dayOfMonth = currentDate.getDate();
@@ -66,10 +66,10 @@ const ExclusiveListingContact = async ({ listing }) => {
 
   return (
     <div className="flex md:px-6 justify-center">
-      <img
-        src="https://rethought-realestate.com/wp-content/uploads/2021/05/Rudy-New-2-e1620845912437.png"
+     {photoUrl && <img
+        src={photoUrl}
         className="hidden lg:inline-flex max-h-[550px]"
-      />
+      /> } 
 
       <div className="flex-col md:px-6 content-end">
         <h2 className="text-center md:text-left font-heading text-4xl md:text-6xl font-bold bg-gradient-to-r from-reGreen to-lime-600  text-transparent bg-clip-text py-2">
@@ -134,7 +134,7 @@ const ExclusiveListingContact = async ({ listing }) => {
       
 
         <img
-          src="https://rethought-realestate.com/wp-content/uploads/2021/05/Rudy-New-2-e1620845912437.png"
+          src={photoUrl}
           className="lg:hidden max-h-[400px] pt-3 mx-auto"
         />
       </div>

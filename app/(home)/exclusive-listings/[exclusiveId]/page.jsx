@@ -15,6 +15,7 @@ import { notFound } from "next/navigation";
 import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata";
 import getFeaturedListingApi from "../../../_utils/getFeaturedListingsApi";
 import ExclusiveListingContact from "../../../_components/exclusive-listings/ExclusiveListingContact"
+import getAgent from "../../../_utils/getAgent"
 
 //export const dynamic = "force-static";
 
@@ -50,8 +51,12 @@ export default async function ExclusiveListing(exclusiveId) {
     notFound();
   }
 
+  
+
   const listing = await result.responses[0].result.listings[0];
-  const schools = await result.responses[1].result.schools
+  const schools = await result.responses[1].result.schools;
+  const agent = await getAgent(listing.listingAgent.email)
+  const place = "ChIJb7MfaNYXBYgRgx-s57Z2YfI";
 
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -184,12 +189,12 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section aria-labelledby="agent-testimonials">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <AgentTestimonials listing={listing} />
+            <AgentTestimonials listing={listing} placeId={agent.user.placeId || place} />
           </Suspense>
         </section>
         <section aria-labelledby="contact-form" className="flex flex-col md:flex-row container mx-auto lg:gap-x-3 content-end px-3">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <ExclusiveListingContact listing={listing}/>
+            <ExclusiveListingContact listing={listing} photoUrl={agent.user.listingsImg}/>
           </Suspense>
         </section>
       </main>
