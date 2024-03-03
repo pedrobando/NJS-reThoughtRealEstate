@@ -14,7 +14,7 @@ export async function PUT(request, { params }) {
     const updated = await User.findOneAndUpdate(
       { email: id },
       {
-        $set: { placeId: "Pedro" },
+        $set: { placeId, listingsImg },
       },
       { upsert: true, new: true }
     );
