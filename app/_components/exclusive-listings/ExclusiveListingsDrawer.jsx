@@ -8,6 +8,8 @@ export default function ExclusiveListingsDrawer({
   date,
   dayOfWeek,
   dayOfMonth,
+  month,
+  listing
 }) {
   return (
     <Drawer className=" m-0 p-0">
@@ -37,7 +39,7 @@ export default function ExclusiveListingsDrawer({
           </Card>
         </div>
       </DrawerTrigger>
-      <ExclusiveDrawerContent />
+      <ExclusiveDrawerContent dayOfWeek={dayOfWeek} dayOfMonth={dayOfMonth} listing={listing} month={month} />
     </Drawer>
   );
 }
