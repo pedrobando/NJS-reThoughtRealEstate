@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import ButtonsExclusiveListingsDrawer from "./ButtonsExclusiveListingsDrawer"
 
 const ButtonsExclusiveListings = () => {
   return (
@@ -12,9 +13,7 @@ const ButtonsExclusiveListings = () => {
           MORE EXCLUSIVE LISTINGS
         </Link>
    
-        <Link className="rounded-lg text-white font-heading md:px-8 py-2 text-lg md:text-s px-3 bg-reGreen motion-safe:animate-pulse border-reGreen hover:scale-95 transition md:text-base" href="#">
-          I WANT TO SEE IT
-        </Link>
+        <ButtonsExclusiveListingsDrawer/>
     
     </div>
   );

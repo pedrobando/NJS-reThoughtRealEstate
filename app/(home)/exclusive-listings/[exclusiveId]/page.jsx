@@ -194,7 +194,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section aria-labelledby="contact-form" className="flex flex-col md:flex-row container mx-auto lg:gap-x-3 content-end px-3">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <ExclusiveListingContact listing={listing} photoUrl={agent.listingsImg} />
+            <ExclusiveListingContact listing={listing} photoUrl={agent.listingsImg} agent={agent} />
           </Suspense>
         </section>
       </main>

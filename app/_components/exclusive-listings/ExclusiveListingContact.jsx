@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 import ExclusiveListingsDrawer from "./ExclusiveListingsDrawer";
 
-const ExclusiveListingContact = async ({ listing, photoUrl }) => {
+const ExclusiveListingContact = async ({ listing, photoUrl, agent }) => {
   const currentDate = new Date();
   const dayOfWeek = currentDate.toLocaleString("en-US", { weekday: "short" });
   const dayOfMonth = currentDate.getDate();
@@ -158,13 +158,31 @@ const ExclusiveListingContact = async ({ listing, photoUrl }) => {
           </a>
           <a
             className="font-semibold font-heading text-gray-400 border border-reGreen rounded-md py-3 px-4 hover:scale-95 transition text-center"
-            href="tel:414-810-8450"
+            href={`tel:${listing.listingAgent.phone}`}
           >
-            Call Rudy
+            Call {agent.nickname || agent.name}
           </a>
         </div>
+        {photoUrl && (
+          <div className="lg:hidden max-h-[400px] pt-3 mx-auto -mb-8" >
+          <Image 
+        style={{
+         width:"auto",
+         height:"auto",
+         maxHeight:"550px",
+         objectFit: "contain"
+        }}
+        width={233}
+        height={388}
+        src={photoUrl}
+        alt={listing.listingAgent.name}
+        sizes="(max-width: 550px) 100vw, (max-width: 500px) 50vw, 33vw"
+         />
+          </div>
 
-        <img src={photoUrl} className="lg:hidden max-h-[400px] pt-3 mx-auto" />
+        )}
+          
+        
       </div>
     </div>
   );
