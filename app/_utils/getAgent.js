@@ -1,32 +1,22 @@
 import { notFound } from "next/navigation";
+import connectMongoDB from "../_libs/connectMongoDB";
+import User from "../_models/User";
 
 export default async function getAgent(id) {
+  await connectMongoDB();
+  try {
+    const user = await User.findOne(
+      { email: id },
+      { name: 1, lastname: 1, placeId: 1, email: 1, listingsImg: 1, _id: 0 }
+    );
 
-    try {
-      const res = await fetch(`http://localhost:3000/api/users/${id}`, {
-        method: "GET",
-        next:{revalidate: 0}
-      });
-  
-      const user = await res.json(); 
-      
-      if (!res.ok || !user.success) {
-        throw new Error(user.error?.message || `HTTP error: ${res.status} ${res.statusText}`);
-      }
-
-      if (user.success) {
-           return user;
-        }
-        // await delay(8000); 
-       // return data;
-      
-     
-
-    } catch (error) {
-      console.error("Error fetching agent", error.message);
-     
-      return { error: true, message: error.message };
+    if (!user) {
+      throw new Error(`No user found with id: ${id}`);
     }
-  }  
 
-
+    return user;
+  } catch (error) {
+    console.error("Error fetching agent", error);
+    return { error: true, message: error.message };
+  }
+}

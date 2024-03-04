@@ -65,7 +65,7 @@ export default async function ExclusiveListing(exclusiveId) {
 
   return (
     <div className="bg-white w-full z-0 text-reText">
-      <div className="relative flex flex-col items-center justify-end bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] mb-[-25px] min-h-[680px] 2xl:min-h-screen  -z-[120]  ">
+      <div className="relative flex flex-col items-center justify-end bg-gradient-to-t from-neutral-950 to-[#1d2b0f] w-full mt-[-185px] mb-[-25px] min-h-[700px] 2xl:min-h-screen  -z-[120]  ">
         <Image
           style={{
             objectFit: "cover",
@@ -81,7 +81,7 @@ export default async function ExclusiveListing(exclusiveId) {
         />
         <div
           id="mainInfo"
-          className="flex flex-col pb-[70px] md:pb-[80px] place-content-center place-items-center  container mx-auto w-full z-20 justify-center px-4 bg-transparent"
+          className="flex flex-col pb-[70px] md:pb-[80px] place-content-center place-items-center   container mx-auto w-full z-20 justify-end px-4 bg-transparent min-h-[700px]"
         >
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />
@@ -189,12 +189,12 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
         <section aria-labelledby="agent-testimonials">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <AgentTestimonials listing={listing} placeId={agent.user.placeId || place} />
+            <AgentTestimonials listing={listing} placeId={agent.placeId || place} />
           </Suspense>
         </section>
         <section aria-labelledby="contact-form" className="flex flex-col md:flex-row container mx-auto lg:gap-x-3 content-end px-3">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <ExclusiveListingContact listing={listing} photoUrl={agent.user.listingsImg}/>
+            <ExclusiveListingContact listing={listing} photoUrl={agent.listingsImg} />
           </Suspense>
         </section>
       </main>
