@@ -81,7 +81,7 @@ export default async function ExclusiveListing(exclusiveId) {
         />
         <div
           id="mainInfo"
-          className="flex flex-col pb-[70px] md:pb-[80px] place-content-center place-items-center   container mx-auto w-full z-20 justify-end px-4 bg-transparent min-h-[700px]"
+          className="flex flex-col pb-[70px] md:pb-[80px] place-content-center place-items-center   container mx-auto w-full z-50 justify-end px-4 bg-transparent min-h-[700px]"
         >
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />

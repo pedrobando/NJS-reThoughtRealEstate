@@ -26,7 +26,7 @@ import {
           </div> )}
           <div className="min-w-0 flex-1">
            
-              <span className="absolute inset-0" aria-hidden="true" />
+              <span className="inset-0" aria-hidden="true" />
               <p className="text-sm font-medium text-gray-900">{school.name}</p>
               <p className="truncate text-sm text-gray-500">{school.address.deliveryLine} {school.address.city}, {school.address.state} {school.address.zip}</p>
               <p className="truncate text-sm text-gray-500">{school.admission} | {school.level} </p>

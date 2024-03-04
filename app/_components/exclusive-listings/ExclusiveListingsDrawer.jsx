@@ -68,7 +68,7 @@ export default function ExclusiveListingsDrawer({
           </DrawerHeader>
           <form onSubmit="">
             <fieldset disabled="" className="group">
-              <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 p-4 group-disabled:opacity-50">
+              <div className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-6 p-4 group-disabled:opacity-50">
                 <div className="sm:col-span-3">
                   <label
                     htmlFor="first-name"
@@ -142,7 +142,7 @@ export default function ExclusiveListingsDrawer({
             </fieldset>
           </form>
           <DrawerFooter>
-            <div className="mt-6 flex items-center justify-end gap-x-6">
+            <div className="mt-2 flex items-center justify-end gap-x-6">
               <DrawerClose asChild>
                 <Button
                   variant="outline"
