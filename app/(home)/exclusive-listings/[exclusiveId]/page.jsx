@@ -56,6 +56,7 @@ export default async function ExclusiveListing(exclusiveId) {
   const listing = await result.responses[0].result.listings[0];
   const schools = await result.responses[1].result.schools;
   const agent = await getAgent(listing.listingAgent.email)
+  
   const place = "ChIJb7MfaNYXBYgRgx-s57Z2YfI";
 
   const USDollar = new Intl.NumberFormat("en-US", {

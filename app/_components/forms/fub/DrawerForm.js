@@ -6,7 +6,7 @@ import { Button } from "../../../_components/ui/button";
 
 const initialState = {
   message: "",
-  error: null
+  error: null,
 };
 
 function SubmitButton() {
@@ -23,12 +23,12 @@ function SubmitButton() {
   );
 }
 
-export default function DrawerForm({listing}) {
-  const [state, formAction] = useFormState(fubForms({listing}), initialState);
-  console.log("stateeeeeeeeee", state)
+export default function DrawerForm({ listing }) {
+  const [state, formAction] = useFormState(fubForms, initialState);
+
   return (
     <>
-      <form ation={formAction}>
+      <form action={formAction}>
         <fieldset className="group">
           <div className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-6 p-4 group-disabled:opacity-50">
             <div className="sm:col-span-3">
@@ -102,20 +102,20 @@ export default function DrawerForm({listing}) {
             </div>
           </div>
         </fieldset>
-      
-      <DrawerFooter>
-        <div className="mt-2 flex items-center justify-end gap-x-6">
-          <DrawerClose asChild>
-            <Button
-              variant="outline"
-              className="text-reRed hover:text-reRed font-heading font-semibold hover:scale-95 transition"
-            >
-              Cancel
-            </Button>
-          </DrawerClose>
-          <SubmitButton/>
-        </div>
-      </DrawerFooter>
+
+        <DrawerFooter>
+          <div className="mt-2 flex items-center justify-end gap-x-6">
+            <DrawerClose asChild>
+              <Button
+                variant="outline"
+                className="text-reRed hover:text-reRed font-heading font-semibold hover:scale-95 transition"
+              >
+                Cancel
+              </Button>
+            </DrawerClose>
+            <SubmitButton />
+          </div>
+        </DrawerFooter>
       </form>
     </>
   );
