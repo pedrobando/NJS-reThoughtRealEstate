@@ -53,7 +53,7 @@ const ExclusiveListingContact = async ({ listing, photoUrl, agent }) => {
   return (
     <div className="flex container md:px-6 justify-center z-50">
        {photoUrl && (
-        <div className="hidden lg:inline-flex max-h-[550px]">
+        <div className="hidden lg:inline-flex max-h-[550px] items-end">
         <Image 
         style={{
          width:"auto",
