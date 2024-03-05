@@ -86,7 +86,7 @@ export default async function ExclusiveListing(exclusiveId) {
         >
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />
-          <ButtonsExclusiveListings />
+          <ButtonsExclusiveListings  listing={listing} />
         </div>
       </div>
       <SwiperCarousel listing={listing} />
@@ -181,7 +181,7 @@ export default async function ExclusiveListing(exclusiveId) {
                 property located in the city of {listing.address.city} which is
                 located in {listing.county} county.
               </h3>
-              <ButtonsExclusiveListings />
+              <ButtonsExclusiveListings listing={listing} />
             </div>
           </div>
         </section>

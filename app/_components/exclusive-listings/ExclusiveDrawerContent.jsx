@@ -17,6 +17,8 @@ import {
     date,
     listing
   }) {
+
+ 
     return (
         <DrawerContent className="bg-gradient-to-t from-reDark to-black !shadow-none !border-0 !ring-0 !outline-0 !ring-offset-0 min-h-[65%] focus:ring-0 focus:shadow-none focus:border-0 focus:outline-0">
           <div className="mx-auto w-full max-w-3xl p-4">

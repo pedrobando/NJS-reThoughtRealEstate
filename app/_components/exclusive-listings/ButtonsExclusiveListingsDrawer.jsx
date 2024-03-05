@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import ExclusiveDrawerContent from "./ExclusiveDrawerContent";
 
-export default function ButtonsExclusiveListingsDrawer() {
+export default function ButtonsExclusiveListingsDrawer({listing}) {
   return (
     <Drawer className=" m-0 p-0">
       <DrawerTrigger asChild>
@@ -11,7 +11,7 @@ export default function ButtonsExclusiveListingsDrawer() {
           I WANT TO SEE IT
         </Link>
       </DrawerTrigger>
-      <ExclusiveDrawerContent />
+      <ExclusiveDrawerContent listing={listing} />
     </Drawer>
   );
 }

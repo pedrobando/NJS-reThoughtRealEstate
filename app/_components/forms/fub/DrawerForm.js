@@ -23,9 +23,10 @@ function SubmitButton() {
   );
 }
 
-export default function DrawerForm({ listing }) {
+export default function DrawerForm({listing}) {
   const [state, formAction] = useFormState(fubForms, initialState);
-
+ 
+console.log(listing)
   return (
     <>
       <form action={formAction}>
@@ -101,6 +102,13 @@ export default function DrawerForm({ listing }) {
               </div>
             </div>
           </div>
+          <input type="hidden" name="street" value={listing?.address.deliveryLine}/>
+  <input type="hidden" name="city" value={listing?.address.city}/>
+  <input type="hidden" name="state" value={listing?.address.state}/>
+  <input type="hidden" name="code" value={listing?.address.zip}/>
+  <input type="hidden" name="mlsNumber" value={listing?.id}/>
+  <input type="hidden" name="price" value={listing?.listPrice}/>
+  <input type="hidden" name="type" value={listing?.listingType}/>
         </fieldset>
 
         <DrawerFooter>

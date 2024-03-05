@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import ButtonsExclusiveListingsDrawer from "./ButtonsExclusiveListingsDrawer"
 
-const ButtonsExclusiveListings = () => {
+const ButtonsExclusiveListings = ({listing}) => {
   return (
     <div className="flex mx-auto flex-col md:flex-row  items-center md:items-start justify-center pt-[40px] text-white gap-x-6 gap-y-6">
      
@@ -13,7 +13,7 @@ const ButtonsExclusiveListings = () => {
           MORE EXCLUSIVE LISTINGS
         </Link>
    
-        <ButtonsExclusiveListingsDrawer/>
+        <ButtonsExclusiveListingsDrawer  listing={listing}/>
     
     </div>
   );
