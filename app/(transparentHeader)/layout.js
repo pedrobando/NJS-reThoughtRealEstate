@@ -11,6 +11,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex flex-col justify-center items-center font-body">
+      <script dangerouslySetInnerHTML={{ 
+          __html: `
+            (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+            {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+            (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+            e.parentNode.insertBefore(t,e);})
+            (window,"https://widgetbe.com/agent",document,"widgetTracker");
+            window.widgetTracker("create", "WT-CISCFZKA");
+            window.widgetTracker("send", "pageview");
+          `
+        }} />
         <TransparentNavBar />
         <div className="bg-black flex flex-col min-h-64 w-full mt-[-127px] bg-gradient-to-t from-neutral-950 to-neutral-800">
           <h1 className="text-white text-5xl">Transparent layout</h1>

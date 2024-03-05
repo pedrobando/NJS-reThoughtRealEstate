@@ -1,23 +1,27 @@
-import connectMongoDB from "../../../_libs/connectMongoDB";
-import User from "../../../_models/User";
+
 import { NextResponse } from "next/server";
 
-export async function POST(request, { params }) {
-  const { id } = params;
-  await connectMongoDB();
+export async function POST(request) {
   try {
-    const { listingsImg: listingsImg, placeId: placeId } = await request.json();
+    // First, convert the request to JSON
+    //const data = await request.json();
+ // Then, destructure your data as needed
+ const data = await request.json();
+
+// Assuming 'emails' and 'phones' are arrays with objects that have a 'value' property
+//const firstEmail = emails?.[0]?.value;
+//const firstPhone = phones?.[0]?.value;
+
+// Access the 'property' object details
+
+
+// Now, use the destructured values as needed
+// Example: Log the first email and phone
    
-    const updated = await User.findOneAndUpdate(
-      { email: id },
-      {
-        $set: { placeId, listingsImg },
-      },
-      { upsert: true, new: true }
-    );
+    console.log(data);
 
     return NextResponse.json(
-      { success: "User updated", updated },
+      { success: "User updated"},
       { status: 200 }
     );
   } catch (error) {
@@ -28,11 +32,4 @@ export async function POST(request, { params }) {
       { status: 500 }
     );
   }
-}
-
-export async function GET(request, { params }) {
-  const { id } = params;
-  await connectMongoDB();
-  const user = await User.findOne({ email: id }, { name: 1, lastname:1, placeId:1, email: 1, listingsImg: 1, _id: 0 });
-  return NextResponse.json({success : "true", user}, { status: 200 });
 }

@@ -2,6 +2,8 @@ import "../globals.css";
 import NavBarSolid from "../_components/NavBarSolid";
 import Footer from "../_components/Footer";
 import MapBoxImport from "../_utils/mapBoxImport"
+import FubPixel from "../_libs/FubPixel";
+import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
@@ -22,6 +24,8 @@ export default function RootLayout({ children }) {
       <div className="bg-white flex-grow min-h-64">{children}</div>
       <Footer />
       <SpeedInsights/>
+      <Analytics/>
+      <FubPixel/>
     </body></html>
   );
 }

@@ -94,7 +94,7 @@ export async function fubForms(prevState: any, formData: FormData): Promise<{ me
       city: formData.get("city") as string,
       state: formData.get("state") as string,
       code: formData.get("code") as string,
-      mlsNumber: formData.get("first-name") as string,
+      mlsNumber: formData.get("mlsNumber") as string,
       price: formData.get("price") as string,
       type: formData.get("type") as string,
     },
@@ -113,9 +113,7 @@ export async function fubForms(prevState: any, formData: FormData): Promise<{ me
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
-
-    const data = await res.json();
-    console.log(data);
+    console.log("Done")
     return { 
       message: `Successfully submitted property inquiry.`,
     };
