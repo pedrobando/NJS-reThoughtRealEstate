@@ -26,7 +26,6 @@ function SubmitButton() {
 export default function DrawerForm({listing}) {
   const [state, formAction] = useFormState(fubForms, initialState);
  
-console.log(listing)
   return (
     <>
       <form action={formAction}>
@@ -118,11 +117,13 @@ console.log(listing)
                 variant="outline"
                 className="text-reRed hover:text-reRed font-heading font-semibold hover:scale-95 transition"
               >
-                Cancel
+                Cancel 
               </Button>
             </DrawerClose>
             <SubmitButton />
+            
           </div>
+          {state && <span className="text-reRed text-lg text-center py-3">{state.message}</span>}
         </DrawerFooter>
       </form>
     </>

@@ -4,6 +4,7 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardContent } from "../../_components/ui/card";
 import ExclusiveDrawerContent from "./ExclusiveDrawerContent";
 
+
 export default function ExclusiveListingsDrawer({
   date,
   dayOfWeek,
@@ -11,6 +12,7 @@ export default function ExclusiveListingsDrawer({
   month,
   listing
 }) {
+
   
   return (
     <Drawer className=" m-0 p-0">

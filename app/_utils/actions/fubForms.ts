@@ -54,7 +54,7 @@ export async function fubForms(prevState: any, formData: FormData): Promise<{ me
     firstName: Joi.string().min(2).required(),
     lastName: Joi.string().min(2).required(),
     phones: Joi.string()
-      .max(10)
+      .max(10).min(10)
       .required(),
     emails: Joi.string().email().required(),
     source: Joi.string(),
@@ -72,8 +72,7 @@ export async function fubForms(prevState: any, formData: FormData): Promise<{ me
   if (error) {
     console.error("Validation Error:", error.details);
     return {
-      message:
-        "Your data is incorrect. Make sure your email is correct and the phone number is in xxx-xxx-xxxx format.",
+      message: `Form failed. ${error.message}`,
     };
   }
 
@@ -113,9 +112,10 @@ export async function fubForms(prevState: any, formData: FormData): Promise<{ me
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
-    console.log("Done")
-    return { 
-      message: `Successfully submitted property inquiry.`,
+    console.log(prevState)
+   
+    return {
+      message: "Done"
     };
   } catch (err) {
     console.error("Error:", err);
