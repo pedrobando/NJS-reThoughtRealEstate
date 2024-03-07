@@ -44,6 +44,11 @@ interface Listing {
   listingType: string;
 }
 
+function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 export async function fubForms(prevState: any, formData: FormData): Promise<{ message: string }> {
   if (!process.env.FUBAPIKEY) {
     console.error("FUBAPIKEY is not set.");
@@ -112,8 +117,7 @@ export async function fubForms(prevState: any, formData: FormData): Promise<{ me
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
-    console.log(prevState)
-   
+    await delay(3000); 
     return {
       message: "Done"
     };

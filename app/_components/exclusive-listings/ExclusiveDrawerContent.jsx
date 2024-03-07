@@ -1,13 +1,10 @@
+"use client"
 import {
-    Drawer,
-    DrawerClose,
     DrawerContent,
     DrawerDescription,
-    DrawerFooter,
     DrawerHeader,
     DrawerTitle,
   } from "../ui/drawer";
-  import { Button } from "../ui/button";
   import DrawerForm from "../forms/fub/DrawerForm"
   
   export default function ExclusiveDrawerContent({
@@ -16,6 +13,7 @@ import {
     month,
     date,
     listing,
+    afterSave
   }) {
 
  
@@ -26,6 +24,7 @@ import {
               <DrawerTitle className="tfont-heading text-xl md:text-4xl font-bold bg-gradient-to-r from-reGreen to-lime-200  text-transparent bg-clip-text">
                 We will reach out asap for confirmation...
               </DrawerTitle>
+
               <DrawerDescription className="text-gray-400">
                 Make sure you use the best phone number and email to contact you..
                 We will call and email you check if you have any questions and to
@@ -39,7 +38,7 @@ import {
                 )}
               </DrawerDescription>
             </DrawerHeader>
-            <DrawerForm listing={listing}  />
+            <DrawerForm listing={listing} afterSave={afterSave}  />
 
           </div>
         </DrawerContent>

@@ -1,21 +1,22 @@
+"use client";
 import { Drawer, DrawerTrigger } from "../../_components/ui/drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardContent } from "../../_components/ui/card";
 import ExclusiveDrawerContent from "./ExclusiveDrawerContent";
-
+import { useState } from "react";
 
 export default function ExclusiveListingsDrawer({
   date,
   dayOfWeek,
   dayOfMonth,
   month,
-  listing
+  listing,
 }) {
+  let [open, setOpen] = useState(false);
 
-  
   return (
-    <Drawer className=" m-0 p-0">
+    <Drawer className=" m-0 p-0" open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <div className="p-1 text-center text-reGreen">
           {dayOfWeek && <span className="uppercase">{dayOfWeek}</span>}
@@ -24,7 +25,7 @@ export default function ExclusiveListingsDrawer({
               {date ? (
                 <FontAwesomeIcon
                   icon={faCalendarDays}
-                  className="text-gray-500 max-h-[40px] pb-1 mx-auto"
+                  className="text-gray-500 max-h-[40px] pb-1 mx-auto text-4xl"
                 />
               ) : (
                 <>
@@ -42,7 +43,15 @@ export default function ExclusiveListingsDrawer({
           </Card>
         </div>
       </DrawerTrigger>
-      <ExclusiveDrawerContent dayOfWeek={dayOfWeek} dayOfMonth={dayOfMonth} listing={listing} month={month} />
+      <ExclusiveDrawerContent
+        dayOfWeek={dayOfWeek}
+        dayOfMonth={dayOfMonth}
+        listing={listing}
+        month={month}
+        afterSave={() => {
+          setOpen(false);
+        }}
+      />
     </Drawer>
   );
 }
