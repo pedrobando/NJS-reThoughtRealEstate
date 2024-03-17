@@ -1,5 +1,3 @@
-import Footer from "../../../_components/Footer";
-import TransparentNavBar from "../../../_components/transparentNavBar";
 import "../../../globals.css";
 
 export const metadata = {

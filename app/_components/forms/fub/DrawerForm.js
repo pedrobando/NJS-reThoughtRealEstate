@@ -1,8 +1,8 @@
 "use client";
 import { useFormState, useFormStatus } from "react-dom";
-import { fubForms } from "../../../_utils/actions/fubForms";
-import { DrawerClose, DrawerFooter } from "../../../_components/ui/drawer";
-import { Button } from "../../../_components/ui/button";
+import { fubForms } from "@/utils/actions/fubForms";
+import { DrawerClose, DrawerFooter } from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button"
 
 const initialState = {
   message: "",

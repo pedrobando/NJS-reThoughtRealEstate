@@ -1,4 +1,7 @@
 {
     "javascript.preferences.importModuleSpecifier": "non-relative",
-    "typescript.preferences.importModuleSpecifier": "non-relative"
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "editor.fontSize": 14,
+    "editor.cursorStyle": "line",
+    "editor.wordWrap": "on"
 }
