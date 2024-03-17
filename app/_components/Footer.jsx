@@ -1,4 +1,4 @@
-import WaveDividerBottom from "./WaveDividerBottom";
+import WaveDividerBottom from "@/components/WaveDividerBottom";
 import Link from "next/link";
 import Image from "next/image";
 

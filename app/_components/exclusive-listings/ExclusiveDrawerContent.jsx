@@ -4,7 +4,7 @@ import {
     DrawerDescription,
     DrawerHeader,
     DrawerTitle,
-  } from "../ui/drawer";
+  } from "@/components/ui/drawer";
   import DrawerForm from "../forms/fub/DrawerForm"
   
   export default function ExclusiveDrawerContent({

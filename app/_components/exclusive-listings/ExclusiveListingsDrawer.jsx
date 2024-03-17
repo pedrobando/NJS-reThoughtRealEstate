@@ -1,8 +1,8 @@
 "use client";
-import { Drawer, DrawerTrigger } from "../../_components/ui/drawer";
+import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-import { Card, CardContent } from "../../_components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import ExclusiveDrawerContent from "./ExclusiveDrawerContent";
 import { useState } from "react";
 

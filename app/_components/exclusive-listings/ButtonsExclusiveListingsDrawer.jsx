@@ -1,6 +1,6 @@
 
 "use client"
-import { Drawer, DrawerTrigger } from "../../_components/ui/drawer";
+import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 import Link from "next/link";
 import { useState } from "react";
 

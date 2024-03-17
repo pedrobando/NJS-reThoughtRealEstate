@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NavBarSlide from "./NavBarSlide";
+import NavBarSlide from "@/components/NavBarSlide";
 import Image from "next/image";
 
 function TransparentNavBar() {

@@ -4,7 +4,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../_components/ui/carousel";
+} from "@/components/ui/carousel";
 import Image from "next/image";
 import ExclusiveListingsDrawer from "./ExclusiveListingsDrawer";
 

@@ -2,7 +2,7 @@
 import { Suspense, useState } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import Image from "next/image";
-import mapIcon from "../../public/img/rethought-for-sale.png"
+import mapIcon from "@/public/img/rethought-for-sale.png"
 
 export default function MapBoxSingle({ listingCoordinates }) {
 

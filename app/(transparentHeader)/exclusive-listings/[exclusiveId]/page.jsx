@@ -1,21 +1,21 @@
-import MapBoxSingle from "../../../_components/MapBoxSingle";
-import SwiperCarousel from "../../../_components/exclusive-listings/SwiperCarousel";
-import ListingHeaderInfo from "../../../_components/listings/ListingsHeaderInfo";
-import ButtonsExclusiveListings from "../../../_components/exclusive-listings/ButtonsExclusiveListings";
-import ListingInformationAccordion from "../../../_components/listings/ListingInformationAccordion";
-import SchoolInformationAccordion from "../../../_components/listings/SchoolInformationAccordion";
-import ListingImageGallery from "../../../_components/exclusive-listings/ListingImageGallery";
-import AgentTestimonials from "../../../_components/agents/AgentTestimonials";
-import { calculateDaysFromUnix } from "../../../_utils/calculateDaysFromUnix";
-import HeaderInfo from "../../../_components/exclusive-listings/HeaderInfo";
+import MapBoxSingle from "@/components/MapBoxSingle";
+import SwiperCarousel from "@/components/exclusive-listings/SwiperCarousel";
+import ListingHeaderInfo from "@/components/listings/ListingsHeaderInfo";
+import ButtonsExclusiveListings from "@/components/exclusive-listings/ButtonsExclusiveListings";
+import ListingInformationAccordion from "@/components/listings/ListingInformationAccordion";
+import SchoolInformationAccordion from "@/components/listings/SchoolInformationAccordion";
+import ListingImageGallery from "@/components/exclusive-listings/ListingImageGallery";
+import AgentTestimonials from "@/components/agents/AgentTestimonials";
+import { calculateDaysFromUnix } from "@/utils/calculateDaysFromUnix";
+import HeaderInfo from "@/components/exclusive-listings/HeaderInfo";
 import Image from "next/image";
 import { Suspense } from "react";
-import getFeaturedListing from "../../../_utils/getFeaturedListing";
+import getFeaturedListing from "@/utils/getFeaturedListing";
 import { notFound } from "next/navigation";
-import DescriptionMetadata from "../../../_components/listings/metadata/DescriptionMetadata";
-import getFeaturedListingApi from "../../../_utils/getFeaturedListingsApi";
-import ExclusiveListingContact from "../../../_components/exclusive-listings/ExclusiveListingContact"
-import getAgent from "../../../_utils/getAgent"
+import DescriptionMetadata from "@/components/listings/metadata/DescriptionMetadata";
+import getFeaturedListingApi from "@/utils/getFeaturedListingsApi";
+import ExclusiveListingContact from "@/components/exclusive-listings/ExclusiveListingContact"
+import getAgent from "@/utils/getAgent"
 
 //export const dynamic = "force-static";
 

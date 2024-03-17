@@ -1,6 +1,6 @@
-import NavBarBar from './NavBarBar'
+import NavBarBar from '@/components/NavBarBar'
 import Link from 'next/link'
-import NavBarSlide from './NavBarSlide'
+import NavBarSlide from '@/components/NavBarSlide'
 import Image from "next/image"
 
 const NavBarSolid = () => {

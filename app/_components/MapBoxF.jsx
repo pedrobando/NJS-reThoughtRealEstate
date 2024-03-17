@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import WaveDividerBottom from "./WaveDividerBottom";
+import WaveDividerBottom from "@/components/WaveDividerBottom";
 import getCenter from "geolib/es/getCenter";
 import Image from "next/image";
 import Link from "next/link";
