@@ -6,7 +6,7 @@ export default async function getFeaturedListing(exclusiveid) {
       const res = await fetch(`${process.env.HOMEJUNCTION_RE_LITING_URI}${exclusiveid}`, {
         method: "GET",
         next:{
-          revalidate: 60 * 60 * 24
+          revalidate: 3600
         },
         headers: {
           Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`, 

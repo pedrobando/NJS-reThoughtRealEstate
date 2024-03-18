@@ -4,7 +4,7 @@ export default async function getFeaturedListings() {
       const res = await fetch(`${process.env.HOMEJUNCTION_RE_LITINGS_URI}`, {
         method: "GET",
         next:{
-          revalidate: 60 * 60 * 24
+          revalidate: 0
         },
         headers: {
           Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`, 

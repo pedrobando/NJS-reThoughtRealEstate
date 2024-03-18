@@ -40,7 +40,7 @@ export default async function ListingsList() {
         <Suspense fallback={<LoadingListingCard number="10"/>}>
           <ExclusiveListingsCards listings={listings} />
         </Suspense>
-
+ 
         
       </div>
     </>

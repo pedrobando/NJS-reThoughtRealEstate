@@ -8,6 +8,7 @@
         "@/libs/*": ["app/_libs/*"],
         "@/public/*": ["public/*"],
         "@/app/*": ["app/*"],
+        "@/*": ["./*"],
       }
     },
     "include": [

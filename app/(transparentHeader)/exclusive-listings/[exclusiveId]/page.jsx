@@ -12,12 +12,9 @@ import Image from "next/image";
 import { Suspense } from "react";
 import getFeaturedListing from "@/utils/getFeaturedListing";
 import { notFound } from "next/navigation";
-import DescriptionMetadata from "@/components/listings/metadata/DescriptionMetadata";
 import getFeaturedListingApi from "@/utils/getFeaturedListingsApi";
 import ExclusiveListingContact from "@/components/exclusive-listings/ExclusiveListingContact"
 import getAgent from "@/utils/getAgent"
-
-//export const dynamic = "force-static";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -25,7 +22,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
   // fetch data
   const propertyData = await getFeaturedListing(id);
-  if (propertyData.success) {
+  if (propertyData.success && !propertyData.result.invalid) {
     const property = propertyData.result.listings[0];
 
     return {
@@ -46,10 +43,13 @@ export default async function ExclusiveListing(exclusiveId) {
 
   if (
     result.responses[0].result.invalid ||
-    result.responses[0].result.listings[0].listingOffice.id !== "of27022"
+    result.responses[0].result.listings[0].listingOffice.id !== "of27022" ||
+    result.responses[0].result.success === false ||
+    (Array.isArray(result.responses[0].result.invalid) && result.responses[0].result.invalid[0])
   ) {
     notFound();
   }
+  
 
   
 
