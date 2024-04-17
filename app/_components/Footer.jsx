@@ -6,7 +6,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="flex-col items-center justify-end bg-reDark min-h-[130px] pb-6 w-full">
+    <footer className="flex-col items-center justify-end bg-reDark min-h-[130px] pb-6 w-full z-[50]">
       <div className="relative bg-reGreen py-8 px-6 text-center w-full border-0 ">
         <h3 className="font-heading text-xl font-semibold z-10 pb-2 text-white">
           ¡Hablamos Español! Para ayuda puede llamar o enviar mensaje de texto
