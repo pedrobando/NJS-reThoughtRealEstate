@@ -11,24 +11,22 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      
     },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'exterior-house': "url('/img/exclusive-listings-exterior-features.png')"
-          
       },
       fontFamily: {
         body: "Lato",
         heading: ["Poppins", "sans-serif"],
         accent: ['"Shadows Into Light Two"', 'sans-serif'],
       },
-      colors:{
-        reDark:"#222625",
+      colors: {
+        reDark: "#222625",
         reGreen: {
-          DEFAULT:"#8CC94C",
+          DEFAULT: "#8CC94C",
           100: "#EAFCEC",
           200: "#CBF2D2",
           300: "#ABE7B7",
@@ -39,8 +37,8 @@ module.exports = {
           800: "#1C4F15",
           900: "#003000",
         },
-        reBlue:{
-          DEFAULT:'#044c76',
+        reBlue: {
+          DEFAULT: '#044c76',
           50: '#c2d1e1',
           100: '#a4b9d4',
           200: '#779fc4',
@@ -54,11 +52,11 @@ module.exports = {
         },
         reYellow: '#FFCC00',
         reGrey: '#414142',
-        reTextGrey:'#BABABA',
-        reText:'#333333',
+        reTextGrey: '#BABABA',
+        reText: '#333333',
         reTextLight: '#727272',
-        reBody: '#727272',
-        reRed:'#EB6753'
+        reBody: '#7f7f7f',
+        reRed: '#EB6753',
       },
       keyframes: {
         "accordion-down": {
@@ -76,5 +74,20 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.text-stroke': {
+          '-webkit-text-stroke': '1px white',
+        },
+        '.text-stroke-sm': {
+          '-webkit-text-stroke': '0.5px white',
+        },
+        '.text-stroke-lg': {
+          '-webkit-text-stroke': '2px white',
+        },
+      }, ['responsive']);
+    },
+  ],
+};
