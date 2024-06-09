@@ -8,7 +8,7 @@ const Homepage = () => {
     <>
       <div className="flex bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-screen justify-center items-center relative opacity-100">
         <div className="absolute flex-col justify-center text-center z-[50]">
-          <h1 className="text-4xl md:text-5xl font-bold text-white font-heading font-semibold">
+          <h1 className="text-4xl md:text-5xl font-bold text-white font-heading font-semibold pt-[30%] w-fit">
             Client-Centric REALTORS®
           </h1>
           <h2 className="text-2xl z-10 font-bold font-heading font-thin mt-2 text-reGreen">
@@ -37,7 +37,7 @@ const Homepage = () => {
             </Link>
           </div>
         </div>
-        <div className="absolute opacity-20 z-[1] object-cover h-full w-full">
+        <div className="absolute opacity-20 z-[1] object-cover h-full w-full mt-[-105px]">
           <video autoPlay loop muted className="h-full w-full object-cover">
             <source
               src="https://dashbrew.s3.us-east-2.amazonaws.com/assets/vids/client-centric-milwaukee-realtors.webm"
@@ -112,12 +112,12 @@ const Homepage = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 ">
             <img src="https://luxus.wplistingthemes.com/wp-content/uploads/2022/01/Gallery.webp" />
           </div>
         </div>
         <div className="flex flex-col bg-reBlue min-h-20 py-20 ">
-          <div className="flex items-center container">
+          <div className="flex flex-col lg:flex-row items-center container">
             <div className="p-6">
               <h3 className="text-reBlue font-heading leading-[1.2em] text-7xl font-bold text-stroke-lg  text-stroke-white text-3xl tracking-wider">
                 Real Simple. <br />
@@ -125,7 +125,7 @@ const Homepage = () => {
                 Real Results.
               </h3>
             </div>
-            <div className="px-6">
+            <div className=" px-6">
               <h3 className="sr-only">Featured Properties</h3>
               <div className="flex py-8">
                 <div className="w-[300px] h-[350px] border border-white rounded rounded-md"></div>
@@ -133,7 +133,50 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-        <Reels/>
+        <div className="flex min-h-[200px] bg-white p-6 pt-20">
+          <div className="flex container">
+            <div className="w-1/2"></div>
+            <div className="w-1/2">
+              <h3 className="font-heading font-semibold uppercase text-reGreen text-lg">
+                #reElevated Boutique Style
+              </h3>
+              <h2 className="font-heading capitalize text-reDark text-4xl font-bold">
+                Personalized Approach
+              </h2>
+              <p className="leading-relaxed text-reBody">
+                We take a personalized educated approach to every situation. It
+                is designed to educate you and provide you with the confidence
+                you need to make an educated decision.
+              </p>
+              <ul className="pb-10 py-3 text-reBody ">
+                <li className="py-2">
+                  <p>
+                    Personalized Guidance: Tailored advice and strategies to
+                    meet your unique needs and goals.
+                  </p>
+                </li>
+                <li className="py-2">
+                  <p>
+                    Step-by-Step Process: Clear explanations of each stage,
+                    ensuring you're always informed and comfortable.
+                  </p>
+                </li>
+                <li className="py-2">
+                  <p>
+                    Modern Tools: Utilizing the latest technology to streamline
+                    the buying and selling process.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="bg-reDark min-h-[200px] p-6 py-20">
+          <div className="flex container">
+            <h3></h3>
+            <h2 className="font-heading capitalize text-white text-4xl font-bold">Commercial</h2>
+          </div>
+        </div>
       </div>
     </>
   );
