@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Reels from "@/components/instagram/Reels";
+import AgentTestimonials from "@/components/agents/AgentTestimonials";
 
 const Homepage = () => {
   return (
@@ -53,7 +54,7 @@ const Homepage = () => {
             <h3 className="font-heading font-semibold uppercase text-reGreen text-lg">
               More than just Realtors®...
             </h3>
-            <h2 className="font-heading capitalize text-reDark text-4xl font-bold">
+            <h2 className="font-heading capitalize text-reDark text-4xl font-bold pb-4">
               Real People Focused <br />
               On Your Experience.
             </h2>
@@ -135,12 +136,12 @@ const Homepage = () => {
         </div>
         <div className="flex min-h-[200px] bg-white p-6 pt-20">
           <div className="flex container">
-            <div className="w-1/2"></div>
-            <div className="w-1/2">
+            <div className="lg:w-1/2"></div>
+            <div className="lg:w-1/2">
               <h3 className="font-heading font-semibold uppercase text-reGreen text-lg">
                 #reElevated Boutique Style
               </h3>
-              <h2 className="font-heading capitalize text-reDark text-4xl font-bold">
+              <h2 className="font-heading capitalize text-reDark text-4xl font-bold pb-4">
                 Personalized Approach
               </h2>
               <p className="leading-relaxed text-reBody">
@@ -148,35 +149,131 @@ const Homepage = () => {
                 is designed to educate you and provide you with the confidence
                 you need to make an educated decision.
               </p>
-              <ul className="pb-10 py-3 text-reBody ">
+              <ul className="py-6 text-reBody p-4">
                 <li className="py-2">
-                  <p>
-                    Personalized Guidance: Tailored advice and strategies to
-                    meet your unique needs and goals.
-                  </p>
+                  <div className="flex flex-col">
+                    <Link
+                      href="#"
+                      className="text-reGreen font-semibold font-heading text-lg hover:scale-95 transition"
+                    >
+                      First Time Home Buyer
+                    </Link>
+
+                    <p>
+                      reThought Agents prepared to offer a comprehensive
+                      consultation where they go over our propietary
+                      Step-By-Step First Time Home Buyer guide, Zero to 45.
+                    </p>
+                  </div>
                 </li>
                 <li className="py-2">
-                  <p>
-                    Step-by-Step Process: Clear explanations of each stage,
-                    ensuring you're always informed and comfortable.
-                  </p>
+                  <div className="flex flex-col">
+                    <Link
+                      href="#"
+                      className="text-reGreen font-semibold font-heading text-lg hover:scale-95 transition"
+                    >
+                      Home Sellers
+                    </Link>
+                    <p>
+                      reThought Agents are prepared to bring you the ANWERS to
+                      the most important questions regarding selling your home.
+                    </p>
+                  </div>
                 </li>
                 <li className="py-2">
-                  <p>
-                    Modern Tools: Utilizing the latest technology to streamline
-                    the buying and selling process.
-                  </p>
+                  <div className="flex flex-col">
+                    <Link
+                      href="#"
+                      className="text-reGreen font-semibold font-heading text-lg hover:scale-95 transition"
+                    >
+                      Upgrades
+                    </Link>
+                    <p>
+                      Need more space? Or maybe you’re downsizing? reThought
+                      Real Estate is your trusted advisor guiding you through
+                      life’s big moves.
+                    </p>
+                  </div>
+                </li>
+                <li className="py-2">
+                  <div className="flex flex-col">
+                    <Link
+                      href="#"
+                      className="text-reGreen font-semibold font-heading text-lg hover:scale-95 transition"
+                    >
+                      Investors
+                    </Link>
+                    <p>
+                      Rental portfolio? Flip? Equity game? reThought agents know
+                      the strategies for each and can help you make sound
+                      decisions based on sales data and your invidial goals as
+                      an investor.
+                    </p>
+                  </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div className="bg-reDark min-h-[200px] p-6 py-20">
-          <div className="flex container">
-            <h3></h3>
-            <h2 className="font-heading capitalize text-white text-4xl font-bold">Commercial</h2>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="py-0 mt-[-60px]"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="#222625"
+            fill-opacity="1"
+            d="M0,64L0,288L288,288L288,192L576,192L576,224L864,224L864,256L1152,256L1152,96L1440,96L1440,320L1152,320L1152,320L864,320L864,320L576,320L576,320L288,320L288,320L0,320L0,320Z"
+          ></path>
+        </svg>
+        <div className="bg-reDark min-h-[200px] p-6 py-20 m-[-5px]">
+          <div className="flex flex-col container">
+            <h3 className="font-heading text-lg font-semibold text-neutral-300">
+              Our Latest Division - Bilingual
+            </h3>
+            <h2 className="font-heading capitalize bg-gradient-to-r from-neutral-400 via-neutral-200 to-neutral-400 text-4xl font-bold w-max bg-clip-text text-transparent  !inline-block pb-4">
+              Commercial Real Estate
+            </h2>
+            <div className="flex">
+              <div className="w-full lg:w-1/2">
+                <p className="text-reBody text-neutral-400 pb-4">
+                  At reThought Real Estate, we believe commercial real estate is
+                  about fostering business growth and community development in
+                  Southeaster Wisconsin and Central Florida. Our team combines
+                  innovative technology with deep market knowledge to offer
+                  strategic guidance tailored to your specific business needs.
+                </p>
+
+                <p className="text-reBody text-neutral-400 pb-8">
+                  Our approach begins with understanding your goals, allowing us
+                  to create personalized strategies for buying, selling,
+                  leasing, or managing properties. We handle all aspects of
+                  commercial real estate transactions, ensuring a seamless and
+                  efficient process.
+                </p>
+                <Link
+                  className="flex w-max border rounded-lg text-white text-center font-heading px-6 md:px-5 py-2 text-lg hover:scale-95 transition"
+                  href="#"
+                >
+                  Connect with an Agent
+                </Link>
+              </div>
+              <div></div>
+            </div>
           </div>
         </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-30 w-max"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="#222625"
+            fill-opacity="1"
+            d="M0,64L0,288L288,288L288,192L576,192L576,224L864,224L864,256L1152,256L1152,96L1440,96L1440,0L1152,0L1152,0L864,0L864,0L576,0L576,0L288,0L288,0L0,0L0,0Z"
+          ></path>
+        </svg>
+        <AgentTestimonials placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
       </div>
     </>
   );

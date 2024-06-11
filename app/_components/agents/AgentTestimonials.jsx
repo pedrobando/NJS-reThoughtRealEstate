@@ -84,7 +84,7 @@ export default function AgentTestimonials({ listing, placeId }) {
                 's Latest Reviews
               </h4>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Join the neighborhood of happy home buyers and sellers!
+                Join the neighborhood of happy clients!
               </p>
             </div>
 
