@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Reels from "@/components/instagram/Reels";
 import AgentTestimonials from "@/components/agents/AgentTestimonials";
+import Image from "next/image";
 
 const Homepage = () => {
   return (
@@ -117,6 +118,7 @@ const Homepage = () => {
             <img src="https://luxus.wplistingthemes.com/wp-content/uploads/2022/01/Gallery.webp" />
           </div>
         </div>
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="fill-reBlue h-10"><path d="M0.00,49.99 C150.00,150.00 166.48,78.46 500.00,49.99 L500.00,150.00 L-32.16,178.13 Z"></path></svg>
         <div className="flex flex-col bg-reBlue min-h-20 py-20 ">
           <div className="flex flex-col lg:flex-row items-center container">
             <div className="p-6">
@@ -134,6 +136,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="h-10 fill-reBlue"><path d="M0.00,49.99 C150.00,150.00 271.49,-49.99 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"></path></svg>
         <div className="flex min-h-[200px] bg-white p-6 pt-20">
           <div className="flex container">
             <div className="lg:w-1/2"></div>
@@ -231,7 +234,7 @@ const Homepage = () => {
             <h3 className="font-heading text-lg font-semibold text-neutral-300">
               Our Latest Division - Bilingual
             </h3>
-            <h2 className="font-heading capitalize bg-gradient-to-r from-neutral-400 via-neutral-200 to-neutral-400 text-4xl font-bold w-max bg-clip-text text-transparent  !inline-block pb-4">
+            <h2 className="font-heading capitalize bg-gradient-to-r from-neutral-400 via-neutral-200 to-neutral-400 text-4xl font-bold bg-clip-text text-transparent pb-4">
               Commercial Real Estate
             </h2>
             <div className="flex">
