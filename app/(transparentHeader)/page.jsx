@@ -118,7 +118,13 @@ const Homepage = () => {
             <img src="https://luxus.wplistingthemes.com/wp-content/uploads/2022/01/Gallery.webp" />
           </div>
         </div>
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="fill-reBlue h-10"><path d="M0.00,49.99 C150.00,150.00 166.48,78.46 500.00,49.99 L500.00,150.00 L-32.16,178.13 Z"></path></svg>
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          className="fill-reBlue h-10"
+        >
+          <path d="M0.00,49.99 C150.00,150.00 166.48,78.46 500.00,49.99 L500.00,150.00 L-32.16,178.13 Z"></path>
+        </svg>
         <div className="flex flex-col bg-reBlue min-h-20 py-20 ">
           <div className="flex flex-col lg:flex-row items-center container">
             <div className="p-6">
@@ -136,7 +142,13 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="h-10 fill-reBlue"><path d="M0.00,49.99 C150.00,150.00 271.49,-49.99 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"></path></svg>
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          className="h-10 fill-reBlue"
+        >
+          <path d="M0.00,49.99 C150.00,150.00 271.49,-49.99 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"></path>
+        </svg>
         <div className="flex min-h-[200px] bg-white p-6 pt-20">
           <div className="flex container">
             <div className="lg:w-1/2"></div>
@@ -230,38 +242,51 @@ const Homepage = () => {
           ></path>
         </svg>
         <div className="bg-reDark min-h-[200px] p-6 py-20 m-[-5px]">
-          <div className="flex flex-col container">
-            <h3 className="font-heading text-lg font-semibold text-neutral-300">
-              Our Latest Division - Bilingual
-            </h3>
-            <h2 className="font-heading capitalize bg-gradient-to-r from-neutral-400 via-neutral-200 to-neutral-400 text-4xl font-bold bg-clip-text text-transparent pb-4">
-              Commercial Real Estate
-            </h2>
-            <div className="flex">
-              <div className="w-full lg:w-1/2">
-                <p className="text-reBody text-neutral-400 pb-4">
-                  At reThought Real Estate, we believe commercial real estate is
-                  about fostering business growth and community development in
-                  Southeaster Wisconsin and Central Florida. Our team combines
-                  innovative technology with deep market knowledge to offer
-                  strategic guidance tailored to your specific business needs.
-                </p>
+          <div className="flex flex-col lg:flex-row container">
+            <div className="w-2/2 lg:w-1/2">
+              <h3 className="font-heading text-lg font-semibold text-neutral-300">
+                Our Latest Division - Bilingual
+              </h3>
+              <h2 className="font-heading capitalize bg-gradient-to-r from-neutral-400 via-neutral-200 to-neutral-400 text-4xl font-bold bg-clip-text text-transparent pb-4">
+                Commercial Real Estate
+              </h2>
+              <div className="flex">
+                <div className="w-full">
+                  <p className="text-reBody text-neutral-400 pb-4">
+                    At reThought Real Estate, we believe commercial real estate
+                    is about fostering business growth and community development
+                    in Southeaster Wisconsin and Central Florida. Our team
+                    combines innovative technology with deep market knowledge to
+                    offer strategic guidance tailored to your specific business
+                    needs.
+                  </p>
 
-                <p className="text-reBody text-neutral-400 pb-8">
-                  Our approach begins with understanding your goals, allowing us
-                  to create personalized strategies for buying, selling,
-                  leasing, or managing properties. We handle all aspects of
-                  commercial real estate transactions, ensuring a seamless and
-                  efficient process.
-                </p>
-                <Link
-                  className="flex w-max border rounded-lg text-white text-center font-heading px-6 md:px-5 py-2 text-lg hover:scale-95 transition"
-                  href="#"
-                >
-                  Connect with an Agent
-                </Link>
+                  <p className="text-reBody text-neutral-400 pb-8">
+                    Our approach begins with understanding your goals, allowing
+                    us to create personalized strategies for buying, selling,
+                    leasing, or managing properties. We handle all aspects of
+                    commercial real estate transactions, ensuring a seamless and
+                    efficient process.
+                  </p>
+                  <div className="flex flex-col lg:flex-row gap-4">
+                    <Link
+                      className="flex w-max border rounded-lg text-white text-center font-heading px-6 md:px-5 py-2 text-lg hover:scale-95 transition mx-auto"
+                      href="#"
+                    >
+                      Connect with an Agent
+                    </Link>
+                    <Link
+                      className="flex w-max border rounded-lg text-white text-center font-heading px-6 md:px-5 py-2 text-lg hover:scale-95 transition mx-auto"
+                      href="#"
+                    >
+                      Explore our Commercial Listings
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div></div>
+            </div>
+            <div className="w-2/2 lg:w-1/2">
+              <img src="img/rethought-for-sale.png"/>
             </div>
           </div>
         </div>
