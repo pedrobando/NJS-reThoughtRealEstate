@@ -8,7 +8,7 @@ import Image from "next/image";
 const Homepage = () => {
   return (
     <>
-      <div className="flex bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-screen justify-center items-center relative opacity-100">
+      <main className="flex bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-[110vh] justify-center items-center relative opacity-100">
         <div className="absolute flex-col justify-center text-center z-[50]">
           <h1 className="text-4xl md:text-5xl font-bold text-white font-heading font-semibold pt-[30%] w-fit">
             Client-Centric REALTORS®
@@ -48,7 +48,7 @@ const Homepage = () => {
             Your browser does not support the video tag.
           </video>
         </div>
-      </div>
+      </main>
       <div className="flex flex-col w-full bg-white text-reGrey">
         <div className="flex flex-col md:flex-row container min-h-[200px] p-6 pt-20">
           <div className="w-full lg:w-1/2 md:pr-14">
@@ -67,7 +67,7 @@ const Homepage = () => {
               <span className="highlight">YOUR</span> goal making sure{" "}
               <span className="highlight">YOU</span> stay informed of{" "}
               <span className="highlight">EVERYTHING</span>. No one will
-              out-geek us when it comes to the Milwaukee and surrounding areas
+              out-geek us when it comes to the <span className="highlight">Southeastern Wisconsin</span> and <span className="highlight">Central Florida </span>
               real estate market!
             </p>
 

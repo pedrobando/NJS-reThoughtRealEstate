@@ -16,7 +16,7 @@ async function getAgentTestimonials(placeId) {
       `https://places.googleapis.com/v1/places/${placeId}?key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&fields=id,displayName,rating,userRatingCount,reviews`,
       {
         method: "GET",
-        next: { revalidate: 30 * 60 * 24 },
+        next: { revalidate: 300 },
       }
     );
 
