@@ -127,17 +127,19 @@ const Homepage = () => {
         </svg>
         <div className="flex flex-col bg-reBlue min-h-20 py-20 ">
           <div className="flex flex-col lg:flex-row items-center container">
-            <div className="p-6">
+            <div className="p-6 lg:w-1/2">
               <h3 className="text-reBlue font-heading leading-[1.2em] text-7xl font-bold text-stroke-lg  text-stroke-white text-3xl tracking-wider">
                 Real Simple. <br />
                 Real Skills. <br />
                 Real Results.
               </h3>
             </div>
-            <div className=" px-6">
+            <div className=" px-6 lg:w-1/2">
               <h3 className="sr-only">Featured Properties</h3>
-              <div className="flex py-8">
-                <div className="w-[300px] h-[350px] border border-white rounded rounded-md"></div>
+              <div className="flex py-8 gap-6 overflow-hidden">
+                <div className="min-w-[300px] h-[350px] border border-white rounded rounded-md"></div>
+                <div className="min-w-[300px] h-[350px] border border-white rounded rounded-md"></div>
+                <div className="min-w-[300px] h-[350px] border border-white rounded rounded-md"></div>
               </div>
             </div>
           </div>
@@ -201,7 +203,7 @@ const Homepage = () => {
                       href="#"
                       className="text-reGreen font-semibold font-heading text-lg hover:scale-95 transition"
                     >
-                      Upgrades
+                      Upgrades/Downgrades
                     </Link>
                     <p>
                       Need more space? Or maybe you’re downsizing? reThought
@@ -232,7 +234,7 @@ const Homepage = () => {
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="py-0 mt-[-60px]"
+          className="py-0 mt-[-100px] "
           viewBox="0 0 1440 320"
         >
           <path
