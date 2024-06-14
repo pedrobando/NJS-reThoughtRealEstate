@@ -13,13 +13,12 @@ import Image from "next/image";
 async function getAgentTestimonials(placeId) {
   try {
     const res = await fetch(
-      `https://places.googleapis.com/v1/places/${placeId}?key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&fields=id,displayName,rating,userRatingCount,reviews`,
+      `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&fields=place_id,rating,name,user_ratings_total,reviews&reviews_sort=newest`,
       {
         method: "GET",
         next: { revalidate: 300 },
       }
     );
-
     if (!res.ok) {
       throw new Error("Failed to fetch reviews");
     }
@@ -37,8 +36,8 @@ export default function AgentTestimonials({ listing, placeId }) {
   async function fetchTestimonials(placeId) {
     try {
       const data = await getAgentTestimonials(placeId);
-      setTestimonials(data.reviews);
-      setTestimonial(data);
+      setTestimonials(data.result.reviews);
+      setTestimonial(data.result.reviews[0]);
     } catch (error) {
       console.error("Error loading testimonials: ", error);
     }
@@ -105,25 +104,25 @@ export default function AgentTestimonials({ listing, placeId }) {
                         <div className="flex gap-x-3 items-center">
                           <div className="flex-shrink-0 sm:mb-0 sm:mr-4">
                             <Image
-                              src={testimonial.authorAttribution.photoUri}
-                              alt={testimonial.authorAttribution.displayName}
+                              src={testimonial.profile_photo_url}
+                              alt={testimonial.author_name}
                               width={48}
                               height={48}
                             />
                           </div>
                           <div>
                             <h4 className="text-lg font-bold">
-                              {testimonial.authorAttribution.displayName}
+                              {testimonial.author_name}
                             </h4>
-                            <p> {testimonial.relativePublishTimeDescription}</p>
+                            <p> {testimonial.relative_time_description}</p>
                           </div>
                         </div>
                       </div>
                       <div className="px-4 py-1 sm:p-6 h-[100px] overflow-auto">
-                        {testimonial.originalText &&
-                          testimonial.originalText.text && (
+                        {testimonial.text &&
+                           (
                             <p className="p-0 m-0">
-                              {testimonial.originalText.text}
+                              {testimonial.text}
                             </p>
                           )}
                       </div>
@@ -146,7 +145,7 @@ export default function AgentTestimonials({ listing, placeId }) {
             {placeId === "ChIJb7MfaNYXBYgRgx-s57Z2YfI"
                   ? "reThought Real Estate"
                   : listing.listingAgent.name}
-                's Latest Reviews has {testimonial.userRatingCount}{" "}
+                's Latest Reviews has {testimonial.user_ratings_total}{" "}
               verified reviews on Google with an average of {testimonial.rating}{" "}
               stars.
             </h4>

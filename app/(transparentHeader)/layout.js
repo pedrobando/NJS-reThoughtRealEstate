@@ -14,6 +14,10 @@ export const metadata = {
     template:`%s | reThought Real Estate`
   },
   description: "Milwaukee's Bilingual boutique real estate firm. Local agents providing a personalized, tech-driven, and client-centric approach to buying and selling real estate.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function HomeLayout({ children }) {
