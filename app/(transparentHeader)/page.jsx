@@ -116,7 +116,7 @@ const Homepage = () => {
           </div>
           <div className="w-full lg:w-1/2 ">
           <Image
-            src="/img/milwaukee-first-time-home-buyer-closing.png"
+            src="/img/milwaukee-first-time-home-buyer-closing.webp"
             width={744}
             height={609}
             alt="Milwaukee First Time Home Buyer - Closing on their new home!"
