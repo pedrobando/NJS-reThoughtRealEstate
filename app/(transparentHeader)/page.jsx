@@ -14,7 +14,7 @@ const Homepage = () => {
             Client-Centric REALTORS®
           </h1>
           <h2 className="text-2xl z-10 font-bold font-heading font-thin mt-2 text-reGreen">
-            Real Simple. Real Skills. Real Results.
+            Real Simple. Real Skills. Real Results.®
           </h2>
           <div className="flex flex-col md:flex-row md:justify-center gap-4 mt-10 w-[90%] md:w-auto mx-auto">
             <Link
@@ -115,7 +115,14 @@ const Homepage = () => {
             </ul>
           </div>
           <div className="w-full lg:w-1/2 ">
-            <img src="https://luxus.wplistingthemes.com/wp-content/uploads/2022/01/Gallery.webp" />
+          <Image
+            src="/img/milwaukee-first-time-home-buyer-closing.png"
+            width={744}
+            height={609}
+            alt="Milwaukee First Time Home Buyer - Closing on their new home!"
+            priority={true}
+          />
+        
           </div>
         </div>
         <svg
@@ -131,7 +138,7 @@ const Homepage = () => {
               <h3 className="text-reBlue font-heading leading-[1.2em] text-7xl font-bold text-stroke-lg  text-stroke-white text-3xl tracking-wider">
                 Real Simple. <br />
                 Real Skills. <br />
-                Real Results.
+                Real Results.®
               </h3>
             </div>
             <div className=" px-6 lg:w-1/2">
