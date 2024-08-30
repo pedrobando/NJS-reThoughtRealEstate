@@ -2,10 +2,16 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Reels from "@/components/instagram/Reels";
+import FeaturedListingsCarousel from "@/components/home/FeaturedListingsCarousel"
 import AgentTestimonials from "@/components/agents/AgentTestimonials";
 import Image from "next/image";
+import getFeaturedListings from "@/utils/getFeaturedListings";
 
-const Homepage = () => {
+
+const Homepage = async() => {
+  const data = await getFeaturedListings();
+  
+const listings = data.result.listings;
   return (
     <>
       <main className="flex bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-[110vh] justify-center items-center relative opacity-100">
@@ -141,13 +147,11 @@ const Homepage = () => {
                 Real Results.®
               </h3>
             </div>
-            <div className=" px-6 lg:w-1/2">
+            <div className="px-3 lg:px-6 lg:w-1/2">
               <h3 className="sr-only">Featured Properties</h3>
-              <div className="flex py-8 gap-6 overflow-hidden">
-                <div className="min-w-[300px] h-[350px] border border-white rounded rounded-md"></div>
-                <div className="min-w-[300px] h-[350px] border border-white rounded rounded-md"></div>
-                <div className="min-w-[300px] h-[350px] border border-white rounded rounded-md"></div>
-              </div>
+             
+               <FeaturedListingsCarousel listings={listings}/>
+              
             </div>
           </div>
         </div>
