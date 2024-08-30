@@ -18,8 +18,8 @@ const ExclusiveListingsCards = async ({ listings }) => {
           >
             <div className="absolute inset-0 -z-10 h-full w-full object-cover">
               <Image
-                src={listing.images[0]}
-                alt={listing.address.deliveryLine}
+                src={listing.images?.[0] ?? '/img/property-coming-soon.webp'}
+                alt={listing.address?.deliveryLine}
                 fill={true}
                 style={{ objectFit: "cover" }}
               />

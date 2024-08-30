@@ -1,6 +1,6 @@
 import MapBoxF from "../../_components/MapBoxF";
 import Link from "next/link";
-import getFeaturedListings from "../../_utils/getFeaturedListings";
+import getFeaturedListings from "@/utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard"
 import { Suspense } from "react";
@@ -15,8 +15,9 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 export default async function ListingsList() {
   const data = await getFeaturedListings();
+  
   const listings = data.result.listings;
-
+  
   return (
     <>
     <Suspense fallback={<LoadingListingsMapBox/>}>
