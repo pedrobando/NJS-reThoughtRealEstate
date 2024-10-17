@@ -316,7 +316,6 @@ const listings = data.result.listings;
             d="M0,64L0,288L288,288L288,192L576,192L576,224L864,224L864,256L1152,256L1152,96L1440,96L1440,0L1152,0L1152,0L864,0L864,0L576,0L576,0L288,0L288,0L0,0L0,0Z"
           ></path>
         </svg>
-        <AgentTestimonials placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
         <AgentTestimonialsWrapper placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
       </div>
     </>

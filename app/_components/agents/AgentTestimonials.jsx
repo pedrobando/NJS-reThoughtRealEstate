@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -9,11 +8,17 @@ import {
 import Image from "next/image";
 
 export default function AgentTestimonials({ listing, testimonials }) {
-  const testimonial = testimonials[0]; 
+  let testimonial = null;
+  if(testimonials){
+   testimonial = testimonials[0];
+  }
+  
+  console.log("Testimonialllss", testimonials)
   return (
     <>
-      {testimonials && testimonial && (
+      {testimonials && testimonials.length > 0 ? (
         <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
+          
           <div
             className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl z-0"
             aria-hidden="true"
@@ -83,12 +88,9 @@ export default function AgentTestimonials({ listing, testimonials }) {
                         </div>
                       </div>
                       <div className="px-4 py-1 sm:p-6 h-[100px] overflow-auto">
-                        {testimonial.text &&
-                           (
-                            <p className="p-0 m-0">
-                              {testimonial.text}
-                            </p>
-                          )}
+                        {testimonial.text && (
+                          <p className="p-0 m-0">{testimonial.text}</p>
+                        )}
                       </div>
                       <div className="px-4 my-3 sm:px-6 max-h-14 float-right">
                         <Image
@@ -106,15 +108,56 @@ export default function AgentTestimonials({ listing, testimonials }) {
               <CarouselNext />
             </Carousel>
             <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
-            {placeId === "ChIJb7MfaNYXBYgRgx-s57Z2YfI"
-                  ? "reThought Real Estate"
-                  : listing.listingAgent.name}
-                's Latest Reviews has {testimonial.user_ratings_total}{" "}
-              verified reviews on Google with an average of {testimonial.rating}{" "}
-              stars.
+              {placeId === "ChIJb7MfaNYXBYgRgx-s57Z2YfI"
+                ? "reThought Real Estate"
+                : listing?.listingAgent?.name}
+              's Latest Reviews has {testimonial.user_ratings_total} verified
+              reviews on Google with an average of {testimonial.rating} stars.
             </h4>
           </div>
         </div>
+      ) : (
+        <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
+          
+          <div
+            className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl z-0"
+            aria-hidden="true"
+          >
+            <div
+              className="ml-[max(50%,38rem)] aspect-[1313/771] w-[82.0625rem] bg-gradient-to-tr from-reGreen to-reBlue"
+              style={{
+                clipPath:
+                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+              }}
+            />
+          </div>
+          <div
+            className="absolute inset-x-0 top-0 -z-10 flex transform-gpu overflow-hidden pt-32 opacity-25 blur-3xl sm:pt-40 xl:justify-end z-0"
+            aria-hidden="true"
+          >
+            <div
+              className="ml-[-22rem] aspect-[1313/771] w-[82.0625rem] flex-none origin-top-right rotate-[30deg] bg-gradient-to-tr from-reBlue to-reGreen xl:ml-0 xl:mr-[calc(50%-12rem)]"
+              style={{
+                clipPath:
+                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+              }}
+            />
+          </div>
+          <div className="container mx-auto max-w-8/12 px-6 lg:px-8">
+            <div className="mx-auto max-w-xl text-center">
+            <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
+          Be the first to leave {listing?.listingAgent?.name} a review.
+        </h4>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Join the neighborhood of happy clients!
+              </p>
+            </div>
+
+            
+           
+          </div>
+        </div>
+        
       )}
     </>
   );
