@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -10,42 +8,8 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
-async function getAgentTestimonials(placeId) {
-  try {
-    const res = await fetch(
-      `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&key=AIzaSyCAaXwGj3Q6M3B5YKz5EAMjgnJ6jneUsEc&fields=place_id,rating,name,user_ratings_total,reviews&reviews_sort=newest`,
-      {
-        method: "GET",
-        next: { revalidate: 300 },
-      }
-    );
-    if (!res.ok) {
-      throw new Error("Failed to fetch reviews");
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.error("Error loading topics: ", error);
-  }
-}
-
-export default function AgentTestimonials({ listing, placeId }) {
-  const [testimonials, setTestimonials] = useState([]);
-  const [testimonial, setTestimonial] = useState();
-
-  async function fetchTestimonials(placeId) {
-    try {
-      const data = await getAgentTestimonials(placeId);
-      setTestimonials(data.result.reviews);
-      setTestimonial(data.result.reviews[0]);
-    } catch (error) {
-      console.error("Error loading testimonials: ", error);
-    }
-  }
-
-  useEffect(() => {
-    fetchTestimonials(placeId);
-  }, [placeId]);
+export default function AgentTestimonials({ listing, testimonials }) {
+  const testimonial = testimonials[0]; 
   return (
     <>
       {testimonials && testimonial && (

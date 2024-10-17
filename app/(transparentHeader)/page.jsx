@@ -6,10 +6,12 @@ import FeaturedListingsCarousel from "@/components/home/FeaturedListingsCarousel
 import AgentTestimonials from "@/components/agents/AgentTestimonials";
 import Image from "next/image";
 import getFeaturedListings from "@/utils/getFeaturedListings";
+import AgentTestimonialsWrapper from "@/components/agents/AgentTestimonialsWrapper";
 
 
 const Homepage = async() => {
   const data = await getFeaturedListings();
+ 
   
 const listings = data.result.listings;
   return (
@@ -315,6 +317,7 @@ const listings = data.result.listings;
           ></path>
         </svg>
         <AgentTestimonials placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
+        <AgentTestimonialsWrapper placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
       </div>
     </>
   );
