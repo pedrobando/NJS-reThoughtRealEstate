@@ -32,7 +32,7 @@ const Footer = () => {
             while together we achieve YOUR goal.
           </p>
           <h4 className="mt-8 text-reGreen font-heading font-semibold">
-            Real Simple. Real Skills. Real Results. ™
+            Real Simple. Real Skills. Real Results. ®
           </h4>
         </div>
 
