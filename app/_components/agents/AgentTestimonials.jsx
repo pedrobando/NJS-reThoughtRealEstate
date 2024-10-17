@@ -1,3 +1,4 @@
+"use client";
 import {
   Carousel,
   CarouselContent,
@@ -6,19 +7,25 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import { Rating, Star } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
-export default function AgentTestimonials({ listing, testimonials }) {
+const myStyles = {
+  itemShapes: Star,
+  activeFillColor: "#FABC05",
+  inactiveFillColor: "#dadce0",
+};
+
+export default function AgentTestimonials({ placeId, listing, testimonials }) {
   let testimonial = null;
-  if(testimonials){
-   testimonial = testimonials[0];
+  if (testimonials) {
+    testimonial = testimonials[0];
   }
-  
-  console.log("Testimonialllss", testimonials)
+
   return (
     <>
       {testimonials && testimonials.length > 0 ? (
         <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
-          
           <div
             className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl z-0"
             aria-hidden="true"
@@ -83,7 +90,20 @@ export default function AgentTestimonials({ listing, testimonials }) {
                             <h4 className="text-lg font-bold">
                               {testimonial.author_name}
                             </h4>
-                            <p> {testimonial.relative_time_description}</p>
+                            <div className="flex gap-2 items-center">
+                              <div>
+                              
+                                <Rating
+                                  style={{ maxWidth: 70 }}
+                                  value={testimonial.rating}
+                                  readOnly
+                                  itemStyles={myStyles}
+                                />
+                              </div>
+                              <div>
+                                <p className="text-neutral-400">{testimonial.relative_time_description}</p>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -92,6 +112,7 @@ export default function AgentTestimonials({ listing, testimonials }) {
                           <p className="p-0 m-0">{testimonial.text}</p>
                         )}
                       </div>
+
                       <div className="px-4 my-3 sm:px-6 max-h-14 float-right">
                         <Image
                           src="https://cdn.mos.cms.futurecdn.net/rjqJEKv6P9Yjy9d3KMGvp8-320-80.jpg"
@@ -118,7 +139,6 @@ export default function AgentTestimonials({ listing, testimonials }) {
         </div>
       ) : (
         <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
-          
           <div
             className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl z-0"
             aria-hidden="true"
@@ -145,19 +165,15 @@ export default function AgentTestimonials({ listing, testimonials }) {
           </div>
           <div className="container mx-auto max-w-8/12 px-6 lg:px-8">
             <div className="mx-auto max-w-xl text-center">
-            <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
-          Be the first to leave {listing?.listingAgent?.name} a review.
-        </h4>
+              <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
+                Be the first to leave {listing?.listingAgent?.name} a review.
+              </h4>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Join the neighborhood of happy clients!
               </p>
             </div>
-
-            
-           
           </div>
         </div>
-        
       )}
     </>
   );
