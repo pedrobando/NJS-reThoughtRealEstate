@@ -5,6 +5,7 @@ import ExclusiveListingsCards from "../../_components/listings/ExclusiveListings
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard"
 import { Suspense } from "react";
 import LoadingListingsMapBox from "../../_components/ui/LoadingUI/LoadingListingsMapBox"
+import { delay } from "@/utils/getFeaturedListing";
 
 export async function generateMetadata({ params, searchParams }, parent) { 
   return {
@@ -13,9 +14,9 @@ export async function generateMetadata({ params, searchParams }, parent) {
   };
 }
 
+
 export default async function ListingsList() {
   const data = await getFeaturedListings();
-  
   const listings = data.result.listings;
   
   return (

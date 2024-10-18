@@ -7,10 +7,12 @@ import AgentTestimonials from "@/components/agents/AgentTestimonials";
 import Image from "next/image";
 import getFeaturedListings from "@/utils/getFeaturedListings";
 import AgentTestimonialsWrapper from "@/components/agents/AgentTestimonialsWrapper";
+import { delay } from "@/utils/getFeaturedListing";
 
 
 const Homepage = async() => {
   const data = await getFeaturedListings();
+  //await delay(10000);
  
   
 const listings = data.result.listings;

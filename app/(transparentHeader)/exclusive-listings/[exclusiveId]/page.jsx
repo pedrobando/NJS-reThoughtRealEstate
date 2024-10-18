@@ -10,7 +10,7 @@ import { calculateDaysFromUnix } from "@/utils/calculateDaysFromUnix";
 import HeaderInfo from "@/components/exclusive-listings/HeaderInfo";
 import Image from "next/image";
 import { Suspense } from "react";
-import getFeaturedListing from "@/utils/getFeaturedListing";
+import getFeaturedListing, { delay } from "@/utils/getFeaturedListing";
 import { notFound } from "next/navigation";
 import getFeaturedListingApi from "@/utils/getFeaturedListingsApi";
 import ExclusiveListingContact from "@/components/exclusive-listings/ExclusiveListingContact"
@@ -63,6 +63,7 @@ export default async function ExclusiveListing(exclusiveId) {
     style: "currency",
     currency: "USD",
   });
+
 
   return (
     <div className="bg-white w-full z-0 text-reText">
@@ -169,7 +170,7 @@ export default async function ExclusiveListing(exclusiveId) {
         </section>
        
         <section className="flex container max-h-[450px]" aria-labelledby="listing-map">
-          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
+          <Suspense>
             <MapBoxSingle listingCoordinates={listing.coordinates} />
           </Suspense>
         </section>
@@ -189,12 +190,12 @@ export default async function ExclusiveListing(exclusiveId) {
           <ListingImageGallery images={listing.images} />
         </section>
         <section aria-labelledby="agent-testimonials">
-          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
+          <Suspense>
             <AgentTestimonials listing={listing} placeId={agent.placeId || place} />
           </Suspense>
         </section>
         <section aria-labelledby="contact-form" className="flex flex-col md:flex-row container mx-auto lg:gap-x-3 content-end px-3">
-          <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
+          <Suspense>
             <ExclusiveListingContact listing={listing} photoUrl={agent.listingsImg} agent={agent} />
           </Suspense>
         </section>
