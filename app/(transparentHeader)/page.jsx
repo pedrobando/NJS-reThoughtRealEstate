@@ -2,25 +2,24 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Reels from "@/components/instagram/Reels";
-import FeaturedListingsCarousel from "@/components/home/FeaturedListingsCarousel"
+import FeaturedListingsCarousel from "@/components/home/FeaturedListingsCarousel";
 import AgentTestimonials from "@/components/agents/AgentTestimonials";
 import Image from "next/image";
 import getFeaturedListings from "@/utils/getFeaturedListings";
 import AgentTestimonialsWrapper from "@/components/agents/AgentTestimonialsWrapper";
 import { delay } from "@/utils/getFeaturedListing";
+import Divider from "@/components/ui/Divider";
 
-
-const Homepage = async() => {
+const Homepage = async () => {
   const data = await getFeaturedListings();
   //await delay(10000);
- 
-  
-const listings = data.result.listings;
+
+  const listings = data.result.listings;
   return (
     <>
-      <main className="flex bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-[110vh] justify-center items-center relative opacity-100">
-        <div className="absolute flex-col justify-center text-center z-[50]">
-          <h1 className="text-4xl md:text-5xl font-bold text-white font-heading font-semibold pt-[30%] w-fit">
+      <main className="flex flex-col bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-[110vh] justify-center items-center relative opacity-100">
+        <div className="flex flex-col justify-center items-center text-center z-[50]">
+          <h1 className="text-4xl md:text-5xl font-bold text-white font-heading font-semibold pt-[10%] w-fit text-center">
             Client-Centric REALTORS®
           </h1>
           <h2 className="text-2xl z-10 font-bold font-heading font-thin mt-2 text-reGreen">
@@ -31,24 +30,68 @@ const listings = data.result.listings;
               className="border rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg  hover:scale-95 transition "
               href="/exclusive-listings"
             >
-              Homes for Sale
+              Milwaukee Homes for Sale
             </Link>
 
             <Link
               className="border rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg hover:scale-95 transition "
               href="/exclusive-listings"
             >
-              Find my Home Value
+              Central Florida Homes for Sale
             </Link>
 
             <Link
-              className="border border-reGreen-500 rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg hover:scale-95 transition bg-reGreen"
+              className="border border-reYellow rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg hover:scale-95 transition bg-reYellow text-yellow-800 font-semibold"
               href="/exclusive-listings"
             >
               Ayuda en Español
             </Link>
           </div>
+          <div className="flex gap-4 my-3 pt-3 transition hover:cursor-pointer absolute bottom-5" id="home-value">
+            <h3 className="text-[14px] text-left font-bold text-white">
+              Get My Home's Current
+              <br /> Market Value Today
+            </h3>
+            <svg
+              className="hover:animate-spin transition-all"
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              viewBox="0 0 66 66"
+              fill="none"
+            >
+              <circle
+                cx="33"
+                cy="33"
+                r="29"
+                stroke="url(#paint0_linear_49_16)"
+                strokeWidth="8"
+              ></circle>
+              <path
+                d="M33 22.6169V43.3824M33 43.3824L23.3333 33.6918M33 43.3824L42.6667 33.6918"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <defs>
+                <linearGradient
+                  id="paint0_linear_49_16"
+                  x1="33"
+                  y1="4"
+                  x2="33"
+                  y2="62"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#FFCC00"></stop>
+                  <stop offset="0.495" stopColor="#8CC94E"></stop>
+                  <stop offset="1" stopColor="#38B3FF"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
         </div>
+        
         <div className="absolute opacity-20 z-[1] object-cover h-full w-full mt-[-105px]">
           <video autoPlay loop muted className="h-full w-full object-cover">
             <source
@@ -77,7 +120,9 @@ const listings = data.result.listings;
               <span className="highlight">YOUR</span> goal making sure{" "}
               <span className="highlight">YOU</span> stay informed of{" "}
               <span className="highlight">EVERYTHING</span>. No one will
-              out-geek us when it comes to the <span className="highlight">Southeastern Wisconsin</span> and <span className="highlight">Central Florida </span>
+              out-geek us when it comes to the{" "}
+              <span className="highlight">Southeastern Wisconsin</span> and{" "}
+              <span className="highlight">Central Florida </span>
               real estate market!
             </p>
 
@@ -125,14 +170,13 @@ const listings = data.result.listings;
             </ul>
           </div>
           <div className="w-full lg:w-1/2 ">
-          <Image
-            src="/img/milwaukee-first-time-home-buyer-closing.webp"
-            width={744}
-            height={609}
-            alt="Milwaukee First Time Home Buyer - Closing on their new home!"
-            priority={true}
-          />
-        
+            <Image
+              src="/img/milwaukee-first-time-home-buyer-closing.webp"
+              width={744}
+              height={609}
+              alt="Milwaukee First Time Home Buyer - Closing on their new home!"
+              priority={true}
+            />
           </div>
         </div>
         <svg
@@ -153,9 +197,8 @@ const listings = data.result.listings;
             </div>
             <div className="px-3 lg:px-6 lg:w-1/2">
               <h3 className="sr-only">Featured Properties</h3>
-             
-               <FeaturedListingsCarousel listings={listings}/>
-              
+
+              <FeaturedListingsCarousel listings={listings} />
             </div>
           </div>
         </div>
@@ -303,7 +346,7 @@ const listings = data.result.listings;
               </div>
             </div>
             <div className="w-2/2 lg:w-1/2">
-              <img src="img/rethought-for-sale.png"/>
+              <img src="img/rethought-for-sale.png" />
             </div>
           </div>
         </div>
@@ -318,8 +361,25 @@ const listings = data.result.listings;
             d="M0,64L0,288L288,288L288,192L576,192L576,224L864,224L864,256L1152,256L1152,96L1440,96L1440,0L1152,0L1152,0L864,0L864,0L576,0L576,0L288,0L288,0L0,0L0,0Z"
           ></path>
         </svg>
-        <AgentTestimonialsWrapper placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
       </div>
+      <div className="flex flex-col lg:flex-row bg-white">
+        <div className="container flex flex-col lg:flex-row gap-6 py-20 p-6">
+          
+        <div className="w-full lg:w-1/2">
+          <h3 className="font-heading font-bold text-reGrey text-[5em] leading-none"><span className="text-[24px] font-semibold m-0 p-0">Southeastern</span><br/>Wisconsin</h3>
+          <Divider width="90px" color="reGreen"/>
+          <p className="py-5 text-reGrey-300 font-body leading-relaxed text-lg">Milwaukee is a vibrant city perfect for families, offering a mix of cultural experiences and kid-friendly attractions. From exploring the Milwaukee Public Museum and Discovery World to visiting the city's famous parks and zoos, there's always something for families to enjoy. The city is also known for its thriving real estate market, presenting great investment opportunities in both residential and commercial properties. Milwaukee’s iconic Fiserv Forum and rich cultural festivals make it an exciting place to live and invest, offering a strong sense of community alongside modern amenities.</p>
+        </div>
+        <div className="w-full lg:w-1/2">
+          <h3 className="font-heading font-bold text-reGrey text-[5em] leading-none"><span className="text-[24px] font-semibold m-0 p-0">Central</span><br/>Florida</h3>
+          <Divider width="90px" color="reGreen"/>
+          <p className="py-5 text-reGrey-300 font-body leading-relaxed text-lg">Central Florida is a family-friendly destination known for its world-famous theme parks like Walt Disney World, Universal Studios, and SeaWorld, making it a paradise for kids and parents alike. Beyond the attractions, the region offers a welcoming environment with top-rated schools, family-oriented communities, and endless entertainment options. Central Florida is also a prime spot for real estate investment, with growing opportunities in vacation rentals and residential properties near the parks. With year-round sunshine, family activities, and strong investment potential, Central Florida is an ideal place to live, play, and invest.</p>
+        </div>
+        </div>
+      </div>
+      <AgentTestimonialsWrapper placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
+      
+      
     </>
   );
 };
