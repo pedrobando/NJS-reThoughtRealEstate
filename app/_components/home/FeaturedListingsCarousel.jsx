@@ -9,10 +9,10 @@ import "swiper/css/scrollbar"; // Scrollbar module
 import "swiper/css/free-mode"; // FreeMode module
 import SwiperCore, { Navigation, Scrollbar, FreeMode } from "swiper/modules";
 
-const FeaturedListingsCarousel = async ({ listings }) => {
+const FeaturedListingsCarousel = ({ listings }) => {
 
   return (
-    <div className="container overflow-hidden ml-6">
+    <div className="container overflow-hidden">
      
         <Swiper
         slidesPerView={2}

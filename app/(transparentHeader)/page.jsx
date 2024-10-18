@@ -195,7 +195,7 @@ const Homepage = async () => {
                 Real Results.®
               </h3>
             </div>
-            <div className="px-3 lg:px-6 lg:w-1/2">
+            <div className="w-full px-3 lg:px-6 lg:w-1/2">
               <h3 className="sr-only">Featured Properties</h3>
 
               <FeaturedListingsCarousel listings={listings} />
