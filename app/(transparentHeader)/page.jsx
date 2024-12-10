@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Reels from "@/components/instagram/Reels";
@@ -12,8 +12,9 @@ import Divider from "@/components/ui/Divider";
 
 const Homepage = async () => {
   const data = await getFeaturedListings();
+  
   //await delay(10000);
-
+  //Streaming to be implemented here
   const listings = data.result.listings;
   return (
     <>
@@ -95,7 +96,7 @@ const Homepage = async () => {
         <div className="absolute opacity-20 z-[1] object-cover h-full w-full mt-[-105px]">
           <video autoPlay loop muted className="h-full w-full object-cover">
             <source
-              src="https://dashbrew.s3.us-east-2.amazonaws.com/assets/vids/client-centric-milwaukee-realtors.webm"
+              src="https://dashbrew.s3.us-east-2.amazonaws.com/assets/vids/kissimmee-orlando-bilingual-realtor.webm"
               type="video/webm"
             />
             Your browser does not support the video tag.
@@ -187,19 +188,18 @@ const Homepage = async () => {
           <path d="M0.00,49.99 C150.00,150.00 166.48,78.46 500.00,49.99 L500.00,150.00 L-32.16,178.13 Z"></path>
         </svg>
         <div className="flex flex-col bg-reBlue min-h-20 py-20 ">
-          <div className="flex flex-col lg:flex-row items-center container">
-            <div className="p-6 lg:w-1/2">
-              <h3 className="text-reBlue font-heading leading-[1.2em] text-7xl font-bold text-stroke-lg  text-stroke-white text-3xl tracking-wider">
-                Real Simple. <br />
-                Real Skills. <br />
-                Real Results.®
+          
+          <div className="flex flex-col items-center container">
+           
+              <h3 className="text-reBlue font-heading leading-[1.2em] text-7xl font-bold text-stroke-lg  text-stroke-white text-3xl tracking-wider py-6">
+                Milwaukee Featured Listings
               </h3>
-            </div>
-            <div className="w-full px-3 lg:px-6 lg:w-1/2">
+            
+          
               <h3 className="sr-only">Featured Properties</h3>
-
-              <FeaturedListingsCarousel listings={listings} />
-            </div>
+<Suspense><FeaturedListingsCarousel listings={listings} /></Suspense>
+              
+           
           </div>
         </div>
         <svg
@@ -210,9 +210,16 @@ const Homepage = async () => {
           <path d="M0.00,49.99 C150.00,150.00 271.49,-49.99 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"></path>
         </svg>
         <div className="flex min-h-[200px] bg-white p-6 pt-20">
-          <div className="flex container">
-            <div className="lg:w-1/2"></div>
-            <div className="lg:w-1/2">
+          
+          <div className="flex flex-col lg:flex-row items-center container">
+            <div className="p-6 w-full lg:w-1/2">
+            <h3 className="text-neutral-200 font-heading leading-[1.2em] text-7xl font-bold tracking-wider">
+                Real Simple. <br />
+                Real Skills. <br />
+                Real Results.®
+              </h3>
+            </div>
+            <div className="w-full lg:w-1/2">
               <h3 className="font-heading font-semibold uppercase text-reGreen text-lg">
                 #reElevated Boutique Style
               </h3>

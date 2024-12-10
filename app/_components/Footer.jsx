@@ -18,8 +18,8 @@ const Footer = () => {
         <div className="w-full md:flex-auto md:w-[40%]">
           <Link href="/" className="w-[40%] md:w-[40%] nextImg">
             <Image
-              src="/img/rethought-real-estate-light-logo.svg"
-              alt="reThought Real Estate Logo"
+              src="https://dashbrew.s3.us-east-2.amazonaws.com/assets/vids/reThought-Real-Estate-Realtor-Milwaukee-Orlando-Kissimmee.svg"
+              alt="reThought Real Estate Logo - Bilingual Boutique Real Estate Firm"
               width={221}
               height={52}
               style={{ objectFit: "contain" }}

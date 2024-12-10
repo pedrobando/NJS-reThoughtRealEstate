@@ -15,7 +15,7 @@ const FeaturedListingsCarousel = ({ listings }) => {
     <div className="container overflow-hidden">
      
         <Swiper
-        slidesPerView={2}
+        slidesPerView={4}
         className="w-full h-full rounded-lg overflow-hidden "
         navigation={true}
         scrollbar={true}
@@ -34,7 +34,7 @@ const FeaturedListingsCarousel = ({ listings }) => {
             slidesPerView: 2,
           },
           1024: {
-            slidesPerView: 2,
+            slidesPerView: 4,
           },
         }}
       >
