@@ -12,13 +12,13 @@ import Divider from "@/components/ui/Divider";
 
 const Homepage = async () => {
   const data = await getFeaturedListings();
-  
+
   //await delay(10000);
   //Streaming to be implemented here
   const listings = data.result.listings;
   return (
     <>
-      <main className="flex flex-col bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-[110vh] justify-center items-center relative opacity-100">
+      <main className="flex flex-col bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px]  min-h-[750px] justify-center items-center relative opacity-100">
         <div className="flex flex-col justify-center items-center text-center z-[50]">
           <h1 className="text-4xl md:text-5xl font-bold text-white font-heading font-semibold pt-[10%] w-fit text-center">
             Client-Centric REALTORS®
@@ -26,7 +26,7 @@ const Homepage = async () => {
           <h2 className="text-2xl z-10 font-bold font-heading font-thin mt-2 text-reGreen">
             Real Simple. Real Skills. Real Results.®
           </h2>
-          <div className="flex flex-col md:flex-row md:justify-center gap-4 mt-10 w-[90%] md:w-auto mx-auto">
+          <div className="flex flex-col gap-4 mt-10 w-[90%] md:flex-row md:justify-center md:w-auto">
             <Link
               className="border rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg  hover:scale-95 transition "
               href="/exclusive-listings"
@@ -48,7 +48,10 @@ const Homepage = async () => {
               Ayuda en Español
             </Link>
           </div>
-          <div className="flex gap-4 my-3 pt-3 transition hover:cursor-pointer absolute bottom-5" id="home-value">
+          <div
+            className="flex gap-4 my-7 py-3 transition hover:cursor-pointer"
+            id="home-value"
+          >
             <h3 className="text-[14px] text-left font-bold text-white">
               Get My Home's Current
               <br /> Market Value Today
@@ -92,7 +95,7 @@ const Homepage = async () => {
             </svg>
           </div>
         </div>
-        
+
         <div className="absolute opacity-20 z-[1] object-cover h-full w-full mt-[-105px]">
           <video autoPlay loop muted className="h-full w-full object-cover">
             <source
@@ -187,19 +190,16 @@ const Homepage = async () => {
         >
           <path d="M0.00,49.99 C150.00,150.00 166.48,78.46 500.00,49.99 L500.00,150.00 L-32.16,178.13 Z"></path>
         </svg>
-        <div className="flex flex-col bg-reBlue min-h-20 py-20 ">
-          
+        <div className="flex flex-col bg-reBlue min-h-20 p-6 py-20 ">
           <div className="flex flex-col items-center container">
-           
-              <h3 className="text-reBlue font-heading leading-[1.2em] text-7xl font-bold text-stroke-lg  text-stroke-white text-3xl tracking-wider py-6">
-                Milwaukee Featured Listings
-              </h3>
-            
-          
-              <h3 className="sr-only">Featured Properties</h3>
-<Suspense><FeaturedListingsCarousel listings={listings} /></Suspense>
-              
-           
+            <h3 className="text-reBlue font-heading leading-[1.2em] text-7xl font-bold text-stroke-lg  text-stroke-white text-3xl tracking-wider py-6">
+              Milwaukee Featured Listings
+            </h3>
+
+            <h3 className="sr-only">Featured Properties</h3>
+            <Suspense>
+              <FeaturedListingsCarousel listings={listings} />
+            </Suspense>
           </div>
         </div>
         <svg
@@ -210,10 +210,9 @@ const Homepage = async () => {
           <path d="M0.00,49.99 C150.00,150.00 271.49,-49.99 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"></path>
         </svg>
         <div className="flex min-h-[200px] bg-white p-6 pt-20">
-          
           <div className="flex flex-col lg:flex-row items-center container">
             <div className="p-6 w-full lg:w-1/2">
-            <h3 className="text-neutral-200 font-heading leading-[1.2em] text-7xl font-bold tracking-wider">
+              <h3 className="text-neutral-200 font-heading leading-[1.2em] text-7xl font-bold tracking-wider">
                 Real Simple. <br />
                 Real Skills. <br />
                 Real Results.®
@@ -371,22 +370,52 @@ const Homepage = async () => {
       </div>
       <div className="flex flex-col lg:flex-row bg-white">
         <div className="container flex flex-col lg:flex-row gap-6 py-20 p-6">
-          
-        <div className="w-full lg:w-1/2">
-          <h3 className="font-heading font-bold text-reGrey text-[5em] leading-none"><span className="text-[24px] font-semibold m-0 p-0">Southeastern</span><br/>Wisconsin</h3>
-          <Divider width="90px" color="reGreen"/>
-          <p className="py-5 text-reGrey-300 font-body leading-relaxed text-lg">Milwaukee is a vibrant city perfect for families, offering a mix of cultural experiences and kid-friendly attractions. From exploring the Milwaukee Public Museum and Discovery World to visiting the city's famous parks and zoos, there's always something for families to enjoy. The city is also known for its thriving real estate market, presenting great investment opportunities in both residential and commercial properties. Milwaukee’s iconic Fiserv Forum and rich cultural festivals make it an exciting place to live and invest, offering a strong sense of community alongside modern amenities.</p>
-        </div>
-        <div className="w-full lg:w-1/2">
-          <h3 className="font-heading font-bold text-reGrey text-[5em] leading-none"><span className="text-[24px] font-semibold m-0 p-0">Central</span><br/>Florida</h3>
-          <Divider width="90px" color="reGreen"/>
-          <p className="py-5 text-reGrey-300 font-body leading-relaxed text-lg">Central Florida is a family-friendly destination known for its world-famous theme parks like Walt Disney World, Universal Studios, and SeaWorld, making it a paradise for kids and parents alike. Beyond the attractions, the region offers a welcoming environment with top-rated schools, family-oriented communities, and endless entertainment options. Central Florida is also a prime spot for real estate investment, with growing opportunities in vacation rentals and residential properties near the parks. With year-round sunshine, family activities, and strong investment potential, Central Florida is an ideal place to live, play, and invest.</p>
-        </div>
+          <div className="w-full lg:w-1/2">
+            <h3 className="font-heading font-bold text-reGrey text-[5em] leading-none">
+              <span className="text-[24px] font-semibold m-0 p-0">
+                Southeastern
+              </span>
+              <br />
+              Wisconsin
+            </h3>
+            <Divider width="90px" color="reGreen" />
+            <p className="py-5 text-reGrey-300 font-body leading-relaxed text-lg">
+              Milwaukee is a vibrant city perfect for families, offering a mix
+              of cultural experiences and kid-friendly attractions. From
+              exploring the Milwaukee Public Museum and Discovery World to
+              visiting the city's famous parks and zoos, there's always
+              something for families to enjoy. The city is also known for its
+              thriving real estate market, presenting great investment
+              opportunities in both residential and commercial properties.
+              Milwaukee’s iconic Fiserv Forum and rich cultural festivals make
+              it an exciting place to live and invest, offering a strong sense
+              of community alongside modern amenities.
+            </p>
+          </div>
+          <div className="w-full lg:w-1/2">
+            <h3 className="font-heading font-bold text-reGrey text-[5em] leading-none">
+              <span className="text-[24px] font-semibold m-0 p-0">Central</span>
+              <br />
+              Florida
+            </h3>
+            <Divider width="90px" color="reGreen" />
+            <p className="py-5 text-reGrey-300 font-body leading-relaxed text-lg">
+              Central Florida is a family-friendly destination known for its
+              world-famous theme parks like Walt Disney World, Universal
+              Studios, and SeaWorld, making it a paradise for kids and parents
+              alike. Beyond the attractions, the region offers a welcoming
+              environment with top-rated schools, family-oriented communities,
+              and endless entertainment options. Central Florida is also a prime
+              spot for real estate investment, with growing opportunities in
+              vacation rentals and residential properties near the parks. With
+              year-round sunshine, family activities, and strong investment
+              potential, Central Florida is an ideal place to live, play, and
+              invest.
+            </p>
+          </div>
         </div>
       </div>
       <AgentTestimonialsWrapper placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
-      
-      
     </>
   );
 };
