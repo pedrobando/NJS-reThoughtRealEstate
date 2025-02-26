@@ -23,9 +23,9 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
   }
 
   return (
-    <>
+    <section>
       {testimonials && testimonials.length > 0 ? (
-        <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
+        <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32 text-neutral-600">
           <div
             className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl z-0"
             aria-hidden="true"
@@ -52,12 +52,12 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
           </div>
           <div className="container mx-auto max-w-8/12 px-6 lg:px-8">
             <div className="mx-auto max-w-xl text-center">
-              <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen">
+              <h2 className="text-lg font-semibold leading-8 tracking-tight text-reGreen">
                 {placeId === "ChIJb7MfaNYXBYgRgx-s57Z2YfI"
                   ? "reThought Real Estate"
                   : listing.listingAgent.name}
                 's Latest Reviews
-              </h4>
+              </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Join the neighborhood of happy clients!
               </p>
@@ -75,24 +75,23 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
                     key={index}
                     className=" md:basis-1/1 lg:basis-1/3"
                   >
-                    <div className="divide-y divide-white overflow-hidden rounded-lg bg-white shadow">
+                    <article className="divide-y divide-white overflow-hidden rounded-lg bg-white shadow">
                       <div className="px-4 pt-6 sm:px-6">
                         <div className="flex gap-x-3 items-center">
-                          <div className="flex-shrink-0 sm:mb-0 sm:mr-4">
+                          <figure className="flex-shrink-0 sm:mb-0 sm:mr-4">
                             <Image
                               src={testimonial.profile_photo_url}
                               alt={testimonial.author_name}
                               width={48}
                               height={48}
                             />
-                          </div>
+                          </figure>
                           <div>
-                            <h4 className="text-lg font-bold">
+                            <h3 className="text-lg font-bold">
                               {testimonial.author_name}
-                            </h4>
+                            </h3>
                             <div className="flex gap-2 items-center">
                               <div>
-                              
                                 <Rating
                                   style={{ maxWidth: 70 }}
                                   value={testimonial.rating}
@@ -100,9 +99,7 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
                                   itemStyles={myStyles}
                                 />
                               </div>
-                              <div>
-                                <p className="text-neutral-400">{testimonial.relative_time_description}</p>
-                              </div>
+                              <time className="text-neutral-400">{testimonial.relative_time_description}</time>
                             </div>
                           </div>
                         </div>
@@ -113,28 +110,28 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
                         )}
                       </div>
 
-                      <div className="px-4 my-3 sm:px-6 max-h-14 float-right">
+                      <footer className="px-4 my-3 sm:px-6 max-h-14 float-right">
                         <Image
                           src="https://cdn.mos.cms.futurecdn.net/rjqJEKv6P9Yjy9d3KMGvp8-320-80.jpg"
                           alt="Google Review"
                           width={100}
                           height={56}
                         />
-                      </div>
-                    </div>
+                      </footer>
+                    </article>
                   </CarouselItem>
                 ))}
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
             </Carousel>
-            <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
+            <div className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
               {placeId === "ChIJb7MfaNYXBYgRgx-s57Z2YfI"
                 ? "reThought Real Estate"
                 : listing?.listingAgent?.name}
               's Latest Reviews has {testimonial.user_ratings_total} verified
               reviews on Google with an average of {testimonial.rating} stars.
-            </h4>
+            </div>
           </div>
         </div>
       ) : (
@@ -165,9 +162,9 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
           </div>
           <div className="container mx-auto max-w-8/12 px-6 lg:px-8">
             <div className="mx-auto max-w-xl text-center">
-              <h4 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
+              <h2 className="text-lg font-semibold leading-8 tracking-tight text-reGreen text-center">
                 Be the first to leave {listing?.listingAgent?.name} a review.
-              </h4>
+              </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Join the neighborhood of happy clients!
               </p>
@@ -175,6 +172,6 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
           </div>
         </div>
       )}
-    </>
+    </section>
   );
 }
