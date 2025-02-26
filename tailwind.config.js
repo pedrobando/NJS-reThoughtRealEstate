@@ -24,7 +24,18 @@ module.exports = {
         accent: ['"Shadows Into Light Two"', 'sans-serif'],
       },
       colors: {
-        reDark: "#222625",
+        reDark: {
+          DEFAULT: "#222625",
+          100: "#4A4C4B",
+          200: "#3B3D3C",
+          300: "#2D2F2E",
+          400: "#222625",
+          500: "#1E2120",
+          600: "#191C1B",
+          700: "#141716",
+          800: "#0F1211",
+          900: "#0A0D0C",
+        },
         reGreen: {
           DEFAULT: "#8CC94C",
           100: "#EAFCEC",
