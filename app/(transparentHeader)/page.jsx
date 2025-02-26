@@ -312,7 +312,7 @@ const Homepage = async () => {
           <div className="flex flex-col lg:flex-row container">
             <div className="w-2/2 lg:w-1/2">
               <h3 className="font-heading text-lg font-semibold text-neutral-300">
-                Our Latest Division - Bilingual
+                Multi Family - Bilingual
               </h3>
               <h2 className="font-heading capitalize bg-gradient-to-r from-neutral-400 via-neutral-200 to-neutral-400 text-4xl font-bold bg-clip-text text-transparent pb-4">
                 Commercial Real Estate
