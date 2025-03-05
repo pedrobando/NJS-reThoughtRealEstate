@@ -2,9 +2,9 @@ import MapBoxF from "../../_components/MapBoxF";
 import Link from "next/link";
 import getFeaturedListings from "@/utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
-import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard"
+import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard";
 import { Suspense } from "react";
-import LoadingListingsMapBox from "../../_components/ui/LoadingUI/LoadingListingsMapBox"
+import LoadingListingsMapBox from "../../_components/ui/LoadingUI/LoadingListingsMapBox";
 import { delay } from "@/utils/getFeaturedListing";
 
 export async function generateMetadata({ params, searchParams }, parent) { 
@@ -14,16 +14,24 @@ export async function generateMetadata({ params, searchParams }, parent) {
   };
 }
 
-export default async function ListingsList() {
+// Create a separate component for fetching and displaying listings
+async function ListingsContent() {
+  // Data fetching happens here, inside the component wrapped by Suspense
   const data = await getFeaturedListings();
-  const listings = data.result.listings;
   
+  // This will properly wait for data and handle errors
+  if (!data || !data.result || !data.result.listings) {
+    throw new Error("Failed to fetch listings data");
+  }
+  
+  return <ExclusiveListingsCards listings={data.result.listings} />;
+}
+
+export default function ListingsList() {
   return (
     <>
-     
-      
       <section className="container mx-auto min-h-64 py-14 px-4">
-        <h1 className="text-reGreen text-2xl font-heading font-semibold  text-lg pt-12">
+        <h1 className="text-reGreen text-2xl font-heading font-semibold text-lg pt-12">
           Homes for Sale
         </h1>
         <h2 className="text-reBlue text-5xl font-heading font-semibold lh-10">
@@ -37,7 +45,7 @@ export default async function ListingsList() {
           range of options.
         </p>
         <Suspense fallback={<LoadingListingCard number="10"/>}>
-          <ExclusiveListingsCards listings={listings} />
+          <ListingsContent />
         </Suspense>
       </section>
     </>
