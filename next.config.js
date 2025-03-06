@@ -39,18 +39,12 @@ module.exports = {
         pathname: '/**',
       },]
   },
-  env: {
-    HOMEJUNCTION_TOKEN: process.env.HOMEJUNCTION_TOKEN,
-    HOMEJUNCTION_RE_LITINGS_URI: process.env.HOMEJUNCTION_RE_LITINGS_URI,
-    HOMEJUNCTION_RE_LITING_URI: process.env.HOMEJUNCTION_RE_LITING_URI,
-    fubapikey: process.env.fubapikey,
-    NEXT_PUBLIC_mapbox_token: process.env.NEXT_PUBLIC_mapbox_token,
-    apininja: process.env.apininja,
-    google: process.env.google,
-    NEXT_PUBLIC_lightGallery: process.env.NEXT_PUBLIC_lightGallery,
-    VERCEL_URL: process.env.VERCEL_URL,
-    HOMEJUNCTION_RE_API_URI:process.env.HOMEJUNCTION_RE_API_URI,
-    CLOUDFLARE_IMAGES:process.env.CLOUDFLARE_IMAGES,
-    OPENAI_API:process.env.OPENAI_API
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };

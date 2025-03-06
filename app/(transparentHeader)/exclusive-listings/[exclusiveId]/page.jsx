@@ -13,12 +13,13 @@ import { Suspense } from "react";
 import getFeaturedListing from "@/utils/getFeaturedListing";
 import { notFound } from "next/navigation";
 import getFeaturedListingApi from "@/utils/getFeaturedListingsApi";
-import ExclusiveListingContact from "@/components/exclusive-listings/ExclusiveListingContact"
-import getAgent from "@/utils/getAgent"
+import ExclusiveListingContact from "@/components/exclusive-listings/ExclusiveListingContact";
+import getAgent from "@/utils/getAgent";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
-  const id = params.exclusiveId;
+  const id = await params;
+  const exclusiveId = id.exclusiveId;
 
   // fetch data
   const propertyData = await getFeaturedListing(id);
@@ -35,28 +36,26 @@ export async function generateMetadata({ params, searchParams }, parent) {
   }
 }
 
-export default async function ExclusiveListing(exclusiveId) {
-  //const { result } = await getFeaturedListing(exclusiveId.params.exclusiveId);
-  const { result } = await getFeaturedListingApi(
-    exclusiveId.params.exclusiveId
-  );
+export default async function ExclusiveListing({ params }) {
+  const awaitedParams = await params;
+  const exclusiveIdMLS = awaitedParams.exclusiveId;
+
+  const { result } = await getFeaturedListingApi(exclusiveIdMLS);
 
   if (
     result.responses[0].result.invalid ||
     result.responses[0].result.listings[0].listingOffice.id !== "of27022" ||
     result.responses[0].result.success === false ||
-    (Array.isArray(result.responses[0].result.invalid) && result.responses[0].result.invalid[0])
+    (Array.isArray(result.responses[0].result.invalid) &&
+      result.responses[0].result.invalid[0])
   ) {
     notFound();
   }
-  
-
-  
 
   const listing = await result.responses[0].result.listings[0];
   const schools = await result.responses[1].result.schools;
-  const agent = await getAgent(listing.listingAgent.email)
-  
+  const agent = await getAgent(listing.listingAgent.email);
+
   const place = "ChIJb7MfaNYXBYgRgx-s57Z2YfI";
 
   const USDollar = new Intl.NumberFormat("en-US", {
@@ -86,7 +85,7 @@ export default async function ExclusiveListing(exclusiveId) {
         >
           <HeaderInfo listing={listing} />
           <ListingHeaderInfo listing={listing} />
-          <ButtonsExclusiveListings  listing={listing} />
+          <ButtonsExclusiveListings listing={listing} />
         </div>
       </div>
       <SwiperCarousel listing={listing} />
@@ -167,13 +166,19 @@ export default async function ExclusiveListing(exclusiveId) {
             <SchoolInformationAccordion schools={schools} />
           </div>
         </section>
-       
-        <section className="flex container max-h-[450px]" aria-labelledby="listing-map">
+
+        <section
+          className="flex container max-h-[450px]"
+          aria-labelledby="listing-map"
+        >
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
             <MapBoxSingle listingCoordinates={listing.coordinates} />
           </Suspense>
         </section>
-        <section className="bg-reDark min-h-[450px] pb-[120px]" aria-labelledby="listing-location-blurb">
+        <section
+          className="bg-reDark min-h-[450px] pb-[120px]"
+          aria-labelledby="listing-location-blurb"
+        >
           <div className="flex container mx-auto items-center pt-14 px-4">
             <div className="block px-2 md:px-14 pt-[80px]  md:pt-[180px]">
               <h3 className="text-white text-3xl font-heading text-center md:text-left">
@@ -185,17 +190,30 @@ export default async function ExclusiveListing(exclusiveId) {
             </div>
           </div>
         </section>
-        <section className="bg-reDark h-auto md:min-h-[213px] md:max-h-[420px] overflow-auto" aria-labelledby="listing-photos">
+        <section
+          className="bg-reDark h-auto md:min-h-[213px] md:max-h-[420px] overflow-auto"
+          aria-labelledby="listing-photos"
+        >
           <ListingImageGallery images={listing.images} />
         </section>
         <section aria-labelledby="agent-testimonials">
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <AgentTestimonials listing={listing} placeId={agent.placeId || place} />
+            <AgentTestimonials
+              listing={listing}
+              placeId={agent.placeId || place}
+            />
           </Suspense>
         </section>
-        <section aria-labelledby="contact-form" className="flex flex-col md:flex-row container mx-auto lg:gap-x-3 content-end px-3">
+        <section
+          aria-labelledby="contact-form"
+          className="flex flex-col md:flex-row container mx-auto lg:gap-x-3 content-end px-3"
+        >
           <Suspense fallback={<h1 className="text-reDark">Loading......</h1>}>
-            <ExclusiveListingContact listing={listing} photoUrl={agent.listingsImg} agent={agent} />
+            <ExclusiveListingContact
+              listing={listing}
+              photoUrl={agent.listingsImg}
+              agent={agent}
+            />
           </Suspense>
         </section>
       </main>

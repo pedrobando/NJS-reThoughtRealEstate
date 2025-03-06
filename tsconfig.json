@@ -2,15 +2,33 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["app/_components/*"],
-      "@/utils/*": ["app/_utils/*"],
-      "@/models/*": ["app/_models/*"],
-      "@/libs/*": ["app/_libs/*"],
-      "@/public/*": ["public/*"],
-      "@/app/*": ["app/*"],
-      "@/*": ["./*"],
+      "@/components/*": [
+        "app/_components/*"
+      ],
+      "@/utils/*": [
+        "app/_utils/*"
+      ],
+      "@/models/*": [
+        "app/_models/*"
+      ],
+      "@/libs/*": [
+        "app/_libs/*"
+      ],
+      "@/public/*": [
+        "public/*"
+      ],
+      "@/app/*": [
+        "app/*"
+      ],
+      "@/*": [
+        "./*"
+      ]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -24,9 +42,10 @@
     "jsx": "preserve",
     "plugins": [
       {
-        "name": "next",
-      },
+        "name": "next"
+      }
     ],
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
@@ -34,7 +53,9 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ]
 }

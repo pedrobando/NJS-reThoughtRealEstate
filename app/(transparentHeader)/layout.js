@@ -1,4 +1,4 @@
-import "../globals.css";
+import "@/app/globals.css";
 import Footer from "@/components/Footer";
 import TransparentNavBar from "@/components/transparentNavBar";
 import { SpeedInsights } from "@vercel/speed-insights/next"
