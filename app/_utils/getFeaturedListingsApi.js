@@ -1,41 +1,40 @@
 import { notFound } from "next/navigation";
 
 export default async function getFeaturedListingApi(exclusiveid) {
-
-    try {
-      const res = await fetch(`${process.env.HOMEJUNCTION_RE_API_URI}[{"uri":"/ws/listings/get", "parameters":{"market":"MLSWIS", "id":${exclusiveid}, "extended":"true","images":"true","details":"true","features":"true"}},{"uri": "/ws/schools/search","parameters": {"sortField":"level", "sortOrder":"asc","details":"true","limit":"15", "circle": "{$.listings[0].coordinates.latitude},{$.listings[0].coordinates.longitude},2"}}]`, {
+  try {
+    const res = await fetch(
+      `${process.env.HOMEJUNCTION_RE_API_URI}[{"uri":"/ws/listings/get", "parameters":{"market":"MLSWIS", "id":${exclusiveid}, "extended":"true","images":"true","details":"true","features":"true"}},{"uri": "/ws/schools/search","parameters": {"sortField":"level", "sortOrder":"asc","details":"true","limit":"15", "circle": "{$.listings[0].coordinates.latitude},{$.listings[0].coordinates.longitude},2"}}]`,
+      {
         method: "GET",
-        next:{
-          revalidate: 60 * 60 * 24
+        next: {
+          revalidate: 60 * 60 * 24,
         },
         headers: {
-          Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`, 
+          Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`,
         },
-      });
-    
-      const data = await res.json(); 
-      
-      if (!res.ok || !data.success) {
-        
-        throw new Error(data.error?.message || `HTTP error: ${res.status} ${res.statusText}`);
-      }
+      },
+    );
 
-      if (data.success) {
-           return data;
-        }
-        // await delay(8000); 
-       // return data;
-      
-     
+    const data = await res.json();
 
-    } catch (error) {
-      console.error("Error fetching listings:", error.message);
-     
-      return { error: true, message: error.message, listings: [] };
+    if (!res.ok || !data.success) {
+      throw new Error(
+        data.error?.message || `HTTP error: ${res.status} ${res.statusText}`,
+      );
     }
-  }  
 
+    if (data.success) {
+      return data;
+    }
+    // await delay(8000);
+    // return data;
+  } catch (error) {
+    console.error("Error fetching listings:", error.message);
 
-  export async function delay(ms){
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return { error: true, message: error.message, listings: [] };
   }
+}
+
+export async function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

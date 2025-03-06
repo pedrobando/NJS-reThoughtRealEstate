@@ -8,8 +8,8 @@ import SwiperCore, { Navigation, Scrollbar, FreeMode } from "swiper/modules";
 import Image from "next/image";
 
 const SwiperCarousel = ({ listing }) => {
-  const images = listing.images
- 
+  const images = listing.images;
+
   return (
     <div className="container mx-auto  rounded-lg px-3 block max-h-[320px] overflow-hidden">
       <Swiper
@@ -41,7 +41,12 @@ const SwiperCarousel = ({ listing }) => {
               src={image}
               alt={`${listing.address.deliveryLine} Photo`}
               fill={true}
-              style={{ objectPosition: "center", objectFit:"cover" , height:"100%", width:"100%"}}
+              style={{
+                objectPosition: "center",
+                objectFit: "cover",
+                height: "100%",
+                width: "100%",
+              }}
               sizes="(max-width: 2000px) 100vw, (max-width: 1280px) 50vw, 33vw"
             />
           </SwiperSlide>

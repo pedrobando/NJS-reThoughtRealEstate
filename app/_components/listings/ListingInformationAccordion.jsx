@@ -95,7 +95,7 @@ const ListingInformationAccordion = ({ listing }) => {
                 </span>
               </h6>
             )}
-             {listing.xf_gf20011218213539562254000000 && (
+            {listing.xf_gf20011218213539562254000000 && (
               <h6 className="info-content">
                 <span className="data-label">Water/Sewer</span>
                 <span className="data-value">
@@ -336,16 +336,18 @@ const ListingInformationAccordion = ({ listing }) => {
                 </h6>
               )}
 
-{listing.xf_feat20011218031552211081000000 && (
+              {listing.xf_feat20011218031552211081000000 && (
                 <h6 className="info-content">
                   <span className="data-label"># of Units Type 1</span>
                   <span className="data-value">
-                    {listing.xf_feat20011218031552211081000000}<br/>{listing.xf_gf20011218213538640102000000}sqft
+                    {listing.xf_feat20011218031552211081000000}
+                    <br />
+                    {listing.xf_gf20011218213538640102000000}sqft
                   </span>
                 </h6>
               )}
 
-{listing.xf_gf20011218213538141926000000 && (
+              {listing.xf_gf20011218213538141926000000 && (
                 <h6 className="info-content">
                   <span className="data-label">Unit 1 Features</span>
                   <span className="data-value">
@@ -354,16 +356,17 @@ const ListingInformationAccordion = ({ listing }) => {
                 </h6>
               )}
 
-{listing.xf_feat20011218031604401783000000 && (
+              {listing.xf_feat20011218031604401783000000 && (
                 <h6 className="info-content">
                   <span className="data-label"># of Units Type 2</span>
                   <span className="data-value">
-                    {listing.xf_feat20011218031604401783000000} <br/>{listing.xf_gf20011218213538664475000000}sqft
+                    {listing.xf_feat20011218031604401783000000} <br />
+                    {listing.xf_gf20011218213538664475000000}sqft
                   </span>
                 </h6>
               )}
 
-{listing.xf_gf20011218213538175338000000 && (
+              {listing.xf_gf20011218213538175338000000 && (
                 <h6 className="info-content">
                   <span className="data-label">Unit 2 Features</span>
                   <span className="data-value">
@@ -372,16 +375,18 @@ const ListingInformationAccordion = ({ listing }) => {
                 </h6>
               )}
 
-{listing.xf_feat20011218031617754821000000 && (
+              {listing.xf_feat20011218031617754821000000 && (
                 <h6 className="info-content">
                   <span className="data-label"># of Units Type 3</span>
                   <span className="data-value">
-                    {listing.xf_feat20011218031617754821000000}<br/>{listing.xf_gf20011218213538689924000000}sqft
+                    {listing.xf_feat20011218031617754821000000}
+                    <br />
+                    {listing.xf_gf20011218213538689924000000}sqft
                   </span>
                 </h6>
               )}
 
-{listing.xf_gf20011218213538207874000000 && (
+              {listing.xf_gf20011218213538207874000000 && (
                 <h6 className="info-content">
                   <span className="data-label">Unit 3 Features</span>
                   <span className="data-value">
@@ -390,16 +395,18 @@ const ListingInformationAccordion = ({ listing }) => {
                 </h6>
               )}
 
-{listing.xf_feat20011218031631057438000000 && (
+              {listing.xf_feat20011218031631057438000000 && (
                 <h6 className="info-content">
                   <span className="data-label"># of Units Type 4</span>
                   <span className="data-value">
-                    {listing.xf_feat20011218031631057438000000}<br/>{listing.xf_gf20011218213538714277000000}sqft
+                    {listing.xf_feat20011218031631057438000000}
+                    <br />
+                    {listing.xf_gf20011218213538714277000000}sqft
                   </span>
                 </h6>
               )}
 
-{listing.xf_gf20011218213538232194000000 && (
+              {listing.xf_gf20011218213538232194000000 && (
                 <h6 className="info-content">
                   <span className="data-label">Unit 4 Features</span>
                   <span className="data-value">

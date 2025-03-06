@@ -52,23 +52,24 @@ const ExclusiveListingContact = async ({ listing, photoUrl, agent }) => {
 
   return (
     <div className="flex container md:px-6 justify-center z-50">
-       {photoUrl && (
+      {photoUrl && (
         <div className="hidden lg:inline-flex max-h-[550px] items-end">
-        <Image 
-        style={{
-         width:"auto",
-         height:"auto",
-         maxHeight:"550px",
-         objectFit: "contain"
-        }}
-        width={625}
-        height={783}
-        src={photoUrl}
-        alt={listing.listingAgent.name}
-        sizes="(max-width: 550px) 100vw, (max-width: 500px) 50vw, 33vw"
-         />
-      </div>)}
-     
+          <Image
+            style={{
+              width: "auto",
+              height: "auto",
+              maxHeight: "550px",
+              objectFit: "contain",
+            }}
+            width={625}
+            height={783}
+            src={photoUrl}
+            alt={listing.listingAgent.name}
+            sizes="(max-width: 550px) 100vw, (max-width: 500px) 50vw, 33vw"
+          />
+        </div>
+      )}
+
       <div className="flex flex-col md:px-6 content-end py-8">
         <h2 className="text-center  font-heading text-5xl md:text-6xl font-bold bg-gradient-to-r from-reGreen to-lime-600  text-transparent bg-clip-text py-2">
           Ready to go see it?
@@ -164,25 +165,22 @@ const ExclusiveListingContact = async ({ listing, photoUrl, agent }) => {
           </a>
         </div>
         {photoUrl && (
-          <div className="lg:hidden max-h-[400px] pt-3 mx-auto -mb-8" >
-          <Image 
-        style={{
-         width:"auto",
-         height:"auto",
-         maxHeight:"550px",
-         objectFit: "contain"
-        }}
-        width={233}
-        height={388}
-        src={photoUrl}
-        alt={listing.listingAgent.name}
-        sizes="(max-width: 550px) 100vw, (max-width: 500px) 50vw, 33vw"
-         />
+          <div className="lg:hidden max-h-[400px] pt-3 mx-auto -mb-8">
+            <Image
+              style={{
+                width: "auto",
+                height: "auto",
+                maxHeight: "550px",
+                objectFit: "contain",
+              }}
+              width={233}
+              height={388}
+              src={photoUrl}
+              alt={listing.listingAgent.name}
+              sizes="(max-width: 550px) 100vw, (max-width: 500px) 50vw, 33vw"
+            />
           </div>
-
         )}
-          
-        
       </div>
     </div>
   );

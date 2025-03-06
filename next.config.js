@@ -5,7 +5,6 @@ module.exports = {
     return String(process.env.GIT_HASH);
   },
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     loader: 'custom',
     loaderFile: './app/_libs/CloudFlareLoader.js',

@@ -99,7 +99,9 @@ export default function AgentTestimonials({ placeId, listing, testimonials }) {
                                   itemStyles={myStyles}
                                 />
                               </div>
-                              <time className="text-neutral-400">{testimonial.relative_time_description}</time>
+                              <time className="text-neutral-400">
+                                {testimonial.relative_time_description}
+                              </time>
                             </div>
                           </div>
                         </div>
