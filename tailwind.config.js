@@ -19,12 +19,23 @@ module.exports = {
         'exterior-house': "url('/img/exclusive-listings-exterior-features.png')"
       },
       fontFamily: {
-        body: "Lato",
+        body: ["Lato", "sans-serif"],
         heading: ["Poppins", "sans-serif"],
         accent: ['"Shadows Into Light Two"', 'sans-serif'],
       },
       colors: {
-        reDark: "#222625",
+        reDark: {
+          DEFAULT: "#222625",
+          100: "#4A4C4B",
+          200: "#3B3D3C",
+          300: "#2D2F2E",
+          400: "#222625",
+          500: "#1E2120",
+          600: "#191C1B",
+          700: "#141716",
+          800: "#0F1211",
+          900: "#0A0D0C",
+        },
         reGreen: {
           DEFAULT: "#8CC94C",
           100: "#EAFCEC",
@@ -50,8 +61,30 @@ module.exports = {
           800: '#011f33',
           900: '#000f1f',
         },
-        reYellow: '#FFCC00',
-        reGrey: '#414142',
+        reYellow: {
+          DEFAULT:'#FFCC00',
+          100: '#FFF4CC',
+          200: '#FFE899',
+          300: '#FFDC66',
+          400: '#FFD033',
+          500: '#FFCC00',
+          600: '#E6B800',
+          700: '#CC9E00',
+          800: '#B38500',
+          900: '#996B00',
+        },
+        reGrey: {
+          DEFAULT:'#414142',
+          100: '#e0e0e0', 
+          200: '#b8b8b9',
+          300: '#919192',
+          400: '#414142',
+          500: '#3a3a3b',
+          600: '#333334',
+          700: '#2c2c2d',
+          800: '#252526',
+          900: '#1e1e1f',
+        },
         reTextGrey: '#BABABA',
         reText: '#333333',
         reTextLight: '#727272',
@@ -75,6 +108,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
     function ({ addUtilities }) {
       addUtilities({

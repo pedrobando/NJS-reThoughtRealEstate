@@ -1,27 +1,60 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css"; // Basic Swiper styles
+import "swiper/css/navigation"; // Navigation module
+import "swiper/css/scrollbar"; // Scrollbar module
+import "swiper/css/free-mode"; // FreeMode module
+import SwiperCore, { Navigation, Scrollbar, FreeMode } from "swiper/modules";
 
-const ExclusiveListingsCards = async ({ listings }) => {
+const FeaturedListingsCarousel = ({ listings }) => {
 
   return (
-    <div className="mx-auto mt-5 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-      {listings.map((listing, index) => (
+    <div className="container overflow-hidden">
+     
+        <Swiper
+        slidesPerView={4}
+        className="w-full h-full rounded-lg overflow-hidden "
+        navigation={true}
+        scrollbar={true}
+        freeMode={true}
+        modules={[Navigation, Scrollbar, FreeMode]} // Explicitly pass modules
+        spaceBetween={30}
+        style={{
+          "--swiper-pagination-color": "#fff",
+          "--swiper-navigation-color": "#fff",
+        }}
+        breakpoints={{
+          390: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
+      >
+         {listings.map((listing, index) => (
+         <SwiperSlide key={index} className="overflow-hidden hover:scale-110 transition-transform rounded-md">
         <Link
           href={`/exclusive-listings/${listing.id}`}
-          className="hover:scale-110 transition-transform"
           key={index}
         >
           <article
             key={index}
-            className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
+            className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-3 pb-8 pt-80 sm:pt-48 lg:pt-80 min-w-[300px] h-[350px] rounded rounded-md"
           >
             <div className="absolute inset-0 -z-10 h-full w-full object-cover">
               <Image
                 src={listing.images?.[0] ?? '/img/property-coming-soon.webp'}
                 alt={listing.address?.deliveryLine}
                 fill={true}
-                style={{ objectFit: "cover" }}
+                style={{ objectPosition: "center", objectFit:"cover" , height:"100%", width:"100%"}}
+                sizes="(max-width: 2000px) 100vw, (max-width: 1280px) 50vw, 33vw"
               />
             </div>
 
@@ -151,20 +184,23 @@ const ExclusiveListingsCards = async ({ listings }) => {
                 </span>
               )}
             </div>
-            <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
+            <h3 className="mt-3 text-md font-semibold leading-6 text-white">
               <span className="absolute inset-0" />
               {listing.address.deliveryLine}
               <br />
-              <span className="text-sm">
+              <span className="text-xs">
                 {listing.address.city} {listing.address.state},{" "}
                 {listing.address.zip}
               </span>
             </h3>
           </article>
         </Link>
-      ))}
+        </SwiperSlide>
+          ))}
+        </Swiper>
+    
     </div>
   );
 };
 
-export default ExclusiveListingsCards;
+export default FeaturedListingsCarousel;

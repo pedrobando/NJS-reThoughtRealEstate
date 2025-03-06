@@ -10,10 +10,10 @@ import Mapbox from "@/libs/Mapbox";
 export const metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
-    default: "Milwaukee Bilingual REALTORS® | reThought Real Estate",
+    default: "Milwaukee & Central Florida Bilingual REALTORS® | reThought Real Estate",
     template:`%s | reThought Real Estate`
   },
-  description: "Milwaukee's Bilingual boutique real estate firm. Local agents providing a personalized, tech-driven, and client-centric approach to buying and selling real estate.",
+  description: "Bilingual boutique real estate firm focused in serving Southeastern WI and Central Florida. Local agents providing a personalized, tech-driven, and client-centric approach to buying and selling real estate.",
   robots: {
     index: false,
     follow: false,
