@@ -1,4 +1,4 @@
-import getFeaturedListings from "@/app/_utils/getFeaturedListings";
+import {getFeaturedListings} from "@/app/_utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard";
 import { Suspense } from "react";
