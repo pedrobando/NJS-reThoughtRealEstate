@@ -1,6 +1,6 @@
 import MapBoxF from "../../_components/MapBoxF";
 import Link from "next/link";
-import getFeaturedListings from "@/utils/getFeaturedListings";
+import getFeaturedListings from "@/app/_utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard";
 import { Suspense } from "react";
@@ -15,12 +15,9 @@ export async function generateMetadata({ params, searchParams }, parent) {
   };
 }
 
-// Create a separate component for fetching and displaying listings
 async function ListingsContent() {
-  // Data fetching happens here, inside the component wrapped by Suspense
   const data = await getFeaturedListings();
   
-  // This will properly wait for data and handle errors
   if (!data || !data.result || !data.result.listings) {
     throw new Error("Failed to fetch listings data");
   }
