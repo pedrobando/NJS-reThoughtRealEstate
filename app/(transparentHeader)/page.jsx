@@ -9,6 +9,18 @@ import getFeaturedListings from "@/utils/getFeaturedListings";
 import AgentTestimonialsWrapper from "@/components/agents/AgentTestimonialsWrapper";
 import { delay } from "@/utils/getFeaturedListing";
 import Divider from "@/components/ui/Divider";
+import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard";
+
+
+async function ListingsContent() {
+  const data = await getFeaturedListings();
+  await delay(5000);
+  if (!data || !data.result || !data.result.listings) {
+    throw new Error("Failed to fetch listings data");
+  }
+  
+  return <FeaturedListingsCarousel listings={data.result.listings} />;
+}
 
 const Homepage = async () => {
   const data = await getFeaturedListings();
@@ -194,8 +206,8 @@ const Homepage = async () => {
             Milwaukee Featured Listings
           </h2>
           <h3 className="sr-only">Featured Properties</h3>
-          <Suspense>
-            <FeaturedListingsCarousel listings={listings} />
+          <Suspense fallback={<LoadingListingCard number={3}/>}>
+          <ListingsContent />
           </Suspense>
         </div>
       </section>
@@ -382,7 +394,9 @@ const Homepage = async () => {
       </section>
 
       <section aria-label="Agent Testimonials">
+        <Suspense fallback={<LoadingListingCard number={3}/>}>
         <AgentTestimonialsWrapper placeId="ChIJb7MfaNYXBYgRgx-s57Z2YfI" />
+        </Suspense>
       </section>
     </>
   );

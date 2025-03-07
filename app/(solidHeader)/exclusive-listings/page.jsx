@@ -16,6 +16,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 async function ListingsContent() {
+
   const data = await getFeaturedListings();
   
   if (!data || !data.result || !data.result.listings) {
@@ -42,7 +43,7 @@ export default function ListingsList() {
           estate, or a prime commercial space, our listings cover a diverse
           range of options.
         </p>
-        <Suspense fallback={<LoadingListingCard number="10"/>}>
+        <Suspense fallback={<LoadingListingCard number={6}/>}>
           <ListingsContent />
         </Suspense>
       </section>

@@ -1,21 +1,34 @@
-export default function LoadingListingCard({ number }) {
+export default function LoadingListingCard({ number = 3 }) {
+  // Convert number to a numeric value if it's passed as a string
+  const count = typeof number === "string" ? Number.parseInt(number, 10) : number
+
+  // Create an array of the specified length to map over
+  const placeholders = Array.from({ length: count }, (_, index) => index)
+
   return (
-    <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-      {Array(10)
-        .fill(0)
-        .map((listing, index) => (
-          <div
-            key={index}
-            className="relative isolate flex flex-col md:inline-flex justify-end overflow-hidden rounded-2xl bg-gray-400 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80 animate-pulse"
-          >
-            <div className="flex-col">
-              <span className="mb-2 block bg-gray-500 py-1 w-[25%] h-2 animate-pulse rounded-md"></span>
-              <span className="mt-2 block bg-gray-500  w-[40%] h-3 rounded-md  animate-pulse"></span>
-              <span className="mt-1  block bg-gray-500 rounded-md h-6 w-[60%] animate-pulse"></span>
-              <span className="mt-3 block text-lg font-semibold leading-6 bg-gray-500 h-6 w-[70%] animate-pulse rounded-md"></span>
+    <div className="mx-auto mt-5 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      {placeholders.map((index) => (
+        <div key={index} className="flex flex-col h-full w-full min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+          {/* Image placeholder */}
+          <div className="h-48 bg-gray-300"></div>
+
+          {/* Content placeholders */}
+          <div className="p-4 space-y-3">
+            {/* Price placeholder */}
+            <div className="h-7 bg-gray-300 rounded w-1/3"></div>
+
+            {/* Address placeholder */}
+            <div className="h-5 bg-gray-300 rounded w-5/6"></div>
+
+            {/* Details placeholder */}
+            <div className="flex space-x-4 pt-2">
+              <div className="h-4 bg-gray-300 rounded w-1/4"></div>
+              <div className="h-4 bg-gray-300 rounded w-1/4"></div>
+              <div className="h-4 bg-gray-300 rounded w-1/4"></div>
             </div>
           </div>
-        ))}
+        </div>
+      ))}
     </div>
-  );
+  )
 }
