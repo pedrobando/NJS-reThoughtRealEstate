@@ -2,7 +2,7 @@
 import { useFormState, useFormStatus } from "react-dom";
 import { fubForms } from "@/utils/actions/fubForms";
 import { DrawerClose, DrawerFooter } from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 const initialState = {
   message: "",
@@ -131,7 +131,15 @@ export function DrawerFormForm({ listing, afterSave, state }) {
               Cancel
             </Button>
           </DrawerClose>
-          <SubmitButton pending={pending}  />
+          <SubmitButton pending={pending} />
+        </div>
+        <div className="mt-2 flex flex-col gap-2">
+          <p className="text-sm text-neutral-500">
+            I agree to be contacted by reThought Real Estate LLC and reThought
+            Real Estate FL, LLC via call, email and text. To opt out, you can
+            reply "stop" at any time or click the unsubscribe link in the
+            emails. Message and data rates may apply.
+          </p>
         </div>
         {state && (
           <span className="text-reRed text-lg text-center py-3">

@@ -1,40 +1,33 @@
-import { notFound } from "next/navigation";
+// Remove the direct import of notFound
+// import { notFound } from "next/navigation"
 
-export default async function getFeaturedListingApi(exclusiveid) {
+export default async function getFeaturedListingApi(id) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
   try {
-    const res = await fetch(
-      `${process.env.HOMEJUNCTION_RE_API_URI}[{"uri":"/ws/listings/get", "parameters":{"market":"MLSWIS", "id":${exclusiveid}, "extended":"true","images":"true","details":"true","features":"true"}},{"uri": "/ws/schools/search","parameters": {"sortField":"level", "sortOrder":"asc","details":"true","limit":"15", "circle": "{$.listings[0].coordinates.latitude},{$.listings[0].coordinates.longitude},2"}}]`,
-      {
-        method: "GET",
-        next: {
-          revalidate: 60 * 60 * 24,
-        },
-        headers: {
-          Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`,
-        },
-      },
-    );
-
-    const data = await res.json();
-
-    if (!res.ok || !data.success) {
-      throw new Error(
-        data.error?.message || `HTTP error: ${res.status} ${res.statusText}`,
-      );
+    const response = await fetch(`${baseUrl}/api/listings/call/${id}`)
+    console.log("responseeeeeeeeeee", response)
+    // Instead of calling notFound() directly, return a status object
+    if (response.status === 404 || response.error) {
+      return { notFound: true }
     }
 
-    if (data.success) {
-      return data;
+    if (!response.ok) {
+      const errorData = await response.json()
+      console.error("API Error:", errorData.error || "Failed to fetch listing details")
+      return { notFound: true }
     }
-    // await delay(8000);
-    // return data;
+
+    const data = await response.json()
+
+    if (!data || !data.result || !data.result.responses || data.result.responses?.length === 0) {
+      console.error("No listing data found for ID:", id)
+      return { notFound: true }
+    }
+
+    return data
   } catch (error) {
-    console.error("Error fetching listings:", error.message);
-
-    return { error: true, message: error.message, listings: [] };
+    console.error("Error fetching listing:", error)
+    return { notFound: true }
   }
 }
 
-export async function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}

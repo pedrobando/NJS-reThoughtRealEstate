@@ -1,76 +1,80 @@
-export async function GET(request, { params }) {
-  const { id } = await params;
+import { NextResponse } from "next/server";
 
-  if (!id) {
-    return Response.json(
-      { error: true, message: "Missing listing ID" },
-      { status: 400 }
-    );
-  }
+export async function GET(request, { params }) {
+  const { id } = params;
 
   try {
-    // Create the request array according to the format
-    const requestArray = [
-      {
-        uri: "/ws/listings/get",
-        parameters: {
-          market: "MLSWIS",
-          id: id,
-          extended: "true",
-          images: "true",
-          details: "true",
-          features: "true",
-        },
-      },
-      {
-        uri: "/ws/schools/search",
-        parameters: {
-          sortField: "level",
-          sortOrder: "asc",
-          details: "true",
-          limit: "15",
-          circle:
-            "{$.listings[0].coordinates.latitude},{$.listings[0].coordinates.longitude},2",
-        },
-      },
-    ];
-
-    // Convert the request array to a JSON string
-    const requestJson = JSON.stringify(requestArray);
-
-    // Create the form data with the request parameter
-    // Format: request=[{"uri":...}...]
-    const formData = new URLSearchParams();
-    formData.append("request", requestJson);
-
-    // Make a POST request with application/x-www-form-urlencoded content type
     const response = await fetch(
-      `${process.env.HOMEJUNCTION_RE_API_URI}/ws/api/call`,
+      `${process.env.HOMEJUNCTION_RE_LITING_URI}${id}`,
       {
-        method: "POST",
+        method: "GET",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
           Authorization: `Bearer ${process.env.HOMEJUNCTION_TOKEN}`,
         },
-        body: formData.toString(),
-      }
+        cache: "no-store",
+      },
     );
 
-    const data = await response.json();
-
-    if (!response.ok || !data.success) {
-      throw new Error(
-        data.error?.message ||
-          `HTTP error: ${response.status} ${response.statusText}`
+    if (!response.ok) {
+      return NextResponse.json(
+        { error: `API request failed with status: ${response.status}` },
+        { status: response.status },
       );
     }
 
-    return Response.json(data);
+    const data = await response.json();
+
+    // Check top-level success
+    if (!data.success) {
+      return NextResponse.json(
+        { error: data.error?.message || "API returned unsuccessful response" },
+        { status: 400 },
+      );
+    }
+
+    // Check for nested responses with issues
+    if (data.result?.responses) {
+      // Check for nested errors
+      const nestedErrors = data.result.responses
+        .filter((response) => !response.success)
+        .map((response) => response.error?.message)
+        .filter(Boolean);
+
+      if (nestedErrors.length > 0) {
+        return NextResponse.json(
+          {
+            error: "Errors in nested responses",
+            details: nestedErrors,
+          },
+          { status: 422 },
+        );
+      }
+
+      // Check for empty listings
+      const allListingsEmpty = data.result.responses.every(
+        (response) =>
+          Array.isArray(response.result?.listings) &&
+          response.result.listings.length === 0,
+      );
+
+      if (allListingsEmpty) {
+        // This is not an error, might happen if url is changed or mls id etc
+        return NextResponse.json({
+          success: true,
+          result: { listings: [] },
+          message: "No listings found for this ID",
+        });
+      }
+    }
+
+    // If we get here, the data seems valid
+    return NextResponse.json(data);
   } catch (error) {
-    console.error("Error fetching listings:", error.message);
-    return Response.json(
-      { error: true, message: error.message, listings: [] },
-      { status: 500 }
+    console.error(`Error fetching listing with ID ${id}:`, error.message);
+
+    return NextResponse.json(
+      { error: "Failed to fetch listing. Please try again later." },
+      { status: 500 },
     );
   }
 }

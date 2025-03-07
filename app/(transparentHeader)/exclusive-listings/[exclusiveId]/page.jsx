@@ -45,6 +45,8 @@ export async function generateMetadata({ params }, parent) {
   }
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function ExclusiveListing({ params }) {
   try {
     // Get the exclusiveId directly
@@ -53,21 +55,6 @@ export default async function ExclusiveListing({ params }) {
 
     // Fetch the data
     const { result } = await getFeaturedListingApi(exclusiveId);
-
-    // Add null checks to prevent errors
-    if (!result?.responses?.[0]?.result) {
-      throw new Error("Invalid API response structure");
-    }
-
-    // Check for invalid data
-    if (
-      result.responses[0].result.invalid ||
-      !result.responses[0].result.listings?.[0] ||
-      result.responses[0].result.listings[0].listingOffice?.id !== "of27022" ||
-      result.responses[0].result.success === false
-    ) {
-      notFound();
-    }
 
     // Get the listing and schools data
     const listing = result.responses[0].result.listings[0];
@@ -257,6 +244,6 @@ export default async function ExclusiveListing({ params }) {
     );
   } catch (error) {
     console.error("Error loading property:", error);
-    throw new Error("Unable to load property details. Please try again later.");
+    throw new Error(error);
   }
 }
