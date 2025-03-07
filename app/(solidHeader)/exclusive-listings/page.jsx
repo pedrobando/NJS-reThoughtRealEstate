@@ -1,11 +1,8 @@
-import MapBoxF from "../../_components/MapBoxF";
-import Link from "next/link";
 import getFeaturedListings from "@/app/_utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard";
 import { Suspense } from "react";
-import LoadingListingsMapBox from "../../_components/ui/LoadingUI/LoadingListingsMapBox";
-import { delay } from "@/utils/getFeaturedListing";
+
 
 export async function generateMetadata({ params, searchParams }, parent) {
   return {
@@ -15,7 +12,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   };
 }
 
-async function ListingsContent() {
+async function ExclusiveListings() {
 
   const data = await getFeaturedListings();
   
@@ -44,7 +41,7 @@ export default function ListingsList() {
           range of options.
         </p>
         <Suspense fallback={<LoadingListingCard number={6}/>}>
-          <ListingsContent />
+          <ExclusiveListings />
         </Suspense>
       </section>
     </>
