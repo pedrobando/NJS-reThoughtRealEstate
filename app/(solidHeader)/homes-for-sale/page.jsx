@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -9,7 +10,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -26,8 +26,10 @@ import {
   BuildingStorefrontIcon,
   QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
+import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard";
 
-const HomesForSalePage = () => {
+// Create a client component that uses useSearchParams
+function HomesForSaleContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -133,13 +135,13 @@ const HomesForSalePage = () => {
       // Map UI property types to API property types
       const propertyTypeMap = {
         House: "Single Family",
-        Townhouse: "Condominium",
+        Townhouse: "Attached",
         Condo: "Condominium",
         Land: "Land",
         "Multi Family": "MultiFamily",
         Mobile: "Mobile",
         "Co-op": "Cooperative",
-        Commercial: "Commercial/Industrial",
+        Commercial: "Commercial",
         Other: "Other",
       };
 
@@ -795,7 +797,11 @@ const HomesForSalePage = () => {
 
       <section id="results" className="p-6">
         {loading ? (
-          <LoadingListingCard key={10} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           
+              <LoadingListingCard key={10} />
+          
+          </div>
         ) : error ? (
           <div className="text-center py-8 text-red-500">Error: {error}</div>
         ) : listings.length === 0 ? (
@@ -804,8 +810,8 @@ const HomesForSalePage = () => {
           </div>
         ) : (
           <>
-          <div ><span className="text-center py-8 text-red-500">Total Results: {totals}</span></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-reBody">
+          <div className="text-center py-8 text-red-500">Total Results: {totals}</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {listings.map((listing) => (
               <div
                 key={listing.id}
@@ -814,7 +820,7 @@ const HomesForSalePage = () => {
                 <div className="relative h-48 bg-gray-200">
                   <img
                     src={
-                      listing.images[0] ||
+                      listing.images[0]||
                       "/placeholder.svg?height=192&width=384"
                     }
                     alt={`${listing.address?.deliveryLine || "Property"}`}
@@ -850,6 +856,24 @@ const HomesForSalePage = () => {
       </section>
     </>
   );
-};
+}
 
-export default HomesForSalePage;
+// Create a wrapper component that uses Suspense
+export default function HomesForSalePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="p-6">
+          <div className="h-16 mb-6 bg-gray-200 animate-pulse rounded"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, index) => (
+              <LoadingListingCard key={index} />
+            ))}
+          </div>
+        </div>
+      }
+    >
+      <HomesForSaleContent />
+    </Suspense>
+  );
+}
