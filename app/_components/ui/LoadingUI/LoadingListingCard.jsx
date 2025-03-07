@@ -1,14 +1,32 @@
 export default function LoadingListingCard({ number = 3 }) {
+  // Add console log to debug
+  console.log(
+    "LoadingListingCard received number:",
+    number,
+    "type:",
+    typeof number,
+  );
+
   // Convert number to a numeric value if it's passed as a string
-  const count = typeof number === "string" ? Number.parseInt(number, 10) : number
+  const count =
+    typeof number === "string" ? Number.parseInt(number, 10) : number;
+
+  // Log the count after conversion
+  console.log("Count after conversion:", count);
 
   // Create an array of the specified length to map over
-  const placeholders = Array.from({ length: count }, (_, index) => index)
+  const placeholders = Array.from({ length: count }, (_, index) => index);
+
+  // Log the length of placeholders array
+  console.log("Placeholders array length:", placeholders.length);
 
   return (
-    <div className="mx-auto mt-5 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    <div className="mt-5 grid w-full grid-cols-1 gap-8 sm:mt-10 md:grid-cols-2 lg:grid-cols-4">
       {placeholders.map((index) => (
-        <div key={index} className="flex flex-col h-full w-full min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+        <div
+          key={index}
+          className="flex flex-col h-full w-full bg-white rounded-lg shadow-md overflow-hidden animate-pulse"
+        >
           {/* Image placeholder */}
           <div className="h-48 bg-gray-300"></div>
 
@@ -30,5 +48,5 @@ export default function LoadingListingCard({ number = 3 }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
