@@ -1,4 +1,4 @@
-import { getFeaturedListings } from "@/app/_utils/getFeaturedListings";
+import getFeaturedListings from "@/app/_utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard";
 import { Suspense } from "react";
@@ -11,13 +11,17 @@ export async function generateMetadata({ params, searchParams }, parent) {
   };
 }
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 async function ExclusiveListings() {
   const data = await getFeaturedListings();
 
   if (!data || !data.result || !data.result.listings) {
-    return <div className="text-center py-8">No listings available at this time.</div>
+    return (
+      <div className="text-center py-8">
+        No listings available at this time.
+      </div>
+    );
   }
 
   return <ExclusiveListingsCards listings={data.result.listings} />;

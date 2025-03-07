@@ -11,10 +11,9 @@ import { delay } from "@/utils/getFeaturedListing";
 import Divider from "@/components/ui/Divider";
 import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard";
 
-
+export const dynamic = "force-dynamic";
 async function ListingsContent() {
   const data = await getFeaturedListings();
-  await delay(5000);
   if (!data || !data.result || !data.result.listings) {
     throw new Error("Failed to fetch listings data");
   }
@@ -23,9 +22,6 @@ async function ListingsContent() {
 }
 
 const Homepage = async () => {
-  const data = await getFeaturedListings();
-  const listings = data.result.listings;
-
   return (
     <>
       <main className="flex flex-col bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px] min-h-[750px] justify-center items-center relative opacity-100">
