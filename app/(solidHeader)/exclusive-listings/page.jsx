@@ -1,8 +1,7 @@
-import {getFeaturedListings} from "@/app/_utils/getFeaturedListings";
+import { getFeaturedListings } from "@/app/_utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard";
 import { Suspense } from "react";
-
 
 export async function generateMetadata({ params, searchParams }, parent) {
   return {
@@ -12,14 +11,15 @@ export async function generateMetadata({ params, searchParams }, parent) {
   };
 }
 
-async function ExclusiveListings() {
+export const dynamic = "force-dynamic"
 
+async function ExclusiveListings() {
   const data = await getFeaturedListings();
-  
+
   if (!data || !data.result || !data.result.listings) {
-    throw new Error("Failed to fetch listings data");
+    return <div className="text-center py-8">No listings available at this time.</div>
   }
-  
+
   return <ExclusiveListingsCards listings={data.result.listings} />;
 }
 
@@ -36,11 +36,12 @@ export default function ListingsList() {
         <p className="text-reDark text-md py-6 pb-12 w-[80%]">
           Our exclusive MLS listings are meticulously curated to showcase some
           of the finest properties in the Racine, Milwaukee, and Waukeha
-          Counties in Southeastern Wisconsin and Osceola, Orange, and Polk County in Central Florida. Whether you're in search of a cozy family home, a luxurious
-          estate, or a prime commercial space, our listings cover a diverse
-          range of options.
+          Counties in Southeastern Wisconsin and Osceola, Orange, and Polk
+          County in Central Florida. Whether you're in search of a cozy family
+          home, a luxurious estate, or a prime commercial space, our listings
+          cover a diverse range of options.
         </p>
-        <Suspense fallback={<LoadingListingCard number={6}/>}>
+        <Suspense fallback={<LoadingListingCard number={6} />}>
           <ExclusiveListings />
         </Suspense>
       </section>
