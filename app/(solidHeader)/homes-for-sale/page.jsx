@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { useState, useEffect, Suspense } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
 import {
   AdjustmentsHorizontalIcon,
   ArrowsPointingOutIcon,
   ChevronDownIcon,
   ListBulletIcon,
   XMarkIcon,
-} from "@heroicons/react/24/outline"
+} from "@heroicons/react/24/outline";
 import {
   HomeIcon,
   BuildingOffice2Icon,
@@ -34,27 +34,37 @@ import {
   Squares2X2Icon,
   ClipboardDocumentListIcon,
   MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline"
-import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard"
-import Image from "next/image"
-import { CalendarDays, Heart, Bed, Bath, Ruler, MapPin, CarIcon, CarFrontIcon } from "lucide-react"
-import { ScrollArea } from "@/components/ui/scroll-area"
+} from "@heroicons/react/24/outline";
+import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard";
+import Image from "next/image";
+import {
+  CalendarDays,
+  Heart,
+  Bed,
+  Bath,
+  Ruler,
+  MapPin,
+  CarIcon,
+  CarFrontIcon,
+} from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import PropertySearch from "@/components/homesforsale/PropertySearch";
 
 // Format price with commas
 const formatPrice = (price) => {
-  return price ? price.toLocaleString("en-US") : "Price on request"
-}
+  return price ? price.toLocaleString("en-US") : "Price on request";
+};
 
 // Format date for open house display
 const formatOpenHouseDate = (timestamp) => {
-  if (!timestamp) return null
-  const date = new Date(timestamp * 1000)
+  if (!timestamp) return null;
+  const date = new Date(timestamp * 1000);
   return date.toLocaleDateString("en-US", {
     weekday: "short",
     month: "short",
     day: "numeric",
-  })
-}
+  });
+};
 
 // Listing Card Component
 function ListingCard({ listing }) {
@@ -96,11 +106,12 @@ function ListingCard({ listing }) {
               Waterfront
             </span>
           )}
-          {listing.yearBuilt && listing.yearBuilt >= new Date().getFullYear() && (
-            <span className="rounded-md bg-reGreen px-2 py-1 text-xs font-semibold text-white shadow-sm">
-              New Construction
-            </span>
-          )}
+          {listing.yearBuilt &&
+            listing.yearBuilt >= new Date().getFullYear() && (
+              <span className="rounded-md bg-reGreen px-2 py-1 text-xs font-semibold text-white shadow-sm">
+                New Construction
+              </span>
+            )}
           {listing.openHouse && (
             <span className="rounded-md bg-reBlue-300 px-2 py-1 text-xs font-semibold text-reBlue-900 shadow-sm">
               Open House
@@ -113,9 +124,13 @@ function ListingCard({ listing }) {
       <section className="flex flex-1 flex-col p-4">
         {/* Price Row */}
         <div className="mb-1 flex items-baseline justify-between">
-          <h2 className="text-xl font-bold font-heading text-reDark">${formatPrice(listing.listPrice)}</h2>
+          <h2 className="text-xl font-bold font-heading text-reDark">
+            ${formatPrice(listing.listPrice)}
+          </h2>
           {listing.previousListPrice && (
-            <span className="text-sm text-reTextLight line-through">${formatPrice(listing.previousListPrice)}</span>
+            <span className="text-sm text-reTextLight line-through">
+              ${formatPrice(listing.previousListPrice)}
+            </span>
           )}
         </div>
 
@@ -133,7 +148,8 @@ function ListingCard({ listing }) {
             <div className="flex items-center gap-1">
               <Bath className="h-4 w-4 text-reGreen" />
               <span>
-                {listing.baths.total} {listing.baths.total === 1 ? "bath" : "baths"}
+                {listing.baths.total}{" "}
+                {listing.baths.total === 1 ? "bath" : "baths"}
               </span>
             </div>
           )}
@@ -149,7 +165,8 @@ function ListingCard({ listing }) {
         <address className="mb-2 flex items-start gap-1 not-italic text-reText">
           <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-reGreen" />
           <span className="line-clamp-2">
-            {listing.address?.deliveryLine}, {listing.address?.city}, {listing.address?.state} {listing.address?.zip}
+            {listing.address?.deliveryLine}, {listing.address?.city},{" "}
+            {listing.address?.state} {listing.address?.zip}
           </span>
         </address>
 
@@ -175,7 +192,8 @@ function ListingCard({ listing }) {
               <div className="flex items-center gap-1.5 text-xs font-medium text-reBlue-700">
                 <CalendarDays className="h-4 w-4 text-reGreen" />
                 <span>
-                  Open House: {formatOpenHouseDate(listing.openHouse.date)} • {listing.openHouse.time}
+                  Open House: {formatOpenHouseDate(listing.openHouse.date)} •{" "}
+                  {listing.openHouse.time}
                 </span>
               </div>
             </div>
@@ -193,132 +211,132 @@ function ListingCard({ listing }) {
         </div>
       </section>
     </article>
-  )
+  );
 }
 
 // Create a client component that uses useSearchParams
 function HomesForSaleContent() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   // Base filters
-  const [view, setView] = useState("gallery")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [keywordTags, setKeywordTags] = useState([])
-  const [priceRange, setPriceRange] = useState({ min: "", max: "" })
-  const [beds, setBeds] = useState("")
-  const [baths, setBaths] = useState("")
+  const [view, setView] = useState("gallery");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [keywordTags, setKeywordTags] = useState([]);
+  const [priceRange, setPriceRange] = useState({ min: "", max: "" });
+  const [beds, setBeds] = useState("");
+  const [baths, setBaths] = useState("");
 
   // Advanced filters
-  const [propertyType, setPropertyType] = useState([])
-  const [status, setStatus] = useState([])
-  const [sqftRange, setSqftRange] = useState({ min: "", max: "" })
-  const [lotSizeRange, setLotSizeRange] = useState({ min: "", max: "" })
-  const [yearBuiltRange, setYearBuiltRange] = useState({ min: "", max: "" })
-  const [garageSpots, setGarageSpots] = useState("")
-  const [poolType, setPoolType] = useState("")
-  const [maxHOA, setMaxHOA] = useState("")
-  const [maxTaxes, setMaxTaxes] = useState("")
+  const [propertyType, setPropertyType] = useState([]);
+  const [status, setStatus] = useState([]);
+  const [sqftRange, setSqftRange] = useState({ min: "", max: "" });
+  const [lotSizeRange, setLotSizeRange] = useState({ min: "", max: "" });
+  const [yearBuiltRange, setYearBuiltRange] = useState({ min: "", max: "" });
+  const [garageSpots, setGarageSpots] = useState("");
+  const [poolType, setPoolType] = useState("");
+  const [maxHOA, setMaxHOA] = useState("");
+  const [maxTaxes, setMaxTaxes] = useState("");
 
   // Add this after the other state variables
-  const [hasFiltered, setHasFiltered] = useState(false)
+  const [hasFiltered, setHasFiltered] = useState(false);
 
   // Results state
-  const [listings, setListings] = useState([])
-  const [totals, setTotals] = useState(0)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [currentPage, setCurrentPage] = useState(1)
-  const pageSize = 25
+  const [listings, setListings] = useState([]);
+  const [totals, setTotals] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 25;
 
   // Initialize state from URL params when component mounts
   useEffect(() => {
     // Get keyword from URL if it exists
-    const keywordParam = searchParams.get("keyword")
+    const keywordParam = searchParams.get("keyword");
     if (keywordParam) {
       // Split by comma if multiple keywords
-      const keywords = keywordParam.split(",").filter((k) => k.trim() !== "")
-      setKeywordTags(keywords)
+      const keywords = keywordParam.split(",").filter((k) => k.trim() !== "");
+      setKeywordTags(keywords);
     }
-  }, [searchParams])
+  }, [searchParams]);
 
   // Add a keyword tag
   const addKeywordTag = () => {
-    if (searchQuery.trim() === "") return
+    if (searchQuery.trim() === "") return;
 
     // Don't add duplicate tags
     if (!keywordTags.includes(searchQuery.trim())) {
-      const newTags = [...keywordTags, searchQuery.trim()]
-      setKeywordTags(newTags)
-      setSearchQuery("") // Clear the input after adding
+      const newTags = [...keywordTags, searchQuery.trim()];
+      setKeywordTags(newTags);
+      setSearchQuery(""); // Clear the input after adding
 
       // Set hasFiltered to true to ensure listingOffice.id is removed
-      setHasFiltered(true)
+      setHasFiltered(true);
 
       // Apply filters with the new tag immediately
       setTimeout(() => {
-        applyFilters()
-      }, 0)
+        applyFilters();
+      }, 0);
     } else {
-      setSearchQuery("") // Clear the input if it's a duplicate
+      setSearchQuery(""); // Clear the input if it's a duplicate
     }
-  }
+  };
 
   // Remove a keyword tag
   const removeKeywordTag = (tagToRemove) => {
-    const newTags = keywordTags.filter((tag) => tag !== tagToRemove)
-    setKeywordTags(newTags)
+    const newTags = keywordTags.filter((tag) => tag !== tagToRemove);
+    setKeywordTags(newTags);
 
     // Apply filters after removing the tag
     setTimeout(() => {
-      applyFilters()
-    }, 0)
-  }
+      applyFilters();
+    }, 0);
+  };
 
   // Handle key press in search input
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault()
-      addKeywordTag()
+      e.preventDefault();
+      addKeywordTag();
     }
-  }
+  };
 
   // Count active advanced filters
   const getActiveFilterCount = () => {
-    let count = 0
-    if (propertyType.length) count++
-    if (status.length) count++
-    if (sqftRange.min || sqftRange.max) count++
-    if (lotSizeRange.min || lotSizeRange.max) count++
-    if (yearBuiltRange.min || yearBuiltRange.max) count++
-    if (garageSpots) count++
-    if (poolType) count++
-    if (maxHOA) count++
-    if (maxTaxes) count++
-    return count
-  }
+    let count = 0;
+    if (propertyType.length) count++;
+    if (status.length) count++;
+    if (sqftRange.min || sqftRange.max) count++;
+    if (lotSizeRange.min || lotSizeRange.max) count++;
+    if (yearBuiltRange.min || yearBuiltRange.max) count++;
+    if (garageSpots) count++;
+    if (poolType) count++;
+    if (maxHOA) count++;
+    if (maxTaxes) count++;
+    return count;
+  };
 
   // Reset all advanced filters
   const resetAdvancedFilters = () => {
-    setPropertyType([])
-    setStatus([])
-    setSqftRange({ min: "", max: "" })
-    setLotSizeRange({ min: "", max: "" })
-    setYearBuiltRange({ min: "", max: "" })
-    setGarageSpots("")
-    setPoolType("")
-    setMaxHOA("")
-    setMaxTaxes("")
-  }
+    setPropertyType([]);
+    setStatus([]);
+    setSqftRange({ min: "", max: "" });
+    setLotSizeRange({ min: "", max: "" });
+    setYearBuiltRange({ min: "", max: "" });
+    setGarageSpots("");
+    setPoolType("");
+    setMaxHOA("");
+    setMaxTaxes("");
+  };
 
   // Build query parameters based on current filters
   const buildQueryParams = () => {
-    const params = new URLSearchParams()
+    const params = new URLSearchParams();
 
     // Initial required parameters
-    params.set("market", "MLSWIS")
-    params.set("images", "true")
-    params.set("details", "true")
+    params.set("market", "MLSWIS");
+    params.set("images", "true");
+    params.set("details", "true");
 
     // Only include listingOffice.id if no other filters are applied
     const hasAnyFilter =
@@ -338,43 +356,43 @@ function HomesForSaleContent() {
       garageSpots ||
       poolType ||
       maxHOA ||
-      maxTaxes
+      maxTaxes;
 
     if (!hasAnyFilter) {
-      params.set("listingOffice.id", "of27022")
+      params.set("listingOffice.id", "of27022");
     }
 
     // Keywords - join all tags with commas
     if (keywordTags.length > 0) {
-      params.set("keyword", keywordTags.join(","))
+      params.set("keyword", keywordTags.join(","));
     }
 
     // Price range
     if (priceRange.min && priceRange.max) {
-      params.set("listPrice", `>=${priceRange.min},<=${priceRange.max}`)
+      params.set("listPrice", `>=${priceRange.min},<=${priceRange.max}`);
     } else if (priceRange.min) {
-      params.set("listPrice", `>=${priceRange.min}`)
+      params.set("listPrice", `>=${priceRange.min}`);
     } else if (priceRange.max) {
-      params.set("listPrice", `<=${priceRange.max}`)
+      params.set("listPrice", `<=${priceRange.max}`);
     }
 
     // Beds
     if (beds) {
       if (beds === "Studio") {
-        params.set("beds", "0")
+        params.set("beds", "0");
       } else if (beds.includes("+")) {
-        params.set("beds", `>=${beds.replace("+", "")}`)
+        params.set("beds", `>=${beds.replace("+", "")}`);
       } else if (beds !== "Any") {
-        params.set("beds", beds)
+        params.set("beds", beds);
       }
     }
 
     // Baths
     if (baths) {
       if (baths.includes("+")) {
-        params.set("baths.total", `>=${baths.replace("+", "")}`)
+        params.set("baths.total", `>=${baths.replace("+", "")}`);
       } else if (baths !== "Any") {
-        params.set("baths.total", baths)
+        params.set("baths.total", baths);
       }
     }
 
@@ -391,151 +409,172 @@ function HomesForSaleContent() {
         "Co-op": "Cooperative",
         Commercial: "Commercial/Industrial",
         Other: "Other",
-      }
+      };
 
-      const mappedTypes = propertyType.map((type) => propertyTypeMap[type] || type)
-      params.set("propertyType", mappedTypes.join(","))
+      const mappedTypes = propertyType.map(
+        (type) => propertyTypeMap[type] || type,
+      );
+      params.set("propertyType", mappedTypes.join(","));
     }
 
     // Status
     if (status.length > 0) {
-      params.set("status", status.join(","))
+      params.set("status", status.join(","));
     }
 
     // Square Feet
     if (sqftRange.min && sqftRange.max) {
-      params.set("size", `>=${sqftRange.min},<=${sqftRange.max}`)
+      params.set("size", `>=${sqftRange.min},<=${sqftRange.max}`);
     } else if (sqftRange.min) {
-      params.set("size", `>=${sqftRange.min}`)
+      params.set("size", `>=${sqftRange.min}`);
     } else if (sqftRange.max) {
-      params.set("size", `<=${sqftRange.max}`)
+      params.set("size", `<=${sqftRange.max}`);
     }
 
     // Lot Size
     if (lotSizeRange.min && lotSizeRange.max) {
-      params.set("lotsize.acres", `>=${lotSizeRange.min},<=${lotSizeRange.max}`)
+      params.set(
+        "lotsize.acres",
+        `>=${lotSizeRange.min},<=${lotSizeRange.max}`,
+      );
     } else if (lotSizeRange.min) {
-      params.set("lotsize.acres", `>=${lotSizeRange.min}`)
+      params.set("lotsize.acres", `>=${lotSizeRange.min}`);
     } else if (lotSizeRange.max) {
-      params.set("lotsize.acres", `<=${lotSizeRange.max}`)
+      params.set("lotsize.acres", `<=${lotSizeRange.max}`);
     }
 
     // Year Built
     if (yearBuiltRange.min && yearBuiltRange.max) {
-      params.set("yearBuilt", `>=${yearBuiltRange.min},<=${yearBuiltRange.max}`)
+      params.set(
+        "yearBuilt",
+        `>=${yearBuiltRange.min},<=${yearBuiltRange.max}`,
+      );
     } else if (yearBuiltRange.min) {
-      params.set("yearBuilt", `>=${yearBuiltRange.min}`)
+      params.set("yearBuilt", `>=${yearBuiltRange.min}`);
     } else if (yearBuiltRange.max) {
-      params.set("yearBuilt", `<=${yearBuiltRange.max}`)
+      params.set("yearBuilt", `<=${yearBuiltRange.max}`);
     }
 
     // Garage Spots
     if (garageSpots && garageSpots.includes("+")) {
-      params.set("garageSpaces", `>=${garageSpots.replace("+", "")}`)
+      params.set("garageSpaces", `>=${garageSpots.replace("+", "")}`);
     }
 
     // Pool
     if (poolType) {
       if (poolType === "both") {
-        params.set("hasPool", "true")
+        params.set("hasPool", "true");
       } else if (poolType === "private") {
-        params.set("hasPrivatePool", "true")
+        params.set("hasPrivatePool", "true");
       } else if (poolType === "community") {
-        params.set("hasCommunityPool", "true")
+        params.set("hasCommunityPool", "true");
       } else if (poolType === "none") {
-        params.set("hasPool", "false")
+        params.set("hasPool", "false");
       }
     }
 
     // HOA Fees
     if (maxHOA) {
-      params.set("hoaFee", `<=${maxHOA}`)
+      params.set("hoaFee", `<=${maxHOA}`);
     }
 
     // Property Taxes
     if (maxTaxes) {
-      params.set("taxAmount", `<=${maxTaxes}`)
+      params.set("taxAmount", `<=${maxTaxes}`);
     }
 
     // Add pagination and sorting
-    params.set("pageSize", pageSize.toString())
-    params.set("pageNumber", currentPage.toString())
-    params.set("sortField", "listPrice")
-    params.set("sortOrder", "desc")
+    params.set("pageSize", pageSize.toString());
+    params.set("pageNumber", currentPage.toString());
+    params.set("sortField", "listPrice");
+    params.set("sortOrder", "desc");
 
-    return params
-  }
+    return params;
+  };
 
   // Fetch listings based on current filters
   const fetchListings = async () => {
     try {
-      setLoading(true)
-      setError(null)
+      setLoading(true);
+      setError(null);
 
-      const params = buildQueryParams()
-      const response = await fetch(`/api/listings/search?${params.toString()}`)
+      const params = buildQueryParams();
+      const response = await fetch(`/api/listings/search?${params.toString()}`);
 
       if (!response.ok) {
-        throw new Error("Failed to fetch listings")
+        throw new Error("Failed to fetch listings");
       }
 
-      const data = await response.json()
-      setListings(data.result?.listings || [])
-      setTotals(data.result?.total || 0)
+      const data = await response.json();
+      setListings(data.result?.listings || []);
+      setTotals(data.result?.total || 0);
     } catch (err) {
-      console.error("Error fetching listings:", err)
-      setError(err.message)
+      console.error("Error fetching listings:", err);
+      setError(err.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   // Update URL with current filters
   const updateUrl = () => {
-    const params = buildQueryParams()
-    const url = `/homes-for-sale?${params.toString()}`
-    console.log("Updating URL to:", url)
+    const params = buildQueryParams();
+    const url = `/homes-for-sale?${params.toString()}`;
+    console.log("Updating URL to:", url);
 
     // Use the replace option to update the URL without adding to history stack
-    router.push(url, { scroll: false, shallow: true })
-  }
+    router.push(url, { scroll: false, shallow: true });
+  };
 
   // Apply filters and update URL
   const applyFilters = () => {
     if (!hasFiltered) {
-      setHasFiltered(true)
+      setHasFiltered(true);
     }
-    setCurrentPage(1) // Reset to first page when applying new filters
-    updateUrl()
-    fetchListings()
-  }
+    setCurrentPage(1); // Reset to first page when applying new filters
+    updateUrl();
+    fetchListings();
+  };
 
   // Handle page change
   const handlePageChange = (newPage) => {
-    setCurrentPage(newPage)
-    window.scrollTo(0, 0)
-  }
+    setCurrentPage(newPage);
+    window.scrollTo(0, 0);
+  };
 
   // Initialize with default filters
   useEffect(() => {
-    fetchListings()
+    fetchListings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage])
+  }, [currentPage]);
 
   // Calculate total pages
-  const totalPages = Math.ceil(totals / pageSize)
+  const totalPages = Math.ceil(totals / pageSize);
 
   return (
     <>
-      <section id="filters" className="border-b border-reGrey-100 bg-white p-6 font-body text-reBody shadow-sm">
+      <section
+        id="filters"
+        className="border-b border-reGrey-100 bg-white p-6 font-body text-reBody shadow-sm"
+      >
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* Gallery/Map Toggle */}
-          <Tabs defaultValue={view} onValueChange={setView} className="w-full md:w-auto">
+          <Tabs
+            defaultValue={view}
+            onValueChange={setView}
+            className="w-full md:w-auto"
+          >
             <TabsList className="bg-reGrey-100">
-              <TabsTrigger value="gallery" className="data-[state=active]:bg-reGreen data-[state=active]:text-white">
+              <TabsTrigger
+                value="gallery"
+                className="data-[state=active]:bg-reGreen data-[state=active]:text-white"
+              >
                 Gallery
               </TabsTrigger>
-              <TabsTrigger value="map" className="data-[state=active]:bg-reGreen data-[state=active]:text-white">
+              <TabsTrigger
+                value="map"
+                className="data-[state=active]:bg-reGreen data-[state=active]:text-white"
+              >
                 Map
               </TabsTrigger>
             </TabsList>
@@ -597,15 +636,16 @@ function HomesForSaleContent() {
                         <XMarkIcon
                           className="ml-2 h-4 w-4 text-reGreen"
                           onClick={(e) => {
-                            e.stopPropagation()
-                            setPriceRange({ min: "", max: "" })
-                            setTimeout(applyFilters, 0)
+                            e.stopPropagation();
+                            setPriceRange({ min: "", max: "" });
+                            setTimeout(applyFilters, 0);
                           }}
                         />
                       </span>
                     ) : (
                       <span className="flex items-center">
-                        Price <ChevronDownIcon className="ml-2 h-4 w-4 text-reGreen" />
+                        Price{" "}
+                        <ChevronDownIcon className="ml-2 h-4 w-4 text-reGreen" />
                       </span>
                     )}
                   </Button>
@@ -644,8 +684,8 @@ function HomesForSaleContent() {
                     </div>
                     <Button
                       onClick={() => {
-                        applyFilters()
-                        document.body.click() // Close dropdown
+                        applyFilters();
+                        document.body.click(); // Close dropdown
                       }}
                       className="bg-reGreen text-white hover:bg-reGreen-600"
                     >
@@ -672,16 +712,17 @@ function HomesForSaleContent() {
                         <XMarkIcon
                           className="ml-2 h-4 w-4 text-reGreen cursor-pointer"
                           onClick={(e) => {
-                            e.stopPropagation()
-                            setBeds("")
-                            setBaths("")
-                            setTimeout(applyFilters, 0)
+                            e.stopPropagation();
+                            setBeds("");
+                            setBaths("");
+                            setTimeout(applyFilters, 0);
                           }}
                         />
                       </span>
                     ) : (
                       <span className="flex items-center">
-                        Beds & Baths <ChevronDownIcon className="ml-2 h-4 w-4 text-reGreen" />
+                        Beds & Baths{" "}
+                        <ChevronDownIcon className="ml-2 h-4 w-4 text-reGreen" />
                       </span>
                     )}
                   </Button>
@@ -707,21 +748,25 @@ function HomesForSaleContent() {
                         )}
                       </div>
                       <div className="flex flex-wrap gap-2">
-                        {["Any", "Studio", "1+", "2+", "3+", "4+", "5+"].map((option) => (
-                          <Button
-                            key={option}
-                            variant={beds === option ? "default" : "outline"}
-                            size="sm"
-                            onClick={() => setBeds(option === beds ? "" : option)}
-                            className={`flex-1 ${
-                              beds === option
-                                ? "bg-reGreen text-white hover:bg-reGreen-600"
-                                : "border-reGrey-200 bg-white text-reText hover:bg-reGreen-100 hover:text-reGreen hover:border-reGreen"
-                            }`}
-                          >
-                            {option}
-                          </Button>
-                        ))}
+                        {["Any", "Studio", "1+", "2+", "3+", "4+", "5+"].map(
+                          (option) => (
+                            <Button
+                              key={option}
+                              variant={beds === option ? "default" : "outline"}
+                              size="sm"
+                              onClick={() =>
+                                setBeds(option === beds ? "" : option)
+                              }
+                              className={`flex-1 ${
+                                beds === option
+                                  ? "bg-reGreen text-white hover:bg-reGreen-600"
+                                  : "border-reGrey-200 bg-white text-reText hover:bg-reGreen-100 hover:text-reGreen hover:border-reGreen"
+                              }`}
+                            >
+                              {option}
+                            </Button>
+                          ),
+                        )}
                       </div>
                     </div>
 
@@ -746,12 +791,23 @@ function HomesForSaleContent() {
                         )}
                       </div>
                       <div className="flex flex-wrap gap-2">
-                        {["Any", "1+", "1.5+", "2+", "2.5+", "3+", "3.5+", "4+"].map((option) => (
+                        {[
+                          "Any",
+                          "1+",
+                          "1.5+",
+                          "2+",
+                          "2.5+",
+                          "3+",
+                          "3.5+",
+                          "4+",
+                        ].map((option) => (
                           <Button
                             key={option}
                             variant={baths === option ? "default" : "outline"}
                             size="sm"
-                            onClick={() => setBaths(option === baths ? "" : option)}
+                            onClick={() =>
+                              setBaths(option === baths ? "" : option)
+                            }
                             className={`flex-1 ${
                               baths === option
                                 ? "bg-reGreen text-white hover:bg-reGreen-600"
@@ -766,8 +822,8 @@ function HomesForSaleContent() {
 
                     <Button
                       onClick={() => {
-                        applyFilters()
-                        document.body.click() // Close dropdown
+                        applyFilters();
+                        document.body.click(); // Close dropdown
                       }}
                       className="bg-reGreen text-white hover:bg-reGreen-600"
                     >
@@ -790,15 +846,17 @@ function HomesForSaleContent() {
                   >
                     <AdjustmentsHorizontalIcon className="h-4 w-4 flex-shrink-0 text-reGreen" />
                     <span className="truncate">
-                      All Filters {getActiveFilterCount() > 0 && `(${getActiveFilterCount()})`}
+                      All Filters{" "}
+                      {getActiveFilterCount() > 0 &&
+                        `(${getActiveFilterCount()})`}
                     </span>
                     {getActiveFilterCount() > 0 && (
                       <XMarkIcon
                         className="h-4 w-4 flex-shrink-0 cursor-pointer text-reGreen"
                         onClick={(e) => {
-                          e.stopPropagation()
-                          resetAdvancedFilters()
-                          setTimeout(applyFilters, 0)
+                          e.stopPropagation();
+                          resetAdvancedFilters();
+                          setTimeout(applyFilters, 0);
                         }}
                       />
                     )}
@@ -809,14 +867,16 @@ function HomesForSaleContent() {
                     <div className="p-4 flex justify-between items-center bg-white">
                       <div className="flex items-center gap-2">
                         <AdjustmentsHorizontalIcon className="h-4 w-4 flex-shrink-0 text-reGreen" />
-                        <h3 className="font-heading font-semibold text-reText">All Filters</h3>
+                        <h3 className="font-heading font-semibold text-reText">
+                          All Filters
+                        </h3>
                       </div>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => {
-                          resetAdvancedFilters()
-                          setTimeout(applyFilters, 0)
+                          resetAdvancedFilters();
+                          setTimeout(applyFilters, 0);
                         }}
                         className="text-reTextLight hover:text-reText hover:bg-reGrey-100"
                       >
@@ -847,13 +907,19 @@ function HomesForSaleContent() {
                         ].map(({ type, icon: Icon }) => (
                           <Button
                             key={type}
-                            variant={propertyType.includes(type) ? "default" : "outline"}
+                            variant={
+                              propertyType.includes(type)
+                                ? "default"
+                                : "outline"
+                            }
                             size="sm"
                             onClick={() => {
                               if (propertyType.includes(type)) {
-                                setPropertyType(propertyType.filter((t) => t !== type))
+                                setPropertyType(
+                                  propertyType.filter((t) => t !== type),
+                                );
                               } else {
-                                setPropertyType([...propertyType, type])
+                                setPropertyType([...propertyType, type]);
                               }
                             }}
                             className={`flex flex-col items-center gap-2 p-4 h-auto ${
@@ -878,7 +944,9 @@ function HomesForSaleContent() {
                       <div className="flex flex-col gap-3">
                         <div className="flex items-center gap-2">
                           <ClipboardDocumentListIcon className="h-5 w-5 text-reGreen" />
-                          <Label className="text-base font-heading font-semibold text-reText">Status</Label>
+                          <Label className="text-base font-heading font-semibold text-reText">
+                            Status
+                          </Label>
                         </div>
                         <fieldset className="grid gap-3">
                           {["Active", "Pending", "Contingent"].map((stat) => (
@@ -887,7 +955,11 @@ function HomesForSaleContent() {
                                 id={`status-${stat}`}
                                 checked={status.includes(stat)}
                                 onCheckedChange={(checked) => {
-                                  setStatus((prev) => (checked ? [...prev, stat] : prev.filter((s) => s !== stat)))
+                                  setStatus((prev) =>
+                                    checked
+                                      ? [...prev, stat]
+                                      : prev.filter((s) => s !== stat),
+                                  );
                                 }}
                                 className="border-reGrey-300 data-[state=checked]:bg-reGreen data-[state=checked]:border-reGreen focus-visible:ring-2 focus-visible:ring-reGreen focus-visible:ring-offset-2"
                               />
@@ -906,7 +978,9 @@ function HomesForSaleContent() {
                       <div className="flex flex-col gap-3">
                         <div className="flex items-center gap-2">
                           <Squares2X2Icon className="h-5 w-5 text-reGreen" />
-                          <Label className="text-base font-heading font-semibold text-reText">Pool</Label>
+                          <Label className="text-base font-heading font-semibold text-reText">
+                            Pool
+                          </Label>
                         </div>
                         <div className="grid gap-2">
                           {[
@@ -920,9 +994,17 @@ function HomesForSaleContent() {
                           ].map((option) => (
                             <Button
                               key={option.value}
-                              variant={poolType === option.value ? "default" : "outline"}
+                              variant={
+                                poolType === option.value
+                                  ? "default"
+                                  : "outline"
+                              }
                               size="sm"
-                              onClick={() => setPoolType(poolType === option.value ? "" : option.value)}
+                              onClick={() =>
+                                setPoolType(
+                                  poolType === option.value ? "" : option.value,
+                                )
+                              }
                               className={`justify-start ${
                                 poolType === option.value
                                   ? "bg-reGreen text-white hover:bg-reGreen-600"
@@ -1086,16 +1168,22 @@ function HomesForSaleContent() {
                           ].map(({ type, icon: Icon }) => (
                             <Button
                               key={type}
-                              variant={garageSpots === type ? "default" : "outline"}
+                              variant={
+                                garageSpots === type ? "default" : "outline"
+                              }
                               size="sm"
-                              onClick={() => setGarageSpots(garageSpots === type ? "" : type)}
+                              onClick={() =>
+                                setGarageSpots(garageSpots === type ? "" : type)
+                              }
                               className={`flex flex-col items-center gap-2 p-4 h-auto ${
                                 garageSpots === type
                                   ? "bg-reGreen text-white hover:bg-reGreen-600"
                                   : "border-reGrey-200 bg-white text-reText hover:bg-reGreen-100 hover:text-reGreen hover:border-reGreen"
                               }`}
                             >
-                              <Icon className={`h-6 w-6 ${garageSpots === type ? "text-white" : "text-reGreen"}`} />
+                              <Icon
+                                className={`h-6 w-6 ${garageSpots === type ? "text-white" : "text-reGreen"}`}
+                              />
                               <span className="text-sm">{type}</span>
                             </Button>
                           ))}
@@ -1108,7 +1196,9 @@ function HomesForSaleContent() {
                     {/* Fees Section */}
                     <div className="grid gap-4">
                       <DropdownMenuLabel className="text-base font-heading font-semibold text-reText flex items-center gap-2">
-                        <span className="text-lg mr-2 font-bold text-reGreen">$</span>
+                        <span className="text-lg mr-2 font-bold text-reGreen">
+                          $
+                        </span>
                         Fees
                       </DropdownMenuLabel>
 
@@ -1145,8 +1235,8 @@ function HomesForSaleContent() {
 
                     <Button
                       onClick={() => {
-                        applyFilters()
-                        document.body.click() // Close dropdown
+                        applyFilters();
+                        document.body.click(); // Close dropdown
                       }}
                       className="mt-4 bg-reGreen text-white hover:bg-reGreen-600"
                     >
@@ -1166,11 +1256,16 @@ function HomesForSaleContent() {
         ) : error ? (
           <div className="text-center py-8 text-reRed">Error: {error}</div>
         ) : listings.length === 0 ? (
-          <div className="text-center py-8 text-reText font-heading">No properties found matching your criteria.</div>
+          <div className="text-center py-8 text-reText font-heading">
+            No properties found matching your criteria.
+          </div>
         ) : (
           <>
+          <PropertySearch/>
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
-              <h2 className="text-xl font-heading font-semibold text-reDark mb-4 md:mb-0">{totals} Properties Found</h2>
+              <h2 className="text-xl font-heading font-semibold text-reDark mb-4 md:mb-0">
+                {totals} Properties Found
+              </h2>
               <div className="flex items-center gap-2">
                 <Label className="text-reText">Sort by:</Label>
                 <select className="border border-reGrey-200 rounded p-2 text-reText focus:outline-none focus:ring-2 focus:ring-reGreen">
@@ -1204,20 +1299,22 @@ function HomesForSaleContent() {
 
                   {[...Array(Math.min(5, totalPages))].map((_, i) => {
                     // Show pages around current page
-                    let pageNum = i + 1
+                    let pageNum = i + 1;
                     if (totalPages > 5) {
                       if (currentPage > 3) {
-                        pageNum = currentPage - 3 + i
+                        pageNum = currentPage - 3 + i;
                       }
                       if (pageNum > totalPages - 4) {
-                        pageNum = totalPages - 4 + i
+                        pageNum = totalPages - 4 + i;
                       }
                     }
 
                     return (
                       <Button
                         key={i}
-                        variant={currentPage === pageNum ? "default" : "outline"}
+                        variant={
+                          currentPage === pageNum ? "default" : "outline"
+                        }
                         onClick={() => handlePageChange(pageNum)}
                         className={
                           currentPage === pageNum
@@ -1227,7 +1324,7 @@ function HomesForSaleContent() {
                       >
                         {pageNum}
                       </Button>
-                    )
+                    );
                   })}
 
                   <Button
@@ -1245,7 +1342,7 @@ function HomesForSaleContent() {
         )}
       </section>
     </>
-  )
+  );
 }
 
 // Create a wrapper component that uses Suspense
@@ -1262,6 +1359,5 @@ export default function HomesForSalePage() {
     >
       <HomesForSaleContent />
     </Suspense>
-  )
+  );
 }
-
