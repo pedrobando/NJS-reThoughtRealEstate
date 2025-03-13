@@ -135,15 +135,15 @@ export default function PropertySearch() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto z-50" ref={searchRef}>
-      <div className="relative">
+    <div className="flex flex-grow items-center border border-reGrey-200 rounded-lg  focus-within:ring-2 focus-within:ring-reGreen z-50" ref={searchRef}>
+      <div className="relative w-full">
         <div className="relative">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground z-50" />
+          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground z-50 text-reBody" />
           <Input
             placeholder="Search properties, cities, counties..."
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            className="pl-10 pr-10 z-50"
+            className="pl-10 pr-10 z-50 text-reBody"
             onFocus={() => {
               if (results && keyword.length >= 3) {
                 setIsOpen(true);
@@ -151,12 +151,12 @@ export default function PropertySearch() {
             }}
           />
           {isLoading && (
-            <Loader2 className="absolute right-3 top-3 h-4 w-4 animate-spin text-muted-foreground" />
+            <Loader2 className="absolute right-3 top-3 h-4 w-4 animate-spin text-muted-foreground text-reBidy" />
           )}
         </div>
 
         {isOpen && results && keyword.length >= 3 && (
-          <div className="absolute top-full left-0 right-0 z-50 mt-1 rounded-md border border-input bg-popover shadow-md">
+          <div className="absolute top-full left-0 right-0 z-50 mt-1 rounded-md border border-input bg-popover shadow-md bg-white text-reBody">
             {/* Results count header - Outside ScrollArea to keep it fixed */}
             <div className="sticky top-0 px-2 py-1.5 text-sm font-medium text-muted-foreground bg-popover z-10 border-b">
               {countResults()} results for "{debouncedKeyword}"

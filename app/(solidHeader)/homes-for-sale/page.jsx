@@ -582,45 +582,7 @@ function HomesForSaleContent() {
 
           <div className="flex flex-1 flex-col gap-3 md:flex-row md:items-center">
             {/* Main Search */}
-            <div className="flex flex-grow items-center border border-reGrey-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-reGreen">
-              {/* Tag Container */}
-              <div className="flex flex-wrap items-center gap-2 px-4 w-full">
-                {keywordTags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="flex items-center gap-1 px-2 py-1 bg-reGreen-100 text-reGreen text-sm font-medium rounded-md"
-                  >
-                    {tag}
-                    <XMarkIcon
-                      className="h-4 w-4 cursor-pointer hover:text-reGreen-600 text-reGreen"
-                      onClick={() => removeKeywordTag(tag)}
-                    />
-                  </span>
-                ))}
-
-                {/* Search Input */}
-                <div className="flex flex-1 items-center">
-                  <Input
-                    type="text"
-                    placeholder="Address, City, ZIP, or MLS#"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    className="flex-1 border-none focus:ring-0 focus-visible:ring-0 bg-transparent text-reText placeholder-reGrey-400"
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={addKeywordTag}
-                    className="text-reGreen hover:text-reGreen-600 hover:bg-transparent p-1"
-                    disabled={!searchQuery.trim()}
-                  >
-                    <MagnifyingGlassIcon className="h-5 w-5 text-reGreen" />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <PropertySearch />
 
             <div className="flex flex-wrap gap-2">
               {/* Price Filter */}
@@ -1261,7 +1223,7 @@ function HomesForSaleContent() {
           </div>
         ) : (
           <>
-          <PropertySearch/>
+          
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
               <h2 className="text-xl font-heading font-semibold text-reDark mb-4 md:mb-0">
                 {totals} Properties Found
@@ -1277,7 +1239,7 @@ function HomesForSaleContent() {
                 </select>
               </div>
             </div>
-            <ScrollArea className="h-[70vh]">
+            <ScrollArea className="h-[70vh] min-h-[800px]">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {listings.map((listing) => (
                   <ListingCard key={listing.id} listing={listing} />
