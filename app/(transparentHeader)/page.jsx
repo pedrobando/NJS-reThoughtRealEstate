@@ -10,6 +10,7 @@ import AgentTestimonialsWrapper from "@/components/agents/AgentTestimonialsWrapp
 import { delay } from "@/utils/getFeaturedListing";
 import Divider from "@/components/ui/Divider";
 import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard";
+import HeroSearchBar from "@/components/homesforsale/HeroSearchBar";
 
 export const dynamic = "force-dynamic";
 async function ListingsContent() {
@@ -24,101 +25,7 @@ async function ListingsContent() {
 const Homepage = async () => {
   return (
     <>
-      <main className="flex flex-col bg-gradient-to-t from-neutral-950 to-neutral-900 w-full mt-[-185px] pt-[105px] min-h-[750px] justify-center items-center relative opacity-100">
-        <header className="flex flex-col justify-center items-center text-center z-[50]">
-          <h1 className="text-4xl md:text-5xl font-bold text-white font-heading font-semibold pt-[10%] w-fit text-center">
-            Client-Centric REALTORS®
-          </h1>
-          <p className="text-2xl z-10 font-bold font-heading font-thin mt-2 text-reGreen">
-            Real Simple. Real Skills. Real Results.®
-          </p>
-          <nav className="flex flex-col gap-4 mt-10 w-[90%] md:flex-row md:justify-center md:w-auto">
-            <Link
-              className="border rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg hover:scale-95 transition"
-              href="/exclusive-listings"
-            >
-              Milwaukee Homes for Sale
-            </Link>
-            <Link
-              className="border rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg hover:scale-95 transition"
-              href="/exclusive-listings"
-            >
-              Central Florida Homes for Sale
-            </Link>
-            <Link
-              className="border border-reYellow rounded-lg text-white text-center font-heading px-2 md:px-5 py-2 text-lg hover:scale-95 transition bg-reYellow text-yellow-800 font-semibold"
-              href="/exclusive-listings"
-            >
-              Ayuda en Español
-            </Link>
-          </nav>
-          <button
-            className="flex gap-4 my-7 py-3 transition hover:cursor-pointer"
-            id="home-value"
-            aria-label="Get home value estimate"
-          >
-            <p className="text-[14px] text-left font-bold text-white">
-              Get My Home's Current
-              <br /> Market Value Today
-            </p>
-            <svg
-              className="hover:animate-spin transition-all"
-              xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="0 0 66 66"
-              fill="none"
-              aria-hidden="true"
-            >
-              <circle
-                cx="33"
-                cy="33"
-                r="29"
-                stroke="url(#paint0_linear_49_16)"
-                strokeWidth="8"
-              ></circle>
-              <path
-                d="M33 22.6169V43.3824M33 43.3824L23.3333 33.6918M33 43.3824L42.6667 33.6918"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-              <defs>
-                <linearGradient
-                  id="paint0_linear_49_16"
-                  x1="33"
-                  y1="4"
-                  x2="33"
-                  y2="62"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#FFCC00"></stop>
-                  <stop offset="0.495" stopColor="#8CC94E"></stop>
-                  <stop offset="1" stopColor="#38B3FF"></stop>
-                </linearGradient>
-              </defs>
-            </svg>
-          </button>
-        </header>
-
-        <div className="absolute opacity-20 z-[1] object-cover h-full w-full mt-[-105px]">
-          <video
-            autoPlay
-            loop
-            muted
-            className="h-full w-full object-cover"
-            aria-hidden="true"
-          >
-            <source
-              src="https://dashbrew.s3.us-east-2.amazonaws.com/assets/vids/kissimmee-orlando-bilingual-realtor.webm"
-              type="video/webm"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </main>
-
+    <HeroSearchBar/>
       <section
         className="flex flex-col w-full bg-white text-reGrey"
         aria-label="About Our Services"

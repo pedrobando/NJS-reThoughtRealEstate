@@ -16,7 +16,7 @@ function TransparentNavBar() {
           />
         </Link>
         <NavBarSlide />
-     </div>
+      </div>
     </header>
   );
 }
