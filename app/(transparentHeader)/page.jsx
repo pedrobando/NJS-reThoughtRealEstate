@@ -11,6 +11,7 @@ import { delay } from "@/utils/getFeaturedListing";
 import Divider from "@/components/ui/Divider";
 import LoadingListingCard from "@/components/ui/LoadingUI/LoadingListingCard";
 import HeroSearchBar from "@/components/homesforsale/HeroSearchBar";
+import FailedFetch from "@/components/ui/ErrorUI/FailedFetch";
 
 export const dynamic = "force-dynamic";
 async function ListingsContent() {
@@ -18,21 +19,13 @@ async function ListingsContent() {
     const data = await getFeaturedListings();
     const listings = data?.result?.listings || [];
     if (listings.length === 0) {
-      return (
-        <div className="p-4 text-center">
-          No listings available at this time.
-        </div>
-      );
+      return <FailedFetch />;
     }
 
     return <FeaturedListingsCarousel listings={listings} />;
   } catch (error) {
     console.error("Error in ListingsContent:", error);
-    return (
-      <div className="p-4 text-center">
-        Unable to load listings. Please try again later.
-      </div>
-    );
+    return <FailedFetch error={error} />;
   }
 }
 
@@ -71,9 +64,12 @@ const Homepage = async () => {
               <li className="py-6">
                 <div className="flex">
                   <div className="flex size-24">
-                    <img
+                    <Image
                       className="size-20 text-reGreen"
                       src="/img/houseicons/villa.svg"
+                      alt="Villa"
+                      width={20}
+                      height={20}
                     />
                   </div>
                   <div className="flex flex-1 flex-col">
@@ -91,9 +87,12 @@ const Homepage = async () => {
               <li>
                 <div className="flex">
                   <div className="flex size-24">
-                    <img
+                    <Image
                       className="size-20"
                       src="/img/houseicons/apartment.svg"
+                      alt="Apartment"
+                      width={20}
+                      height={20}
                     />
                   </div>
                   <div className="flex flex-1 flex-col">
@@ -303,7 +302,12 @@ const Homepage = async () => {
             </div>
           </div>
           <div className="w-2/2 lg:w-1/2">
-            <img src="img/rethought-for-sale.png" alt="For Sale Sign" />
+            <Image
+              src="/img/rethought-for-sale.png"
+              alt="For Sale Sign"
+              width={500}
+              height={500}
+            />
           </div>
         </div>
       </section>

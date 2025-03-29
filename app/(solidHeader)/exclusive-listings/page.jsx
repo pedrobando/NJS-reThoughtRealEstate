@@ -2,6 +2,7 @@ import getFeaturedListings from "@/app/_utils/getFeaturedListings";
 import ExclusiveListingsCards from "../../_components/listings/ExclusiveListingsCards";
 import LoadingListingCard from "../../_components/ui/LoadingUI/LoadingListingCard";
 import { Suspense } from "react";
+import FailedFetch from "@/components/ui/ErrorUI/FailedFetch";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   return {
@@ -14,17 +15,21 @@ export async function generateMetadata({ params, searchParams }, parent) {
 export const dynamic = "force-dynamic";
 
 async function ExclusiveListings() {
-  const data = await getFeaturedListings();
-
-  if (!data || !data.result || !data.result.listings) {
+  try {
+    const data = await getFeaturedListings();
+    const listings = data?.result?.listings || [];
+    if (listings.length === 0) {
+      return <FailedFetch />;
+    }
+    return <ExclusiveListingsCards listings={data.result.listings} />;
+  } catch (error) {
+    console.error("Error in ListingsContent:", error);
     return (
-      <div className="text-center py-8">
-        No listings available at this time.
+      <div className="p-4 text-center">
+        Unable to load listings. Please try again later.
       </div>
     );
   }
-
-  return <ExclusiveListingsCards listings={data.result.listings} />;
 }
 
 export default function ListingsList() {
