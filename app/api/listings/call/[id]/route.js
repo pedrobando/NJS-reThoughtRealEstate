@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
-  const { id } = await params
+  const { id } = await params;
 
   try {
     // Make the API request
@@ -14,29 +14,40 @@ export async function GET(request, { params }) {
         },
         cache: "no-store",
       },
-    )
+    );
 
     if (!response.ok || response.error) {
-      return NextResponse.json({ error: `API request failed with status: ${response.status}` }, { status: 404 })
+      return NextResponse.json(
+        { error: `API request failed with status: ${response.status}` },
+        { status: 404 },
+      );
     }
 
-    const data = await response.json()
+    const data = await response.json();
 
     // Check top-level success
     if (!data.success) {
-      return NextResponse.json({ error: data.error?.message || "API returned unsuccessful response" }, { status: 404 })
+      return NextResponse.json(
+        { error: data.error?.message || "API returned unsuccessful response" },
+        { status: 404 },
+      );
     }
 
     // Check for empty listings
     if (!data.result?.responses || data.result.responses.length === 0) {
-      return NextResponse.json({ error: "No listing found with the provided ID" }, { status: 404 })
+      return NextResponse.json(
+        { error: "No listing found with the provided ID" },
+        { status: 404 },
+      );
     }
 
-    return NextResponse.json(data)
+    return NextResponse.json(data);
   } catch (error) {
-    console.error(`Error fetching listing with ID ${id}:`, error.message)
+    console.error(`Error fetching listing with ID ${id}:`, error.message);
 
-    return NextResponse.json({ error: "Failed to fetch listing. Please try again later." }, { status: 500 })
+    return NextResponse.json(
+      { error: "Failed to fetch listing. Please try again later." },
+      { status: 500 },
+    );
   }
 }
-

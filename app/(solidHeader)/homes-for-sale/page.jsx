@@ -49,6 +49,7 @@ import {
 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import PropertySearch from "@/components/homesforsale/PropertySearch";
+import FailedFetch from "@/components/ui/ErrorUI/FailedFetch";
 
 // Format price with commas
 const formatPrice = (price) => {
@@ -502,7 +503,7 @@ function HomesForSaleContent() {
       const response = await fetch(`/api/listings/search?${params.toString()}`);
 
       if (!response.ok) {
-        throw new Error("Failed to fetch listings");
+        return <FailedFetch />;
       }
 
       const data = await response.json();
@@ -545,7 +546,6 @@ function HomesForSaleContent() {
   // Initialize with default filters
   useEffect(() => {
     fetchListings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   // Calculate total pages
@@ -1216,14 +1216,14 @@ function HomesForSaleContent() {
         {loading ? (
           <LoadingListingCard number={12} />
         ) : error ? (
-          <div className="text-center py-8 text-reRed">Error: {error}</div>
+          <FailedFetch />
         ) : listings.length === 0 ? (
           <div className="text-center py-8 text-reText font-heading">
-            No properties found matching your criteria.
+            No properties found matching your criteria. Please try resetting
+            your filters.
           </div>
         ) : (
           <>
-          
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
               <h2 className="text-xl font-heading font-semibold text-reDark mb-4 md:mb-0">
                 {totals} Properties Found
