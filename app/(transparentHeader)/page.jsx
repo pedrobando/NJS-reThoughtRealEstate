@@ -14,18 +14,32 @@ import HeroSearchBar from "@/components/homesforsale/HeroSearchBar";
 
 export const dynamic = "force-dynamic";
 async function ListingsContent() {
-  const data = await getFeaturedListings();
-  if (!data || !data.result || !data.result.listings) {
-    throw new Error("Failed to fetch listings data");
-  }
+  try {
+    const data = await getFeaturedListings();
+    const listings = data?.result?.listings || [];
+    if (listings.length === 0) {
+      return (
+        <div className="p-4 text-center">
+          No listings available at this time.
+        </div>
+      );
+    }
 
-  return <FeaturedListingsCarousel listings={data.result.listings} />;
+    return <FeaturedListingsCarousel listings={listings} />;
+  } catch (error) {
+    console.error("Error in ListingsContent:", error);
+    return (
+      <div className="p-4 text-center">
+        Unable to load listings. Please try again later.
+      </div>
+    );
+  }
 }
 
 const Homepage = async () => {
   return (
     <>
-    <HeroSearchBar/>
+      <HeroSearchBar />
       <section
         className="flex flex-col w-full bg-white text-reGrey"
         aria-label="About Our Services"
